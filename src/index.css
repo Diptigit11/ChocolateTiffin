@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    margin: 0; /* Optional: Removes default margin */
+    height: 100%; /* Ensures the background color covers full height */
+    /* cursor: none; */
+  }
+
+  :root {
+    scrollbar-color: #8c3939 white; /* Thumb color first, then track color */
+  }
+
+  
+  .flip-card {
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card-front,
+  
+  .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+  
+  @keyframes rotateGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  .glowing-border {
+    border: 2px solid #ff69b4; /* Change to your preferred color */
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); /* Change to your preferred color */
+  }
+  
+  @media (max-width: 768px) {
+    .glowing-border {
+      width: 100% !important;
+    }
+  }
+  
