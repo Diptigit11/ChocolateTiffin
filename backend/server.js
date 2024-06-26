@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js'; // Ensure the path is correct
-import cartRoutes from './routes/cart.js'; // Ensure the path is correct
 
 dotenv.config();
 
@@ -25,6 +24,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .catch(err => console.error(err));
 
 app.use('/api/auth', authRoutes);
-app.use('/api/cart', cartRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
