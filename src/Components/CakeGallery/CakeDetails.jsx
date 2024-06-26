@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import CartContext from './../CartFunctional/CartContext';
 import CakeImageData from './CakeImagesData';
 import ReviewFormModal from './../ReviewFormModal';
 
 function CakeDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
   const cakeId = parseInt(id, 10);
   const cake = CakeImageData.find(cake => cake.id === cakeId);
 
@@ -16,37 +19,13 @@ function CakeDetails() {
     setQuantity((prevQuantity) => Math.max(prevQuantity + amount, 1));
   };
 
-  const handleWeightSelect = (weight) => {
-    setSelectedWeight(weight);
+  const handleWeightSelect = (weightOption) => {
+    setSelectedWeight(weightOption);
   };
 
-  const handleReviewSubmit = (reviewData) => {
-    console.log('Review submitted:', reviewData);
-  };
-
-  const handleAddToCart = async () => {
-    try {
-      const response = await fetch('/api/cart/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          productId: cakeId,
-          name: cake.name,
-          quantity,
-          price: cake.price,
-        }),
-      });
-
-      if (response.status === 401) {
-        window.location.href = '/login';
-      } else {
-        window.location.href = '/cart';  // Redirect to cart page if item is added successfully
-      }
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-    }
+  const handleAddToCart = () => {
+    addToCart({ ...cake, quantity, selectedWeight });
+    navigate('/cart');
   };
 
   if (!cake) {
@@ -72,18 +51,18 @@ function CakeDetails() {
               Write a review
             </button>
           </div>
-          <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {cake.price}</p>
+          <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
           <p className="text-gray-600 mb-4">Inclusive of taxes</p>
           <div className="mb-4">
             <span className="block font-semibold mb-2">Weight *</span>
             <div className="flex space-x-2">
-              {cake.weightOptions.map(weight => (
+              {cake.weightOptions.map(option => (
                 <button
-                  key={weight}
-                  onClick={() => handleWeightSelect(weight)}
-                  className={`px-4 py-2 border rounded ${weight === selectedWeight ? 'border-orange-600 text-orange-600' : 'border-gray-300'}`}
+                  key={option.weight}
+                  onClick={() => handleWeightSelect(option)}
+                  className={`px-4 py-2 border rounded ${option.weight === selectedWeight.weight ? 'border-orange-600 text-orange-600' : 'border-gray-300'}`}
                 >
-                  {weight}
+                  {option.weight}
                 </button>
               ))}
             </div>
@@ -115,7 +94,7 @@ function CakeDetails() {
       <ReviewFormModal
         isOpen={isReviewModalOpen}
         onClose={() => setIsReviewModalOpen(false)}
-        onSubmit={handleReviewSubmit}
+        onSubmit={(reviewData) => console.log('Review submitted:', reviewData)}
       />
     </div>
   );

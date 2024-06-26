@@ -7,8 +7,12 @@ const CakeImageData = [
     caption: "Black Forest Cake",
     name: "Black Forest Cake",
     description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    price: 300,
-    weightOptions: ["250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 16,
     rating: 5
   },
@@ -18,8 +22,12 @@ const CakeImageData = [
     caption: "Rose Falooda Cake",
     name: "Rose Falooda Cake",
     description: "Rose Falooda Cake combines the floral sweetness of rose with the rich textures of Falooda, making it a refreshing and unique dessert.",
-    price: 350,
-    weightOptions: ["250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 10,
     rating: 4
   },
@@ -29,8 +37,12 @@ const CakeImageData = [
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
-    price: 850,
-    weightOptions: ["Slice", "250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 10,
     rating: 4
   },
@@ -40,8 +52,12 @@ const CakeImageData = [
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
-    price: 850,
-    weightOptions: ["Slice", "250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 10,
     rating: 4
   },
@@ -51,8 +67,12 @@ const CakeImageData = [
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
-    price: 850,
-    weightOptions: ["Slice", "250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 10,
     rating: 4
   },
@@ -62,8 +82,12 @@ const CakeImageData = [
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
-    price: 850,
-    weightOptions: ["Slice", "250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 10,
     rating: 4
   },
@@ -73,8 +97,12 @@ const CakeImageData = [
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
-    price: 450,
-    weightOptions: ["Slice", "250g", "1/2 kg", "1 kg", "1.5 kg"],
+    weightOptions: [
+      { weight: "250g", price: 150 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 550 },
+      { weight: "1.5 kg", price: 800 }
+    ],
     reviews: 100,
     rating: 4
   },

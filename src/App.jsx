@@ -16,18 +16,8 @@ import { AuroraHero } from './Components/AuroraHero';
 import CakeDetails from './Components/CakeGallery/CakeDetails';
 import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
-import Cart from './../src/Components/Cart'
-
-const ProtectedRoute = ({ children }) => {
-  const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
-  
-  if (!token) {
-    window.location.href = '/login';
-    return null;
-  }
-
-  return children;
-};
+import {CartProvider} from './Components/CartFunctional/CartContext'
+import Cart from './Components/CartFunctional/Cart'
 
 
 function App() {
@@ -46,6 +36,7 @@ function App() {
 
   return (
     <>
+    <CartProvider>
         <div className="min-h-screen mt-20"> 
         <Router>
       <div className="min-h-screen">
@@ -57,9 +48,7 @@ function App() {
           <Route path="/cake-details/:id" element={<CakeDetails />} />
           <Route exact path="/about" element={<About />} />
           <Route path="/cart" element={
-        <ProtectedRoute>
           <Cart />
-        </ProtectedRoute>
       } />
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<SignIn />} />
@@ -69,6 +58,7 @@ function App() {
       </div>
     </Router>
       </div>
+      </CartProvider>
     </>
   );
 }

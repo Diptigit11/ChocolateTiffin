@@ -31,6 +31,7 @@
     "framer-motion": "^11.2.10",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.3",
+    "nodemon": "^3.1.4",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.9.1",
     "react-animated-cursor": "^2.11.2",
