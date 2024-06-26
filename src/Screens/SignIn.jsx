@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
   const [username, setUsername] = useState('');
@@ -19,12 +21,14 @@ const SignIn = () => {
         withCredentials: true
       });
       setSuccess(response.data.message);
+      toast.success("Signed in Successfully!"); // Ensure this is called
       setTimeout(() => {
         navigate('/cart');
       }, 2000);
     } catch (error) {
       console.error('Error during signup:', error);
       setError(error.response?.data?.message || 'An error occurred');
+      toast.error("Error in signing in!"); // Ensure this is called
     }
   };
 
@@ -63,6 +67,7 @@ const SignIn = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

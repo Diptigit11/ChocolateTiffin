@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -19,13 +21,18 @@ const Login = () => {
       });
       console.log('Login response:', response.data);
       if (response.data.message === 'Logged in successfully') {
-        navigate('/cart');
+        toast.success("Logged in Successfully!");
+        setTimeout(() => {
+          navigate('/cart');
+        }, 2000);
       } else {
         setError('Invalid credentials');
+        toast.error('Invalid credentials');
       }
     } catch (error) {
       console.error('Error during login:', error);
       setError(error.response?.data?.message || 'An error occurred');
+      toast.error("Login failed!");
     }
   };
 
@@ -71,6 +78,7 @@ const Login = () => {
           </Link>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
