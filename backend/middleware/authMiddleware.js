@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js'; // Ensure .js extension is used
+import User from '../models/User.js';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'diptisingh';
 
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies.token;
@@ -7,8 +9,11 @@ const authMiddleware = async (req, res, next) => {
     return res.status(401).json({ message: 'Not authorized' });
   }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = await User.findById(decoded.id).select('-password');
+    if (!req.user) {
+      return res.status(401).json({ message: 'Not authorized' });
+    }
     next();
   } catch (error) {
     console.error('Token verification failed:', error.message);
