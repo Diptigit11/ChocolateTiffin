@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
-import image from '/logo.png';
+import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const navItems = [

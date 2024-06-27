@@ -1,12 +1,12 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
-import image1 from '/car1.png'
-import image2 from '/car2.png'
-import image3 from '/car3.png'
-import image4 from '/car4.png'
-import image5 from '/car5.png'
-import image6 from '/car6.png'
-import image7 from '/car7.png'
+import image1 from '/img/car1.png'
+import image2 from '/img/car2.png'
+import image3 from '/img/car3.png'
+import image4 from '/img/car4.png'
+import image5 from '/img/car5.png'
+import image6 from '/img/car6.png'
+import image7 from '/img/car7.png'
 
 const Carousel = () => {
   return (
