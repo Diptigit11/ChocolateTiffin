@@ -87,7 +87,7 @@ function CakeDetails() {
           <button onClick={handleAddToCart} className="bg-orange-600 text-white px-6 py-3 rounded">ADD TO CART</button>
 
           <div className="mt-6">
-            <p className="text-gray-700">{cake.description}</p>
+            <p className=" font-bold text-black">{cake.description}</p>
           </div>
         </div>
       </div>

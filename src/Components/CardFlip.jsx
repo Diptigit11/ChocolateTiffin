@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import image1 from '/f1.png'
-import image2 from '/f2.png'
-import image3 from '/f3.png'
-import image4 from '/f4.png'
+import image1 from '/img/f1.png'
+import image2 from '/img/f2.png'
+import image3 from '/img/f3.png'
+import image4 from '/img/f4.png'
 
 const imageUrls = [
  image1,

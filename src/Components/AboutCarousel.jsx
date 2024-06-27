@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
-import image5 from '/out2.jpeg';
-import image1 from '/in.jpeg';
-import image2 from '/in2.jpeg';
-import image3 from '/in3.jpeg';
-import image4 from '/out.jpeg';
-import image6 from '/out4.jpeg';
+import image5 from '/img/out2.jpeg';
+import image1 from '/img/in.jpeg';
+import image2 from '/img/in2.jpeg';
+import image3 from '/img/in3.jpeg';
+import image4 from '/img/out.jpeg';
+import image6 from '/img/out4.jpeg';
 
 const imageUrls = [image5, image6, image1, image2, image3, image4];
 
