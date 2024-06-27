@@ -18,6 +18,8 @@ import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
 import {CartProvider} from './Components/CartFunctional/CartContext'
 import Cart from './Components/CartFunctional/Cart'
+import CakeSummary from './Components/CakeGallery/CakeSummary';
+
 
 
 function App() {
@@ -44,7 +46,7 @@ function App() {
         <Navbar />
         {/* <CircleAnimation /> */}
         <Routes>
-          <Route exact path="/" element={<><AuroraHero/>  <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
+          <Route exact path="/" element={<><AuroraHero/> <CakeSummary/> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
           <Route path="/cake-details/:id" element={<CakeDetails />} />
           <Route exact path="/about" element={<About />} />
           <Route path="/cart" element={
