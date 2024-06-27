@@ -5,12 +5,12 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 function Cart() {
   const { cart, removeFromCart } = useContext(CartContext);
 
-  const handleRemove = (index) => {
-    removeFromCart(index);
+  const handleRemove = (itemId) => {
+    removeFromCart(itemId);
   };
 
   const calculateSubtotal = () => {
-    return cart.reduce((total, item) => total + item.selectedWeight.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   return (
@@ -25,13 +25,13 @@ function Cart() {
               <img src={item.src} alt={item.name} className="w-24 h-24 object-cover rounded mr-4" />
               <div>
                 <h2 className="text-xl font-bold">{item.name}</h2>
-                <p>Weight: {item.selectedWeight.weight}</p>
-                <p>Price: ₹ {item.selectedWeight.price}</p>
+                <p>Weight: {item.selectedWeight}</p>
+                <p>Price: ₹ {item.price}</p>
                 <p>Quantity: {item.quantity}</p>
-                <p>Total: ₹ {item.selectedWeight.price * item.quantity}</p>
+                <p>Total: ₹ {item.price * item.quantity}</p>
               </div>
             </div>
-            <button onClick={() => handleRemove(index)} className="text-red-500">
+            <button onClick={() => handleRemove(item._id)} className="text-red-500">
               <TrashIcon className="w-6 h-6" />
             </button>
           </div>
