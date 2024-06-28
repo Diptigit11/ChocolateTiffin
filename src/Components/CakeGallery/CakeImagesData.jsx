@@ -1,7 +1,8 @@
-// CakeImagesData.js;
-import image1 from '/img/Rose_Falooda.jpeg'
+// CakeImagesData.js
+import image1 from '/img/Rose_Falooda.jpeg';
 import image2 from '/img/MangoCakes.jpeg';
-const CakeImageData = [
+
+export const CakeImageData = [
   {
     id: 1,
     src: "https://www.fnp.com/images/pr/l/v200/black-forest-cake-half-kg_1.jpg",
@@ -78,7 +79,7 @@ const CakeImageData = [
   },
   {
     id: 6,
-    src: image5,
+    src: "",
     caption: "Delicious Cake",
     name: "Delicious Cake",
     description: "A classic delicious cake with rich flavors and a delightful texture.",
@@ -105,8 +106,73 @@ const CakeImageData = [
     ],
     reviews: 100,
     rating: 4
-  },
+  }
   // Add more cakes here with unique IDs and detailed info
 ];
 
-export default CakeImageData;
+export const Animal_theme_cakes = [
+  {
+    id: 20,
+    src: "https://bkmedia.bakingo.com/jungle-paradise-theme-cake-them3340flav-A.jpg",
+    caption: "Jungle Paradise Theme Cake",
+    name: "Jungle Paradise Theme Cake",
+    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
+    weightOptions: [
+      { weight: "250g", price: 180 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 600 },
+      { weight: "1.5 kg", price: 900 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 21,
+    src: "https://www.fnp.com/images/pr/l/v200/rose-falooda-cake.jpg",
+    caption: "Zoo Animal Cake",
+    name: "Zoo Animal Cake",
+    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
+    weightOptions: [
+      { weight: "250g", price: 200 },
+      { weight: "1/2 kg", price: 350 },
+      { weight: "1 kg", price: 700 },
+      { weight: "1.5 kg", price: 1050 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  // Add more animal theme cakes here with unique IDs and detailed info
+];
+export const Barbie_Cakes = [
+  {
+    id: 30,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-princess-barbie-cake-3-5-kg--112527-m.jpg",
+    caption: "Jungle Paradise Theme Cake",
+    name: "Jungle Paradise Theme Cake",
+    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
+    weightOptions: [
+      { weight: "250g", price: 180 },
+      { weight: "1/2 kg", price: 300 },
+      { weight: "1 kg", price: 600 },
+      { weight: "1.5 kg", price: 900 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 31,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-icy-dress-barbie-cream-cake-2-kg--119533-m.jpg",
+    caption: "Zoo Animal Cake",
+    name: "Zoo Animal Cake",
+    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
+    weightOptions: [
+      { weight: "250g", price: 200 },
+      { weight: "1/2 kg", price: 350 },
+      { weight: "1 kg", price: 700 },
+      { weight: "1.5 kg", price: 1050 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  // Add more animal theme cakes here with unique IDs and detailed info
+];

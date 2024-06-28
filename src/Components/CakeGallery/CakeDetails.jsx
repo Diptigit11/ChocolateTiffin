@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CartContext from './../CartFunctional/CartContext';
-import CakeImageData from './CakeImagesData';
+import { CakeImageData, Animal_theme_cakes , Barbie_Cakes } from './CakeImagesData'; // Adjust import as needed
+
 import ReviewFormModal from './../ReviewFormModal';
 
 function CakeDetails() {
@@ -9,14 +10,16 @@ function CakeDetails() {
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
   const cakeId = parseInt(id, 10);
-  const cake = CakeImageData.find(cake => cake.id === cakeId);
+
+  // Find cake in either CakeImageData or Animal_theme_cakes
+  const cake = CakeImageData.find(cake => cake.id === cakeId) || Barbie_Cakes.find(cake => cake.id === cakeId) || Animal_theme_cakes.find(cake => cake.id === cakeId);
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedWeight, setSelectedWeight] = useState(cake.weightOptions[0]);
+  const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   const handleQuantityChange = (amount) => {
-    setQuantity((prevQuantity) => Math.max(prevQuantity + amount, 1));
+    setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
   };
 
   const handleWeightSelect = (weightOption) => {
@@ -28,8 +31,9 @@ function CakeDetails() {
     navigate('/cart');
   };
 
+  // Check if cake is not found
   if (!cake) {
-    return <div>Cake not found</div>;
+    return <div className="container mx-auto p-4 mt-20">Cake not found</div>;
   }
 
   return (
@@ -51,22 +55,26 @@ function CakeDetails() {
               Write a review
             </button>
           </div>
-          <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
+          {selectedWeight && selectedWeight.price && (
+            <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
+          )}
           <p className="text-gray-600 mb-4">Inclusive of taxes</p>
-          <div className="mb-4">
-            <span className="block font-semibold mb-2">Weight *</span>
-            <div className="flex space-x-2">
-              {cake.weightOptions.map(option => (
-                <button
-                  key={option.weight}
-                  onClick={() => handleWeightSelect(option)}
-                  className={`px-4 py-2 border rounded ${option.weight === selectedWeight.weight ? 'border-orange-600 text-orange-600' : 'border-gray-300'}`}
-                >
-                  {option.weight}
-                </button>
-              ))}
+          {cake.weightOptions && (
+            <div className="mb-4">
+              <span className="block font-semibold mb-2">Weight *</span>
+              <div className="flex space-x-2">
+                {cake.weightOptions.map(option => (
+                  <button
+                    key={option.weight}
+                    onClick={() => handleWeightSelect(option)}
+                    className={`px-4 py-2 border rounded ${option.weight === selectedWeight.weight ? 'border-orange-600 text-orange-600' : 'border-gray-300'}`}
+                  >
+                    {option.weight}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
           <div className="mb-4">
             <button className="bg-green-500 text-white px-4 py-2 rounded">Instant Delivery Available</button>
           </div>

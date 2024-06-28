@@ -1,15 +1,13 @@
-// CakeImage.jsx
-
+// CakeCategory.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CakeImageData , Animal_theme_cakes , Barbie_Cakes} from './CakeImagesData'; // Import as named export
 
-function CakeImage() {
+function CakeCategory({ cakes, title }) {
   return (
     <div className="p-5">
-      <h1 className="text-4xl p-2 font-bold text-[#682a2a] mb-6 text-center">Our Products</h1>
+      <h1 className="text-4xl p-2 font-bold text-[#682a2a] mb-6 text-center">{title}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-        {CakeImageData.map((cake) => (
+        {cakes.map((cake) => (
           <div key={cake.id} className="relative flex flex-col mt-6 text-[#682a2a] bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-80 lg:w-96 m-4">
             <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
               <img
@@ -39,4 +37,4 @@ function CakeImage() {
   );
 }
 
-export default CakeImage;
+export default CakeCategory;

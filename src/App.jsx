@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import Loader from './Components/Loader';
-import Carousel from './Components/Carousel';
-import Features from './Components/Features';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import About from './Components/About'
+import { CartProvider } from './Components/CartFunctional/CartContext';
+import Loader from './Components/Loader';
+import CakeDetails from './Components/CakeGallery/CakeDetails';
+import CakeImage from './Components/CakeGallery/CakeImage';
+import CakeCategory from './Components/CakeGallery/CakeCategory';
+import { CakeImageData, Animal_theme_cakes , Barbie_Cakes } from './Components/CakeGallery/CakeImagesData'; // Adjust import as needed
+import About from './Components/About';
 import Navbar from './Components/Navbar';
-import CakeImage from './Components/CakeGallery/CakeImage'
-import Footer from './Components/Footer'
+import Footer from './Components/Footer';
 import CircleAnimation from './Components/CircleAnimation';
 import CardFlip from './Components/CardFlip';
 import Wp from './Components/Wp';
-import './index.css'
 import MapEmbed from './Components/MapEmbed';
+import Features from './Components/Features';
 import { AuroraHero } from './Components/AuroraHero';
-import CakeDetails from './Components/CakeGallery/CakeDetails';
+import Cart from './Components/CartFunctional/Cart';
 import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
-import {CartProvider} from './Components/CartFunctional/CartContext'
-import Cart from './Components/CartFunctional/Cart'
-import CakeSummary from './Components/CakeGallery/CakeSummary';
-
-
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -37,31 +34,28 @@ function App() {
   }
 
   return (
-    <>
     <CartProvider>
-        <div className="min-h-screen mt-20"> 
+      <div className="min-h-screen mt-20">
         <Router>
-      <div className="min-h-screen">
-        <Wp />
-        <Navbar />
-        {/* <CircleAnimation /> */}
-        <Routes>
-          <Route exact path="/" element={<><AuroraHero/> <CakeSummary/> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
-          <Route path="/cake-details/:id" element={<CakeDetails />} />
-          <Route exact path="/about" element={<About />} />
-          <Route path="/cart" element={
-          <Cart />
-      } />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signin" element={<SignIn />} />
-          {/* Other routes */}
-        </Routes>
-        {/* <Footer /> */}
+          <div className="min-h-screen">
+            <Wp />
+            <Navbar />
+            <Routes>
+              <Route exact path="/" element={<><AuroraHero /> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
+              <Route path="/animal-theme-cakes" element={<CakeCategory cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} />
+             <Route path="/barbie-cakes" element={<CakeCategory cakes={Barbie_Cakes} title="Barbie Theme Cakes" />} />
+              <Route path="/cake-details/:id" element={<CakeDetails />} />
+              <Route exact path="/about" element={<About />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signin" element={<SignIn />} />
+              {/* Other routes */}
+            </Routes>
+            {/* <Footer /> */}
+          </div>
+        </Router>
       </div>
-    </Router>
-      </div>
-      </CartProvider>
-    </>
+    </CartProvider>
   );
 }
 
