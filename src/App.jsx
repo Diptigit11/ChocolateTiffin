@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './Components/CartFunctional/CartContext';
 import Loader from './Components/Loader';
 import CakeDetails from './Components/CakeGallery/CakeDetails';
 import CakeImage from './Components/CakeGallery/CakeImage';
@@ -18,6 +17,7 @@ import { AuroraHero } from './Components/AuroraHero';
 import Cart from './Components/CartFunctional/Cart';
 import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
+import ContextProvider from './Components/Features/ContextProvider';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +34,7 @@ function App() {
   }
 
   return (
-    <CartProvider>
+    <ContextProvider>
       <div className="min-h-screen mt-20">
         <Router>
           <div className="min-h-screen">
@@ -55,7 +55,7 @@ function App() {
           </div>
         </Router>
       </div>
-    </CartProvider>
+    </ContextProvider>
   );
 }
 
