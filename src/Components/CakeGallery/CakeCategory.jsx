@@ -1,4 +1,3 @@
-// CakeCategory.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,11 +8,11 @@ function CakeCategory({ cakes, title }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
         {cakes.map((cake) => (
           <div key={cake.id} className="relative flex flex-col mt-6 text-[#682a2a] bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-80 lg:w-96 m-4">
-            <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div className="relative h-64 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
               <img
                 src={cake.src}
                 alt={cake.caption}
-                className="object-cover w-full h-full transform transition-transform duration-500 hover:scale-105"
+                className="absolute top-0 left-0 w-full h-full object-center transition-transform duration-500 hover:scale-105"
               />
             </div>
             <div className="px-6 pt-6 pb-2">
