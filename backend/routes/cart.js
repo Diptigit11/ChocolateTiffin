@@ -1,72 +1,58 @@
 import express from 'express';
-import authMiddleware from '../middleware/authMiddleware.js';
 import Cart from '../models/Cart.js';
+import fetchuser from '../middleware/authMiddleware.js';
 
-const router = express.Router();
+const Cartrouter = express.Router();
 
-router.post('/add', authMiddleware, async (req, res) => {
-  const { productId, name, quantity, selectedWeight, price } = req.body;
-  const userId = req.user._id;
+// Add Cake
+Cartrouter.post('/add', fetchuser, async (req, res) => {
+  console.log('POST /api/cart/add triggered');
+  const { name, src, description, rating, weightOptions, category } = req.body;
 
   try {
-    let cart = await Cart.findOne({ userId });
+    const cake = new Cart({
+      userId: req.user.id,
+      name,
+      src,
+      description,
+      rating,
+      weightOptions,
+      category,
+    });
 
-    if (cart) {
-      const itemIndex = cart.items.findIndex(item => item.productId.toString() === productId);
-
-      if (itemIndex > -1) {
-        cart.items[itemIndex].quantity += quantity;
-      } else {
-        cart.items.push({ productId, name, quantity, selectedWeight, price });
-      }
-
-      await cart.save();
-    } else {
-      cart = new Cart({
-        userId,
-        items: [{ productId, name, quantity, selectedWeight, price }],
-      });
-      await cart.save();
-    }
-
-    res.status(201).json(cart);
+    await cake.save();
+    res.json(cake);
   } catch (error) {
-    console.error('Error adding to cart:', error);
-    res.status(500).json({ message: 'An error occurred while adding to cart' });
+    console.error(error.message);
+    res.status(500).send('Server error');
   }
 });
 
-router.get('/', authMiddleware, async (req, res) => {
+// Delete Cake
+Cartrouter.delete('/delete/:id', fetchuser, async (req, res) => {
+  const cakeId = req.params.id;
+
   try {
-    const cart = await Cart.findOne({ userId: req.user._id }).populate('items.productId');
-    if (!cart) {
-      return res.status(404).json({ message: 'Cart not found' });
+    const cake = await Cart.findOneAndDelete({ _id: cakeId, userId: req.user.id });
+    if (!cake) {
+      return res.status(404).json({ error: "Cake not found or not authorized" });
     }
-    res.json(cart);
+    res.json({ message: "Cake deleted successfully" });
   } catch (error) {
-    console.error('Error fetching cart:', error);
-    res.status(500).json({ message: 'An error occurred while fetching the cart' });
+    console.error(error.message);
+    res.status(500).send('Server error');
   }
 });
 
-router.delete('/remove/:itemId', authMiddleware, async (req, res) => {
-  const { itemId } = req.params;
-  const userId = req.user._id;
-
+// Fetch Cakes
+Cartrouter.get('/fetch', fetchuser, async (req, res) => {
   try {
-    let cart = await Cart.findOne({ userId });
-
-    if (cart) {
-      cart.items = cart.items.filter(item => item._id.toString() !== itemId);
-      await cart.save();
-      res.json(cart);
-    } else {
-      res.status(404).json({ message: 'Cart not found' });
-    }
+    const cakes = await Cart.find({ userId: req.user.id });
+    res.json(cakes);
   } catch (error) {
-    console.error('Error removing from cart:', error);
-    res.status(500).json({ message: 'An error occurred while removing from cart' });
+    console.error(error.message);
+    res.status(500).send('Server error');
   }
 });
 
-export default router;
+export default Cartrouter;
