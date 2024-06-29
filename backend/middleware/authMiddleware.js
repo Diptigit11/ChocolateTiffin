@@ -1,24 +1,19 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+const JWT_SECRET = 'diptisingh';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'diptisingh';
-
-const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized' });
-  }
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
-    if (!req.user) {
-      return res.status(401).json({ message: 'Not authorized' });
+const fetchuser = (req, res, next) => {
+    // Get the user from the jwt token and add id to req obj
+    const token = req.header('auth-token');
+    if (!token) {
+        return res.status(401).send({ error: "Please authenticate using a valid token" });
     }
-    next();
-  } catch (error) {
-    console.error('Token verification failed:', error.message);
-    res.status(401).json({ message: 'Not authorized' });
-  }
+    try {
+        const data = jwt.verify(token, JWT_SECRET);
+        req.user = data.user;
+        next();
+    } catch (error) {
+        res.status(401).send({ error: "Please authenticate using a valid token" });
+    }
 };
 
-export default authMiddleware;
+export default fetchuser;
