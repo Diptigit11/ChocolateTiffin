@@ -96,7 +96,7 @@ const AppRoutes = () => {
       
 
 
-      
+     <Route path="/cake-details/:id" element={<CakeDetails />} />
       <Route exact path="/about" element={<About />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
