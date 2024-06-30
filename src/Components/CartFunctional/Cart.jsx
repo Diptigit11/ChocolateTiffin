@@ -1,16 +1,59 @@
-import React, { useContext } from 'react';
-import CartContext from './CartContext';
-import { TrashIcon } from '@heroicons/react/24/outline'
+import React, { useState, useEffect } from 'react';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 function Cart() {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const [cart, setCart] = useState([]);
+
+  const getCake = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/cart/fetch`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem('token')
+        },
+      });
+      const json = await response.json();
+      console.log('Fetched cart data:', json);
+      setCart(json);
+    } catch (error) {
+      console.error("Failed to fetch cart data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getCake();
+  }, []);
+
+  const deleteCake = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/cart/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem('token')
+        }
+      });
+      const json = await response.json();
+      console.log('Deleted item response:', json);
+
+      const newCart = cart.filter((item) => item._id !== id);
+      setCart(newCart);
+    } catch (error) {
+      console.error("Failed to delete item:", error);
+    }
+  };
 
   const handleRemove = (itemId) => {
-    removeFromCart(itemId);
+    deleteCake(itemId);
   };
 
   const calculateSubtotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => {
+      const selectedWeight = item.weightOptions[0];
+      const price = selectedWeight ? selectedWeight.price : 0;
+      return total + price * (item.quantity || 0);
+    }, 0);
   };
 
   return (
@@ -25,10 +68,10 @@ function Cart() {
               <img src={item.src} alt={item.name} className="w-24 h-24 object-cover rounded mr-4" />
               <div>
                 <h2 className="text-xl font-bold">{item.name}</h2>
-                <p>Weight: {item.selectedWeight}</p>
-                <p>Price: ₹ {item.price}</p>
+                <p>Weight: {item.weightOptions[0].weight}</p>
+                <p>Price: ₹ {item.weightOptions[0].price}</p>
                 <p>Quantity: {item.quantity}</p>
-                <p>Total: ₹ {item.price * item.quantity}</p>
+                <p>Total: ₹ {item.weightOptions[0].price * item.quantity}</p>
               </div>
             </div>
             <button onClick={() => handleRemove(item._id)} className="text-red-500">
@@ -42,7 +85,6 @@ function Cart() {
           <p className="text-xl font-bold">
             Subtotal: ₹ {calculateSubtotal()}
           </p>
-          <button className="bg-red-500 text-white px-6 py-3 rounded mt-4">Proceed to Checkout</button>
         </div>
       )}
     </div>

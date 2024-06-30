@@ -1,56 +1,68 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import CartContext from './../CartFunctional/CartContext';
-import { CakeImageData, Animal_theme_cakes , Barbie_Cakes , Baby_shark ,CakesForHer , BikeCakes  , CricketCakes , FrozenThemeCakes , GymCakes , PinataCakes , SuperheroCakes , WeddingCakes , AnniversaryCakes , BossBaby, BabyGirl , BabyBoy , DogLovers , CarCakes , CakesForHim , FootballCakes , HalfYear , Peppa_Pig_Cakes , TravelCakes , Baby_Shower_Cakes , ButterFly_Cakes , Bachelorette_cakes ,farewell_cakes, make_up_cakes ,spider_man_cakes ,unicorn_cakes , desserts,cheesecakes , Pastry , celebration_cakes} from './CakeImagesData'; // Adjust import as needed
-
+import {
+  CakeImageData, Animal_theme_cakes, Barbie_Cakes, Baby_shark, CakesForHer, BikeCakes,
+  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, SuperheroCakes, WeddingCakes,
+  AnniversaryCakes, BossBaby, BabyGirl, BabyBoy, DogLovers, CarCakes, CakesForHim,
+  FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
+  Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
+  desserts, cheesecakes, Pastry, celebration_cakes
+} from './CakeImagesData'; // Adjust import as needed
 import ReviewFormModal from './../ReviewFormModal';
+
+const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
+  const response = await fetch(`http://localhost:5000/api/cart/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token')
+    },
+    body: JSON.stringify({ name, src, description, rating, weightOptions, category, quantity }), // Include quantity
+  });
+  const cake = await response.json();
+  return cake;
+};
 
 function CakeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  // const { addToCart } = useContext(CartContext);
   const cakeId = parseInt(id, 10);
 
-  // Find cake in either CakeImageData or Animal_theme_cakes
+  // Find cake in either CakeImageData or any other category
   const cake = CakeImageData.find(cake => cake.id === cakeId) ||
-   Barbie_Cakes.find(cake => cake.id === cakeId) ||
-   Animal_theme_cakes.find(cake => cake.id === cakeId) ||
-   Baby_shark.find(cake => cake.id === cakeId) ||
-   CakesForHer.find(cake => cake.id === cakeId) ||
-   BikeCakes.find(cake => cake.id === cakeId) ||
-   CricketCakes.find(cake => cake.id === cakeId) ||
-   FrozenThemeCakes.find(cake => cake.id === cakeId) ||
-   GymCakes.find(cake => cake.id === cakeId) ||
-   PinataCakes.find(cake => cake.id === cakeId) ||
-   SuperheroCakes.find(cake => cake.id === cakeId) ||
-   WeddingCakes.find(cake => cake.id === cakeId) ||
-   AnniversaryCakes.find(cake => cake.id === cakeId) ||
-   BossBaby.find(cake => cake.id === cakeId) ||
-   BabyBoy.find(cake => cake.id === cakeId) ||
-   BabyGirl.find(cake => cake.id === cakeId) || 
-
-   DogLovers.find(cake => cake.id === cakeId) ||
-   CarCakes.find(cake => cake.id === cakeId) ||
-   CakesForHim.find(cake => cake.id === cakeId) ||
-   FootballCakes.find(cake => cake.id === cakeId) ||
-   HalfYear.find(cake => cake.id === cakeId) ||
-   Peppa_Pig_Cakes.find(cake => cake.id === cakeId) ||
-   TravelCakes.find(cake => cake.id === cakeId) ||
-   Baby_Shower_Cakes.find(cake => cake.id === cakeId) ||
-   ButterFly_Cakes.find(cake => cake.id === cakeId) ||
-   Bachelorette_cakes.find(cake => cake.id === cakeId) ||
-   farewell_cakes.find(cake => cake.id === cakeId) ||
-   make_up_cakes.find(cake => cake.id === cakeId) ||
-   spider_man_cakes.find(cake => cake.id === cakeId) ||
-   unicorn_cakes.find(cake => cake.id === cakeId) ||
-
-   desserts.find(cake => cake.id === cakeId) ||
-   cheesecakes.find(cake => cake.id === cakeId) ||
-   Pastry.find(cake => cake.id === cakeId) ||
-   celebration_cakes.find(cake => cake.id === cakeId)
-
-    ;
-
+    Barbie_Cakes.find(cake => cake.id === cakeId) ||
+    Animal_theme_cakes.find(cake => cake.id === cakeId) ||
+    Baby_shark.find(cake => cake.id === cakeId) ||
+    CakesForHer.find(cake => cake.id === cakeId) ||
+    BikeCakes.find(cake => cake.id === cakeId) ||
+    CricketCakes.find(cake => cake.id === cakeId) ||
+    FrozenThemeCakes.find(cake => cake.id === cakeId) ||
+    GymCakes.find(cake => cake.id === cakeId) ||
+    PinataCakes.find(cake => cake.id === cakeId) ||
+    SuperheroCakes.find(cake => cake.id === cakeId) ||
+    WeddingCakes.find(cake => cake.id === cakeId) ||
+    AnniversaryCakes.find(cake => cake.id === cakeId) ||
+    BossBaby.find(cake => cake.id === cakeId) ||
+    BabyBoy.find(cake => cake.id === cakeId) ||
+    BabyGirl.find(cake => cake.id === cakeId) ||
+    DogLovers.find(cake => cake.id === cakeId) ||
+    CarCakes.find(cake => cake.id === cakeId) ||
+    CakesForHim.find(cake => cake.id === cakeId) ||
+    FootballCakes.find(cake => cake.id === cakeId) ||
+    HalfYear.find(cake => cake.id === cakeId) ||
+    Peppa_Pig_Cakes.find(cake => cake.id === cakeId) ||
+    TravelCakes.find(cake => cake.id === cakeId) ||
+    Baby_Shower_Cakes.find(cake => cake.id === cakeId) ||
+    ButterFly_Cakes.find(cake => cake.id === cakeId) ||
+    Bachelorette_cakes.find(cake => cake.id === cakeId) ||
+    farewell_cakes.find(cake => cake.id === cakeId) ||
+    make_up_cakes.find(cake => cake.id === cakeId) ||
+    spider_man_cakes.find(cake => cake.id === cakeId) ||
+    unicorn_cakes.find(cake => cake.id === cakeId) ||
+    desserts.find(cake => cake.id === cakeId) ||
+    cheesecakes.find(cake => cake.id === cakeId) ||
+    Pastry.find(cake => cake.id === cakeId) ||
+    celebration_cakes.find(cake => cake.id === cakeId);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
@@ -64,9 +76,19 @@ function CakeDetails() {
     setSelectedWeight(weightOption);
   };
 
-  const handleAddToCart = () => {
-    addToCart({ ...cake, quantity, selectedWeight });
-    navigate('/cart');
+  const handleAddToCart = async () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // Include quantity
+      console.log('Added to cart:', newCake);
+      navigate('/cart');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
   };
 
   // Check if cake is not found
@@ -133,7 +155,7 @@ function CakeDetails() {
           <button onClick={handleAddToCart} className="bg-orange-600 text-white px-6 py-3 rounded">ADD TO CART</button>
 
           <div className="mt-6">
-            <p className=" font-bold text-black">{cake.description}</p>
+            <p className="font-bold text-black">{cake.description}</p>
           </div>
         </div>
       </div>
