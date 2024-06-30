@@ -12,7 +12,7 @@ function CakeCategory({ cakes, title }) {
               <img
                 src={cake.src}
                 alt={cake.caption}
-                className="absolute top-0 left-0 w-full h-full object-center transition-transform duration-500 hover:scale-105"
+                className="absolute top-0 left-0 w-full h-64 object-center transition-transform duration-500 hover:scale-105"
               />
             </div>
             <div className="px-6 pt-6 pb-2">
