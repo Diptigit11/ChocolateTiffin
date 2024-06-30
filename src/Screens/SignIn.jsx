@@ -1,75 +1,135 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
   const navigate = useNavigate();
 
-  const handleSignUp = async (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const baseURL = import.meta.env.VITE_API_BASE_URL; // Ensure this is correctly set in your Vite configuration
-      const response = await axios.post(`${baseURL}/api/auth/signup`, {
-        username, password
-      }, {
-        withCredentials: true
-      });
-      setSuccess(response.data.message);
-      toast.success("Signed in Successfully!"); // Ensure this is called
-      setTimeout(() => {
-        navigate('/cart');
-      }, 2000);
-    } catch (error) {
-      console.error('Error during signup:', error);
-      setError(error.response?.data?.message || 'An error occurred');
-      toast.error("Error in signing in!"); // Ensure this is called
+    const { name, email, password, cpassword } = credentials;
+
+    // Check if password and confirm password match
+    if (password !== cpassword) {
+      toast.error("Passwords do not match!");
+      return;
     }
-  };
+
+    const response = await fetch("http://localhost:5000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const json = await response.json();
+    console.log(json);
+
+    if (json.success) {
+      // Save the auth token and redirect
+      localStorage.setItem('token', json.authtoken);
+      navigate("/");
+      toast.success("Signed in Successfully!");
+    } else {
+      toast.error("Error in signing in!");
+    }
+  }
+
+  const onchange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Sign Up</h2>
-        {error && <p className="text-sm text-red-500">{error}</p>}
-        {success && <p className="text-sm text-green-500">{success}</p>}
-        <form className="space-y-6" onSubmit={handleSignUp}>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-700"
-          >
-            Sign Up
-          </button>
-        </form>
+    <>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-yellow">
+        <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-[#bb2d5a] hover:underline">
+          Sign in to your account
+        </h2>
+
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-opacity-50 bg-[#ffaac5]  bg-blur-md border-2 border-stone-50 backdrop-filter backdrop-blur-md backdrop-saturate-150 rounded-lg p-6 shadow-2xl">
+          <form className="space-y-6" onSubmit={handelSubmit}>
+            <div className="my -5">
+              <label htmlFor="name" className="block text-sm font-medium leading-6 text-[#5e152c]">
+                Name
+              </label>
+              <div className="mt-2 my-5">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  onChange={onchange}
+                  placeholder="Your Sweet Name"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-[#5e152c]">
+              Email address
+            </label>
+            <div className="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                placeholder="sweetname@gmail.com"
+                onChange={onchange}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+              />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-[#5e152c]">
+                Password
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                onChange={onchange}
+                placeholder="This is a secret"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+              />
+            </div>
+            <div className="my-4">
+              <div className="flex items-center justify-between">
+                <label htmlFor="cpassword" className="block text-sm font-medium leading-6 text-[#5e152c]">
+                  Confirm Password
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="cpassword"
+                  name="cpassword"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  onChange={onchange}
+                  placeholder="...."
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div>
+              <button type="submit" className="flex w-full justify-center rounded-md bg-[#bb2d5a] hover:shadow-lg  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ff578d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus:ring-[#bb2d5a]">
+                Sign in
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <ToastContainer />
-    </div>
-  );
-};
+    </>
+  )
+}
 
 export default SignIn;
