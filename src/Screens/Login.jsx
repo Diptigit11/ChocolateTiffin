@@ -1,86 +1,106 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  let navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const baseURL = import.meta.env.VITE_API_BASE_URL;
-      console.log('Logging in with:', { username, password });
-      const response = await axios.post(`${baseURL}/api/auth/login`, { username, password }, {
-        withCredentials: true
+  const handelSubmit = async (e) => {
+      e.preventDefault();
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              email: credentials.email,
+              password: credentials.password
+          })
       });
-      console.log('Login response:', response.data);
-      if (response.data.message === 'Logged in successfully') {
-        toast.success("Logged in Successfully!");
-        setTimeout(() => {
-          navigate('/cart');
-        }, 2000);
-      } else {
-        setError('Invalid credentials');
-        toast.error('Invalid credentials');
+
+      const json = await response.json();
+      console.log(json);
+  
+      if (json.success) {
+        //save the auth token and redirect
+        localStorage.setItem('token', json.authtoken);
+        toast.success("Logged in  Successfully! Enjoy the deliciousness of cake ");
+        navigate("/");
+  
       }
-    } catch (error) {
-      console.error('Error during login:', error);
-      setError(error.response?.data?.message || 'An error occurred');
-      toast.error("Login failed!");
-    }
-  };
+      else {
+        alert("Invalid credentials");
+        toast.error("Logged in  failed! ");
+      }
+  }
+
+  const onChange = (e) => {
+      setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Login</h2>
-        {error && <p className="text-sm text-red-500">{error}</p>}
-        <form className="space-y-6" onSubmit={handleLogin}>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
-            />
+      <>
+      <div className="flex min-h-screen flex-1 flex-col  px-6 py-12 lg:px-8  bg-yellow">
+          <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-[#bb2d5a]  hover:underline">
+              Login
+          </h2>
+
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-opacity-50 bg-[#ffaac5] bg-blur-md border-2 border-stone-50 backdrop-filter backdrop-blur-md backdrop-saturate-150 rounded-lg p-6 shadow-2xl">
+              <form className="space-y-6" onSubmit={handelSubmit}>
+                  <div>
+                      <label htmlFor="email" className="block text-sm font-medium leading-6 text-[#5e152c]">
+                          Email address
+                      </label>
+                      <div className="mt-2">
+                          <input
+                              id="email"
+                              name="email"
+                              type="email"
+                              autoComplete="email"
+                              onChange={onChange}
+                              required
+                              placeholder="Enter your email address"
+                              className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                          />
+                      </div>
+                  </div>
+
+                  <div>
+                      <div className="flex items-center justify-between">
+                          <label htmlFor="password" className="block text-sm font-medium leading-6 text-[#5e152c]">
+                              Password
+                          </label>
+                      </div>
+                      <div className="mt-2">
+                          <input
+                              id="password"
+                              name="password"
+                              type="password"
+                              autoComplete="current-password"
+                              required
+                              onChange={onChange}
+                              placeholder="This is a secret"
+                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                          />
+                      </div>
+                  </div>
+
+                  <div>
+                  <button type="submit" className="flex w-full justify-center rounded-md bg-[#bb2d5a] hover:shadow-lg  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ff578d]  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+
+Login
+
+</button>
+    
+                  </div>
+              </form>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-700"
-          >
-            Login
-          </button>
-          <Link to="/signin">
-            <button
-              type="button"
-              className="w-full pt-4 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-700"
-            >
-              Sign In
-            </button>
-          </Link>
-        </form>
       </div>
-      <ToastContainer />
-    </div>
+      </>
   );
-};
+}
 
 export default Login;

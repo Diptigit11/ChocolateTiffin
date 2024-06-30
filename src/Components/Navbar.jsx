@@ -70,7 +70,7 @@ const Navbar = () => {
           <Link to="/login">
             <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
           </Link>
-          <Link to = "/login">
+          <Link to = "/signin">
           <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
           </Link>
           <CartIcon />
@@ -97,7 +97,7 @@ const Navbar = () => {
             <Link to="/login">
               <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
             </Link>
-            <Link to = "/login">
+            <Link to = "/signin">
           <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
           </Link>
             <CartIcon />
