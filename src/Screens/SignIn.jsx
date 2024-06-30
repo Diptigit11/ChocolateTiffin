@@ -10,33 +10,42 @@ const SignIn = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password, cpassword } = credentials;
-
-    // Check if password and confirm password match
+  
     if (password !== cpassword) {
       toast.error("Passwords do not match!");
       return;
     }
-
-    const response = await fetch("http://localhost:5000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const json = await response.json();
-    console.log(json);
-
-    if (json.success) {
-      // Save the auth token and redirect
-      localStorage.setItem('token', json.authtoken);
-      navigate("/");
-      toast.success("Signed in Successfully!");
-    } else {
-      toast.error("Error in signing in!");
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
+  
+      const json = await response.json();
+      console.log(json);
+  
+      if (json.success) {
+        localStorage.setItem('token', json.authtoken);
+        navigate("/");
+        toast.success("Signed in Successfully!");
+      } else {
+        toast.error(json.error || "Error in signing in!");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      toast.error("Error: " + error.message);
     }
   }
+  
 
   const onchange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
