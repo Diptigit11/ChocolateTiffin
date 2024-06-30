@@ -6,27 +6,26 @@ const Cartrouter = express.Router();
 
 // Add Cake
 Cartrouter.post('/add', fetchuser, async (req, res) => {
-  console.log('POST /api/cart/add triggered');
-  const { name, src, description, rating, weightOptions, category } = req.body;
-
+  const { name, src, description, rating, weightOptions, category, quantity } = req.body; // Add quantity
   try {
-    const cake = new Cart({
-      userId: req.user.id,
+    const newCake = new Cart({
       name,
       src,
       description,
       rating,
       weightOptions,
       category,
+      userId: req.user.id,
+      quantity // Save quantity
     });
-
-    await cake.save();
-    res.json(cake);
+    const savedCake = await newCake.save();
+    res.json(savedCake);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');
   }
 });
+
 
 // Delete Cake
 Cartrouter.delete('/delete/:id', fetchuser, async (req, res) => {
