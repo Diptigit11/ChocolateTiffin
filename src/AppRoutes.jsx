@@ -55,6 +55,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route exact path="/" element={<><AuroraHero /> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
+      <Route path="/cake-details/:id" element={<CakeDetails />} />
+      
       <Route path="/animal-theme-cakes" element={<CakeCategory cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} />
       <Route path="/barbie-cakes" element={<CakeCategory cakes={Barbie_Cakes} title="Barbie Theme Cakes" />} />
       <Route path="/baby-shark" element={<CakeCategory cakes={Baby_shark} title="Baby Shark Cakes" />} />
