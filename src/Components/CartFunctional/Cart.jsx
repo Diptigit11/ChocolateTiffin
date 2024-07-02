@@ -3,16 +3,22 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { useCart } from '../CartContext';
 
 function Cart() {
-  const {cart, getCake,deleteCake} = useCart();
+  const {cart, getCake,deleteCake,    fetchTotalItems  } = useCart();
 
   useEffect(() => {
     getCake();
+    fetchTotalItems();
   }, []);
 
   const handleRemove = (itemId) => {
-    deleteCake(itemId);
+    deleteCake(itemId)
+      .then(() => {
+        fetchTotalItems();
+      })
+      .catch((error) => {
+        console.error('Error deleting item:', error);
+      });
   };
-
   const calculateSubtotal = () => {
     return cart.reduce((total, item) => {
       const selectedWeight = item.weightOptions[0];
