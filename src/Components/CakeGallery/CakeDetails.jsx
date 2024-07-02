@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {
+import { 
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, Baby_shark, CakesForHer, BikeCakes,
   CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, SuperheroCakes, WeddingCakes,
   AnniversaryCakes, BossBaby, BabyGirl, BabyBoy, DogLovers, CarCakes, CakesForHim,
@@ -9,6 +9,7 @@ import {
   desserts, cheesecakes, Pastry, celebration_cakes
 } from './CakeImagesData'; // Adjust import as needed
 import ReviewFormModal from './../ReviewFormModal';
+
 
 const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
   const response = await fetch(`http://localhost:5000/api/cart/add`, {
@@ -22,6 +23,7 @@ const addCake = async (name, src, description, rating, weightOptions, category, 
   const cake = await response.json();
   return cake;
 };
+
 
 function CakeDetails() {
   const { id } = useParams();
@@ -168,4 +170,13 @@ function CakeDetails() {
   );
 }
 
+
+
 export default CakeDetails;
+
+
+
+
+
+
+
