@@ -13,9 +13,17 @@ function Cart() {
           "auth-token": localStorage.getItem('token')
         },
       });
-      const json = await response.json();
-      console.log('Fetched cart data:', json);
-      setCart(json);
+      const textResponse = await response.text(); // Fetch response as text
+      console.log('Raw response:', textResponse); // Log the raw response
+
+      try {
+        const json = JSON.parse(textResponse); // Attempt to parse the JSON
+        console.log('Fetched cart data:', json);
+        setCart(json);
+      } catch (jsonParseError) {
+        console.error('Failed to parse JSON response:', jsonParseError);
+        console.error('Received text response:', textResponse);
+      }
     } catch (error) {
       console.error("Failed to fetch cart data:", error);
     }
