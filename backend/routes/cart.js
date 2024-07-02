@@ -61,7 +61,6 @@ Cartrouter.get('/total', fetchuser, async (req, res) => {
   try {
     const totalItems = await Cart.countDocuments({ userId: req.user.id });
     res.status(200).json({ totalItems });
-    console.log(totalItems);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');
