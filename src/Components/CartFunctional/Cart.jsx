@@ -1,56 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import { useCart } from '../CartContext';
 
 function Cart() {
-  const [cart, setCart] = useState([]);
-
-  const getCake = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/cart/fetch`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token')
-        },
-      });
-      const textResponse = await response.text(); // Fetch response as text
-      console.log('Raw response:', textResponse); // Log the raw response
-
-      try {
-        const json = JSON.parse(textResponse); // Attempt to parse the JSON
-        console.log('Fetched cart data:', json);
-        setCart(json);
-      } catch (jsonParseError) {
-        console.error('Failed to parse JSON response:', jsonParseError);
-        console.error('Received text response:', textResponse);
-      }
-    } catch (error) {
-      console.error("Failed to fetch cart data:", error);
-    }
-  };
+  const {cart, getCake,deleteCake} = useCart();
 
   useEffect(() => {
     getCake();
   }, []);
-
-  const deleteCake = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/cart/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token')
-        }
-      });
-      const json = await response.json();
-      console.log('Deleted item response:', json);
-
-      const newCart = cart.filter((item) => item._id !== id);
-      setCart(newCart);
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
 
   const handleRemove = (itemId) => {
     deleteCake(itemId);

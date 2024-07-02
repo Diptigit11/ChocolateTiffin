@@ -9,26 +9,14 @@ import {
   desserts, cheesecakes, Pastry, celebration_cakes
 } from './CakeImagesData'; // Adjust import as needed
 import ReviewFormModal from './../ReviewFormModal';
-
-
-const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
-  const response = await fetch(`http://localhost:5000/api/cart/add`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem('token')
-    },
-    body: JSON.stringify({ name, src, description, rating, weightOptions, category, quantity }), // Include quantity
-  });
-  const cake = await response.json();
-  return cake;
-};
+import { useCart } from '../CartContext';
 
 
 function CakeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
+  const { addCake,fetchTotalItems } = useCart();
 
   // Find cake in either CakeImageData or any other category
   const cake = CakeImageData.find(cake => cake.id === cakeId) ||
@@ -69,6 +57,8 @@ function CakeDetails() {
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
