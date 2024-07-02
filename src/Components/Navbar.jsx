@@ -1,10 +1,12 @@
-import React, { useState, Fragment } from "react";
+// Navbar.js
+import React, { useState,useEffect, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from 'react-router-dom';
+import { useCart } from './CartContext'; // Import the CartContext
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
@@ -49,7 +51,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  let navigate = useNavigate();   //this function will run only if person is already loged in
+  const { totalItems, fetchTotalItems } = useCart(); // Use the CartContext
+
+  useEffect(() => {
+    fetchTotalItems();
+  }, []);
+
+  let navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -81,11 +89,12 @@ const Navbar = () => {
               <Link to="/signin">
                 <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
               </Link>
-              </form> : 
-              <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
+            </form> :
+            <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
 
-
-          <CartIcon />
+          <div className="side flex relative">
+            <CartIcon totalItems={totalItems} />
+          </div>
         </div>
         <div className="md:hidden flex items-center space-x-2">
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} isMobile />
@@ -106,16 +115,19 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <NavItem item={item} key={index} />
             ))}
-             {!localStorage.getItem('token') ?
-            <form className="d-flex">  <Link to="/login">
-              <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
-            </Link>
-              <Link to="/signin">
-                <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
+            {!localStorage.getItem('token') ?
+              <form className="d-flex">  <Link to="/login">
+                <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
               </Link>
-              </form> : 
+                <Link to="/signin">
+                  <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
+                </Link>
+              </form> :
               <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
-            <CartIcon />
+
+            <div className="side flex relative">
+              <CartIcon totalItems={totalItems} />
+            </div>
           </div>
         </motion.div>
       )}
@@ -219,9 +231,12 @@ const MenuIcon = ({ isOpen }) => (
   </motion.div>
 );
 
-const CartIcon = () => (
+const CartIcon = ({ totalItems }) => (
   <a href="/cart" className="text-gray-700 hover:text-[#8c3939]">
     <ShoppingCartIcon className="w-6 h-6" />
+    <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
+      {totalItems}
+    </div>
   </a>
 );
 
