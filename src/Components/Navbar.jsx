@@ -221,8 +221,16 @@ const MenuIcon = ({ isOpen }) => (
 
 const CartIcon = () => (
   <a href="/cart" className="text-gray-700 hover:text-[#8c3939]">
+    <div className="side flex relative">
     <ShoppingCartIcon className="w-6 h-6" />
+  <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
+    1
+  </div>
+</div>
+
   </a>
+
+
 );
 
 export default Navbar;
