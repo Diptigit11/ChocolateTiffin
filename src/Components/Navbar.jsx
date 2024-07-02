@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from 'react-router-dom';
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
@@ -48,6 +49,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  let navigate = useNavigate();   //this function will run only if person is already loged in
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -56,8 +63,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         <div style={{ width: '80px', height: 'auto' }}>
-          <img src={image} alt="Logo" 
-          style={{ width: '80%', height: 'auto' }} />
+          <img src={image} alt="Logo"
+            style={{ width: '80%', height: 'auto' }} />
         </div>
         <div className="hidden md:flex space-x-8 items-center">
           <DropdownMenu title="Theme Cakes" items={dropdownItems} />
@@ -67,12 +74,17 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-          <Link to="/login">
-            <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
-          </Link>
-          <Link to = "/signin">
-          <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
-          </Link>
+          {!localStorage.getItem('token') ?
+            <form className="d-flex">  <Link to="/login">
+              <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
+            </Link>
+              <Link to="/signin">
+                <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
+              </Link>
+              </form> : 
+              <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
+
+
           <CartIcon />
         </div>
         <div className="md:hidden flex items-center space-x-2">
@@ -94,12 +106,15 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <NavItem item={item} key={index} />
             ))}
-            <Link to="/login">
+             {!localStorage.getItem('token') ?
+            <form className="d-flex">  <Link to="/login">
               <button className="px-4 py-2 font-medium text-white bg-[#8c3939] rounded-lg">Log In</button>
             </Link>
-            <Link to = "/signin">
-          <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
-          </Link>
+              <Link to="/signin">
+                <button className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Sign Up</button>
+              </Link>
+              </form> : 
+              <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
             <CartIcon />
           </div>
         </motion.div>
@@ -132,9 +147,8 @@ const DropdownMenu = ({ title, items }) => (
               {({ active }) => (
                 <a
                   href={item.href}
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-700`}
+                  className={`${active ? "bg-gray-100" : ""
+                    } block px-4 py-2 text-sm text-gray-700`}
                 >
                   {item.name}
                 </a>
