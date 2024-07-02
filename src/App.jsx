@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Wp from './Components/Wp';
 import AppRoutes from './AppRoutes';
+import { CartProvider } from './Components/CartContext';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="min-h-screen mt-20">
+      <CartProvider>
       <Router>
         <div className="min-h-screen">
           <Wp />
@@ -32,6 +34,7 @@ function App() {
           <Footer />
         </div>
       </Router>
+      </CartProvider>
     </div>
   );
 }

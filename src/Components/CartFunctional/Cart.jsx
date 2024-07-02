@@ -1,53 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import { useCart } from '../CartContext';
 
 function Cart() {
-  const [cart, setCart] = useState([]);
-
-  const getCake = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/cart/fetch`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token')
-        },
-      });
-      const json = await response.json();
-      console.log('Fetched cart data:', json);
-      setCart(json);
-    } catch (error) {
-      console.error("Failed to fetch cart data:", error);
-    }
-  };
+  const {cart, getCake,deleteCake,    fetchTotalItems  } = useCart();
 
   useEffect(() => {
     getCake();
+    fetchTotalItems();
   }, []);
 
-  const deleteCake = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/cart/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token')
-        }
-      });
-      const json = await response.json();
-      console.log('Deleted item response:', json);
-
-      const newCart = cart.filter((item) => item._id !== id);
-      setCart(newCart);
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
-
   const handleRemove = (itemId) => {
-    deleteCake(itemId);
+    deleteCake(itemId)
+      .then(() => {
+        fetchTotalItems();
+      })
+      .catch((error) => {
+        console.error('Error deleting item:', error);
+      });
   };
-
   const calculateSubtotal = () => {
     return cart.reduce((total, item) => {
       const selectedWeight = item.weightOptions[0];
