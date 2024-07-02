@@ -1,10 +1,12 @@
-import React, { useState, useEffect, Fragment } from "react";
+// Navbar.js
+import React, { useState,useEffect, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from 'react-router-dom';
+import { useCart } from './CartContext'; // Import the CartContext
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
@@ -48,7 +50,12 @@ const dropdownItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [totalItems, setTotalItems] = useState(0);
+
+  const { totalItems, fetchTotalItems } = useCart(); // Use the CartContext
+
+  useEffect(() => {
+    fetchTotalItems();
+  }, []);
 
   let navigate = useNavigate();
   const handleLogout = () => {
@@ -59,26 +66,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    const fetchTotalItems = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/cart/total', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token')
-          }
-        });
-        const data = await response.json();
-        setTotalItems(data.totalItems);
-      } catch (error) {
-        console.error('Error fetching total items:', error);
-      }
-    };
-
-    fetchTotalItems();
-  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
