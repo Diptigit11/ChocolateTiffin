@@ -53,9 +53,9 @@ const Navbar = () => {
 
   const { totalItems, fetchTotalItems } = useCart(); // Use the CartContext
 
-  useEffect(() => {
-    fetchTotalItems();
-  }, []);
+  // useEffect(() => {
+  //   fetchTotalItems();
+  // }, []);
 
   let navigate = useNavigate();
   const handleLogout = () => {
