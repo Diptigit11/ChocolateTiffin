@@ -34,7 +34,7 @@ const handleSubmit = async (e) => {
     }
 
     const result = await response.json();
-    console.log("passed data to db");
+    // console.log("passed data to db");
     toast.success("Review submitted successfully");
     setTimeout(() => {
       setSubmitted(false);
