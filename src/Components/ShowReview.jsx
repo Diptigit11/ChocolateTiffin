@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
+import { TrashIcon } from '@heroicons/react/24/outline';
 import Stack from '@mui/material/Stack';
+import { toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function stringToColor(string) {
   let hash = 0;
@@ -50,11 +53,9 @@ const ShowReview = ({ productId }) => {
             'Content-Type': 'application/json',
           }
         });
-
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
         const data = await response.json();
         setReviews(data);
       } catch (error) {
@@ -63,9 +64,31 @@ const ShowReview = ({ productId }) => {
         setLoading(false);
       }
     };
-
     fetchReviews();
   }, [productId]);
+
+
+  const handleDelete = async (reviewId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/review/deletereview/${reviewId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('token')
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      setReviews(reviews.filter(review => review._id !== reviewId));
+      toast.success("Review deleted successfully");
+
+    } catch (error) {
+      console.error('Failed to delete review:', error);
+      
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -90,8 +113,13 @@ const ShowReview = ({ productId }) => {
             <p className="text-gray-700">{review.review}</p>
             <p className="text-gray-500 text-sm">{new Date(review.createdAt).toLocaleDateString()}</p>
           </div>
+          <button onClick={() => handleDelete(productId)} className="text-red-500">
+            <TrashIcon className="w-6 h-6" />
+          </button>
         </div>
+        
       ))}
+         
     </div>
   );
 };
