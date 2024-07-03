@@ -14,10 +14,13 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@headlessui/react": "^2.0.4",
     "@heroicons/react": "^2.1.4",
     "@ionic/react": "^8.2.2",
     "@material-tailwind/react": "^2.1.9",
+    "@mui/material": "^5.15.21",
     "@react-hook/media-query": "^1.1.1",
     "@react-three/drei": "^9.107.0",
     "@react-three/fiber": "^8.16.8",

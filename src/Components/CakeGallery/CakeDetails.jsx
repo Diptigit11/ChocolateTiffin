@@ -10,6 +10,7 @@ import {
 } from './CakeImagesData'; // Adjust import as needed
 import ReviewFormModal from './../ReviewFormModal';
 import { useCart } from '../CartContext';
+import ShowReview from '../ShowReview';
 
 
 function CakeDetails() {
@@ -158,6 +159,7 @@ function CakeDetails() {
         productId={id}
 
       />
+      <ShowReview  productId={id}/>
     </div>
   );
 }
