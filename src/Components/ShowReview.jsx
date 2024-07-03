@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import { TrashIcon } from '@heroicons/react/24/outline';
-import Stack from '@mui/material/Stack';
-import { toast,  } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useCart } from './CartContext';
 
 function stringToColor(string) {
   let hash = 0;
@@ -44,19 +44,12 @@ const ShowReview = ({ productId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { fetchReviews, deleteReview } = useCart();
+
   useEffect(() => {
-    const fetchReviews = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/review/fetchreview/${productId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+        const data = await fetchReviews(productId);
         setReviews(data);
       } catch (error) {
         setError(error.message);
@@ -64,29 +57,17 @@ const ShowReview = ({ productId }) => {
         setLoading(false);
       }
     };
-    fetchReviews();
-  }, [productId]);
-
+    fetchData();
+  }, [productId, fetchReviews]);
 
   const handleDelete = async (reviewId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/review/deletereview/${reviewId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'auth-token': localStorage.getItem('token')
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const result = await response.json();
+      await deleteReview(reviewId);
       setReviews(reviews.filter(review => review._id !== reviewId));
       toast.success("Review deleted successfully");
-
     } catch (error) {
       console.error('Failed to delete review:', error);
-      
+      toast.error('Failed to delete review');
     }
   };
 
@@ -117,9 +98,7 @@ const ShowReview = ({ productId }) => {
             <TrashIcon className="w-6 h-6" />
           </button>
         </div>
-        
       ))}
-         
     </div>
   );
 };
