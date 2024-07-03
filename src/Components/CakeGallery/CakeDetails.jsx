@@ -155,6 +155,8 @@ function CakeDetails() {
         isOpen={isReviewModalOpen}
         onClose={() => setIsReviewModalOpen(false)}
         onSubmit={(reviewData) => console.log('Review submitted:', reviewData)}
+        productId={id}
+
       />
     </div>
   );
