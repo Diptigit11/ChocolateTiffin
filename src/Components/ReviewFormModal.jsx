@@ -2,26 +2,53 @@
 
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ReviewFormModal = ({ isOpen, onClose, onSubmit }) => {
+
+const ReviewFormModal = ({ isOpen, onClose, onSubmit,productId}) => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [rating, setRating] = useState(0);
   const [title, setTitle] = useState('');
   const [review, setReview] = useState('');
   const [hover, setHover] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Do something with the form data
-    setSubmitted(true);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSubmitted(true);
+  try {
+    const response = await fetch(`http://localhost:5000/api/review/add/${productId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({ name, rating, title, review })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Something went wrong');
+    }
+
+    const result = await response.json();
+    console.log("passed data to db");
+    toast.success("Review submitted successfully");
     setTimeout(() => {
       setSubmitted(false);
-      onSubmit({ name, email, rating, title, review });
+      onSubmit(result);
       onClose();
     }, 2000);
-  };
+
+  } catch (error) {
+    console.error('There was a problem with your fetch operation:', error);
+    toast.error(error.message);
+    setSubmitted(false);
+  }
+};
+
 
   if (!isOpen) return null;
 
@@ -43,17 +70,6 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit }) => {
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 border rounded"
                 placeholder="Enter your name"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 border rounded"
-                placeholder="Enter your email"
                 required
               />
             </div>

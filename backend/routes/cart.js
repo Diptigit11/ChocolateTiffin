@@ -57,7 +57,7 @@ Cartrouter.get('/fetch', fetchuser, async (req, res) => {
 
 // Fetch total number of items
 Cartrouter.get('/total', fetchuser, async (req, res) => {
-  console.log('Reached /total route');
+  // console.log('Reached /total route');
   try {
     const totalItems = await Cart.countDocuments({ userId: req.user.id });
     res.status(200).json({ totalItems });
