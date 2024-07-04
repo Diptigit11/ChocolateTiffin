@@ -10,6 +10,7 @@ import {
 } from './CakeImagesData'; // Adjust import as needed
 import ReviewFormModal from './../ReviewFormModal';
 import { useCart } from '../CartContext';
+import ShowReview from '../ShowReview';
 
 
 function CakeDetails() {
@@ -154,7 +155,10 @@ function CakeDetails() {
         isOpen={isReviewModalOpen}
         onClose={() => setIsReviewModalOpen(false)}
         onSubmit={(reviewData) => console.log('Review submitted:', reviewData)}
+        productId={id}
+
       />
+      <ShowReview  productId={id}/>
     </div>
   );
 }

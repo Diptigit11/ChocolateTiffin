@@ -87,9 +87,72 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const submitReview = async (name, rating, title, review, productId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/review/add/${productId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('token')
+        },
+        body: JSON.stringify({ name, rating, title, review })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Something went wrong');
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('There was a problem with your fetch operation:', error);
+      throw error;
+    }
+  };
+
+  const fetchReviews = async (productId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/review/fetchreview/${productId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error);
+      throw error;
+    }
+  };
+
+  const deleteReview = async (reviewId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/review/deletereview/${reviewId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('token')
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Failed to delete review:', error);
+      throw error;
+    }
+  };
+
 
   return (
-    <CartContext.Provider value={{cart, totalItems, fetchTotalItems,addCake,getCake,deleteCake }}>
+    <CartContext.Provider value={{cart, totalItems, fetchTotalItems,addCake,getCake,deleteCake,submitReview,fetchReviews,deleteReview  }}>
       {children}
     </CartContext.Provider>
   );
