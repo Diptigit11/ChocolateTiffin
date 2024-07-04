@@ -18,9 +18,17 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
+// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log('MongoDB connected'))
+//   .catch(err => console.error(err));
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB: ', err);
+  });
 
 app.use('/api/auth',router);
 app.use('/api/cart', Cartrouter); // Use cart routes
