@@ -60,6 +60,8 @@ const ShowReview = ({ productId }) => {
     fetchData();
   }, [productId, fetchReviews]);
 
+
+  
   const handleDelete = async (reviewId) => {
     try {
       await deleteReview(reviewId);
@@ -94,7 +96,7 @@ const ShowReview = ({ productId }) => {
             <p className="text-gray-700">{review.review}</p>
             <p className="text-gray-500 text-sm">{new Date(review.createdAt).toLocaleDateString()}</p>
           </div>
-          <button onClick={() => handleDelete(productId)} className="text-red-500">
+          <button onClick={() => handleDelete(review._id)} className="text-red-500">
             <TrashIcon className="w-6 h-6" />
           </button>
         </div>
