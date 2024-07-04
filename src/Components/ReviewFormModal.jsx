@@ -22,7 +22,7 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
       toast.success("Review submitted successfully");
       setTimeout(() => {
         setSubmitted(false);
-        onSubmit(result);
+        onSubmit(result); // Call the onSubmit callback with the new review
         onClose();
       }, 2000);
     } catch (error) {
