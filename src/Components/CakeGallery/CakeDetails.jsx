@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
-  CakeImageData, Animal_theme_cakes, Barbie_Cakes, Baby_shark, CakesForHer, BikeCakes,
+  CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
   CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, SuperheroCakes, WeddingCakes,
   AnniversaryCakes, BossBaby, BabyGirl, BabyBoy, DogLovers, CarCakes, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
@@ -23,7 +23,6 @@ function CakeDetails() {
   const cake = CakeImageData.find(cake => cake.id === cakeId) ||
     Barbie_Cakes.find(cake => cake.id === cakeId) ||
     Animal_theme_cakes.find(cake => cake.id === cakeId) ||
-    Baby_shark.find(cake => cake.id === cakeId) ||
     CakesForHer.find(cake => cake.id === cakeId) ||
     BikeCakes.find(cake => cake.id === cakeId) ||
     CricketCakes.find(cake => cake.id === cakeId) ||
