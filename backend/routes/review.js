@@ -45,17 +45,20 @@ Reviewrouter.get('/fetchreview/:productId',  async (req, res) => {
   }
 });
 
-Reviewrouter.delete('/deletereview/:productId', fetchuser, async (req, res) => {
+Reviewrouter.delete('/deletereview/:reviewId', fetchuser, async (req, res) => {
   try {
-    const { productId } = req.params;      //take out product id from url
-    const userId = req.user.id;            //take out userid
-    const review = await Review.findOneAndDelete({ productId, userId });    // Find the review by productId and userId
+    const { reviewId } = req.params;      // Extract review id from URL
+    const userId = req.user.id;           // Extract user id from authenticated user
 
-    if (!review) {                   //if review not found shows message
+    // Find and delete the review by reviewId and userId
+    const review = await Review.findOneAndDelete({ _id: reviewId, userId });
+
+    if (!review) {                        // If review not found or user not authorized
       return res.status(404).json({ message: 'Review not found or not authorized to delete' });
     }
+
     res.json({ message: 'Review deleted successfully' });
-  } catch (error) {               //if any error occurred
+  } catch (error) {                       // Catch any errors that occur
     console.error(error.message);
     res.status(500).send('Server error');
   }
