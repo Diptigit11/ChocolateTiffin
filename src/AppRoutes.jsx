@@ -13,10 +13,10 @@ import Features from './Components/Features';
 import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
 import { AuroraHero } from './Components/AuroraHero';
+import CakeSummary from './Components/CakeGallery/CakeSummary';
 import { 
   Animal_theme_cakes, 
   Barbie_Cakes, 
-  Baby_shark, 
   CakesForHer, 
   BikeCakes, 
   CricketCakes, 
@@ -54,12 +54,11 @@ import {
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<><AuroraHero /> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
+      <Route exact path="/" element={<><AuroraHero /> < CakeSummary /> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
       <Route path="/cake-details/:id" element={<CakeDetails />} />
       
       <Route path="/animal-theme-cakes" element={<CakeCategory cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} />
       <Route path="/barbie-cakes" element={<CakeCategory cakes={Barbie_Cakes} title="Barbie Theme Cakes" />} />
-      <Route path="/baby-shark" element={<CakeCategory cakes={Baby_shark} title="Baby Shark Cakes" />} />
       <Route path="/cakes-for-her" element={<CakeCategory cakes={CakesForHer} title="Cakes For Her" />} />
       <Route path="/bike-cakes" element={<CakeCategory cakes={BikeCakes} title="Bike Themed Cake" />} />
       <Route path="/cricket-cakes" element={<CakeCategory cakes={CricketCakes} title="Cricket Theme Cakes" />} />
