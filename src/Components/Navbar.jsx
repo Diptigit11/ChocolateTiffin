@@ -1,5 +1,4 @@
-// Navbar.js
-import React, { useState,useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
@@ -10,15 +9,14 @@ import { useCart } from './CartContext'; // Import the CartContext
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
-  { name: "Pastry", href: "/Pastry" },
+  { name: "Pastry", href: "/pastry" },
   { name: "Celebration Cakes", href: "/celebration-cakes" },
-  { name: "Desserts", href: "/desserts" },
+  { name: "Desserts", href: "#", dropdown: true }, // Added dropdown property here
 ];
 
 const dropdownItems = [
   { name: "Animal Theme Cakes", href: "/animal-theme-cakes" },
   { name: "Barbie Cakes", href: "/barbie-cakes" },
-  { name: "Baby Shark", href: "/baby-shark" },
   { name: "Bike Cakes", href: "/bike-cakes" },
   { name: "Cricket Cakes", href: "/cricket-cakes" },
   { name: "Cakes for HER", href: "/cakes-for-her" },
@@ -45,6 +43,12 @@ const dropdownItems = [
   { name: "Make Up Cakes", href: "/make-up-cakes" },
   { name: "Spider-man Cakes", href: "/spider-man-cakes" },
   { name: "Unicorn Cakes", href: "/unicorn-cakes" },
+];
+
+const dessertsDropdownItems = [
+  { name: "Cupcakes", href: "/desserts/cupcakes" },
+  { name: "Donuts", href: "/desserts/donuts" },
+  { name: "Brownie", href: "/desserts/brownie" },
 ];
 
 const Navbar = () => {
@@ -77,7 +81,11 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-8 items-center">
           <DropdownMenu title="Theme Cakes" items={dropdownItems} />
           {navItems.map((item, index) => (
-            <NavItem item={item} key={index} />
+            item.dropdown ? (
+              <DropdownMenu key={index} title={item.name} items={dessertsDropdownItems} />
+            ) : (
+              <NavItem item={item} key={index} />
+            )
           ))}
         </div>
         <div className="hidden md:flex items-center space-x-4">
@@ -113,7 +121,11 @@ const Navbar = () => {
           <div className="flex flex-col p-4 space-y-2">
             <DropdownMenu title="Theme Cakes" items={dropdownItems} />
             {navItems.map((item, index) => (
-              <NavItem item={item} key={index} />
+              item.dropdown ? (
+                <DropdownMenu key={index} title={item.name} items={dessertsDropdownItems} />
+              ) : (
+                <NavItem item={item} key={index} />
+              )
             ))}
             {!localStorage.getItem('token') ?
               <form className="d-flex">  <Link to="/login">
@@ -159,8 +171,7 @@ const DropdownMenu = ({ title, items }) => (
               {({ active }) => (
                 <a
                   href={item.href}
-                  className={`${active ? "bg-gray-100" : ""
-                    } block px-4 py-2 text-sm text-gray-700`}
+                  className={`${active ? "bg-gray-100" : ""} block px-4 py-2 text-sm text-gray-700`}
                 >
                   {item.name}
                 </a>
