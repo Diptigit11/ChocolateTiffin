@@ -5,11 +5,14 @@ import { useCart } from '../CartContext';
 function Cart() {
   const {cart, getCake,deleteCake,    fetchTotalItems  } = useCart();
 
+
+  ///fetch and display cake in cart and update icon in navbar
   useEffect(() => {
     getCake();
     fetchTotalItems();
   }, []);
 
+  //remove cake from cart and update icon in navbar
   const handleRemove = (itemId) => {
     deleteCake(itemId)
       .then(() => {
@@ -19,6 +22,8 @@ function Cart() {
         console.error('Error deleting item:', error);
       });
   };
+
+  //calculate the subtotal price
   const calculateSubtotal = () => {
     return cart.reduce((total, item) => {
       const selectedWeight = item.weightOptions[0];
