@@ -46,12 +46,12 @@ const ShowReview = ({ productId, updateReviewData }) => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal
 
-  const { fetchReviews, deleteReview } = useCart();
+  const { fetchReviews, deleteReview } = useCart();     //taking out functions from context
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchReviews(productId);
+        const data = await fetchReviews(productId);      //passing id in fetchreview function
         setReviews(data);
         updateReviewData(data); // Update parent component with review data
       } catch (error) {
@@ -61,12 +61,12 @@ const ShowReview = ({ productId, updateReviewData }) => {
       }
     };
     fetchData();
-  }, [productId, fetchReviews, updateReviewData]);
+  }, [productId, fetchReviews, updateReviewData]);     //use effect will run every time one of these values changes 
 
   const handleDelete = async (reviewId) => {
     try {
-      await deleteReview(reviewId);
-      const updatedReviews = reviews.filter(review => review._id !== reviewId);
+      await deleteReview(reviewId);                    //to delete review instead of productid, review id is passed
+      const updatedReviews = reviews.filter(review => review._id !== reviewId);  //filters out review
       setReviews(updatedReviews);
       updateReviewData(updatedReviews); // Update parent component with updated review data
       toast.success("Review deleted successfully");
@@ -82,7 +82,7 @@ const ShowReview = ({ productId, updateReviewData }) => {
     updateReviewData(updatedReviews); // Update parent component with new review data
   };
 
-
+//if user is not authenticated then it will tell him to login first and modal will not open
   const handleWriteReview = () => {
     if (!localStorage.getItem('token')) {
       setIsModalOpen(false);

@@ -14,10 +14,10 @@ import { toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function CakeDetails() {
-  const { id } = useParams();
+  const { id } = useParams();          //taking out id from url
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
-  const { addCake, fetchTotalItems } = useCart();
+  const { addCake } = useCart();    //getting addcake function from context
 
   // Find cake in either CakeImageData or any other category
   const cake = CakeImageData.find(cake => cake.id === cakeId) ||
@@ -64,25 +64,26 @@ function CakeDetails() {
     setSelectedWeight(weightOption);
   };
 
+  //add to cart function to add items in cart
   const handleAddToCart = async () => {
-    if (!localStorage.getItem('token')) {
+    if (!localStorage.getItem('token')) {     //if token is not present in localstorage then user will get redirected to loginpage
       navigate('/login');
       toast.info("Login/Signup to add items in cart")
       return;
     }
     try {
-      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // Include quantity
-      console.log('Added to cart:', newCake);
+      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // sending data to addCake function
       navigate('/cart');
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
   };
 
+  //updating the review data to take out reviewcount 
   const updateReviewData = (reviews) => {
     setReviewCount(reviews.length);
     if (reviews.length > 0) {
-      const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
+      const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);    
       setAverageRating((totalRating / reviews.length).toFixed(1));
     } else {
       setAverageRating(0);
@@ -155,7 +156,8 @@ function CakeDetails() {
         </div>
       </div>
 
-      <ShowReview productId={id} updateReviewData={updateReviewData} />
+      <ShowReview productId={id} updateReviewData={updateReviewData} />    
+      {/* //called the showreview page here */}
     </div>
   );
 }
