@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
-  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, WeddingCakes,
-  AnniversaryCakes, BossBaby, DogLovers, CakesForHim,
+  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes,  WeddingCakes,
+  AnniversaryCakes, BossBaby,  DogLovers, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
   desserts, cheesecakes, Pastry, celebration_cakes
@@ -30,8 +30,9 @@ function CakeDetails() {
     WeddingCakes.find(cake => cake.id === cakeId) ||
     AnniversaryCakes.find(cake => cake.id === cakeId) ||
     BossBaby.find(cake => cake.id === cakeId) ||
+
     DogLovers.find(cake => cake.id === cakeId) ||
-    CarCakes.find(cake => cake.id === cakeId) ||
+    CakesForHim.find(cake => cake.id === cakeId) ||
     FootballCakes.find(cake => cake.id === cakeId) ||
     HalfYear.find(cake => cake.id === cakeId) ||
     Peppa_Pig_Cakes.find(cake => cake.id === cakeId) ||

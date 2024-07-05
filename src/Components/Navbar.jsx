@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Link } from 'react-router-dom';
+// Navbar.js
+import React, { useState, useEffect,Fragment } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext'; // Import the CartContext
 
 const navItems = [
@@ -50,17 +50,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { totalItems, fetchTotalItems } = useCart(); // Use the CartContext
+  const { cart, getCake,setCart } = useCart(); // Use the CartContext
 
-  // useEffect(() => {
-  //   fetchTotalItems();
-  // }, []);
+  useEffect(() => {
+    getCake();
+  }, []);
 
   let navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setCart(cart.length)
     navigate('/login');
-  }
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -70,8 +71,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         <div style={{ width: '80px', height: 'auto' }}>
-          <img src={image} alt="Logo"
-            style={{ width: '80%', height: 'auto' }} />
+          <img src={image} alt="Logo" style={{ width: '80%', height: 'auto' }} />
         </div>
         <div className="hidden md:flex space-x-8 items-center">
           <DropdownMenu title="Theme Cakes" items={dropdownItems} />
@@ -96,7 +96,7 @@ const Navbar = () => {
             <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
 
           <div className="side flex relative">
-            <CartIcon totalItems={totalItems} />
+            <CartIcon totalItems={cart.length} />
           </div>
         </div>
         <div className="md:hidden flex items-center space-x-2">
@@ -133,7 +133,7 @@ const Navbar = () => {
               <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
 
             <div className="side flex relative">
-              <CartIcon totalItems={totalItems} />
+              <CartIcon totalItems={cart.length} />
             </div>
           </div>
         </motion.div>
@@ -241,7 +241,7 @@ const CartIcon = ({ totalItems }) => (
   <a href="/cart" className="text-gray-700 hover:text-[#8c3939]">
     <ShoppingCartIcon className="w-6 h-6" />
     <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
-      {totalItems}
+    {totalItems ?? 0}
     </div>
   </a>
 );

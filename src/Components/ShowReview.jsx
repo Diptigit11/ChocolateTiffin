@@ -112,7 +112,7 @@ const ShowReview = ({ productId, updateReviewData }) => {
             <span className="ml-2 text-xl text-gray-700">{calculateAverageRating(reviews)}</span>
           </div>
       {reviews.map((review) => (
-        <div className="flex items-start mb-8 mt-10 pb-4 border-b border-gray-200" key={review._id}>
+        <div className="flex items-start  mt-10 pb-4 border-b border-gray-200" key={review._id}>
           <Avatar {...stringAvatar(review.name)} className="mr-4" />
           <div>
             <h3 className="text-xl font-semibold">{review.name}</h3>

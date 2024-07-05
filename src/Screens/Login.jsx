@@ -8,6 +8,7 @@ const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
 
+
   const handelSubmit = async (e) => {
       e.preventDefault();
       const response = await fetch("http://localhost:5000/api/auth/login", {
@@ -29,7 +30,6 @@ const Login = () => {
         localStorage.setItem('token', json.authtoken);
         toast.success("Logged in  Successfully! Enjoy the deliciousness of cake ");
         navigate("/");
-  
       }
       else {
         alert("Invalid credentials");
