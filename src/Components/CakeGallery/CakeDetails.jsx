@@ -1,58 +1,62 @@
+// Import statements
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
   CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, WeddingCakes,
-  AnniversaryCakes, BossBaby, DogLovers, CakesForHim,
+  AnniversaryCakes, BossBaby, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
-  desserts, cheesecakes, Pastry, celebration_cakes
+  desserts, cheesecakes, Pastry, celebration_cakes , donuts , brownie , cupcakes
 } from './CakeImagesData'; // Adjust import as needed
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
-
 
 function CakeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
-  const { addCake,fetchTotalItems } = useCart();
+  const { addCake, fetchTotalItems } = useCart();
 
-  // Find cake in either CakeImageData or any other category
-  const cake = CakeImageData.find(cake => cake.id === cakeId) ||
-    Barbie_Cakes.find(cake => cake.id === cakeId) ||
-    Animal_theme_cakes.find(cake => cake.id === cakeId) ||
-    CakesForHer.find(cake => cake.id === cakeId) ||
-    BikeCakes.find(cake => cake.id === cakeId) ||
-    CricketCakes.find(cake => cake.id === cakeId) ||
-    FrozenThemeCakes.find(cake => cake.id === cakeId) ||
-    GymCakes.find(cake => cake.id === cakeId) ||
-    PinataCakes.find(cake => cake.id === cakeId) ||
-    WeddingCakes.find(cake => cake.id === cakeId) ||
-    AnniversaryCakes.find(cake => cake.id === cakeId) ||
-    BossBaby.find(cake => cake.id === cakeId) ||
-    DogLovers.find(cake => cake.id === cakeId) ||
-    CarCakes.find(cake => cake.id === cakeId) ||
-    FootballCakes.find(cake => cake.id === cakeId) ||
-    HalfYear.find(cake => cake.id === cakeId) ||
-    Peppa_Pig_Cakes.find(cake => cake.id === cakeId) ||
-    TravelCakes.find(cake => cake.id === cakeId) ||
-    Baby_Shower_Cakes.find(cake => cake.id === cakeId) ||
-    ButterFly_Cakes.find(cake => cake.id === cakeId) ||
-    Bachelorette_cakes.find(cake => cake.id === cakeId) ||
-    farewell_cakes.find(cake => cake.id === cakeId) ||
-    make_up_cakes.find(cake => cake.id === cakeId) ||
-    spider_man_cakes.find(cake => cake.id === cakeId) ||
-    unicorn_cakes.find(cake => cake.id === cakeId) ||
-    desserts.find(cake => cake.id === cakeId) ||
-    cheesecakes.find(cake => cake.id === cakeId) ||
-    Pastry.find(cake => cake.id === cakeId) ||
-    celebration_cakes.find(cake => cake.id === cakeId);
+  // Helper function to find cake
+  const findCake = (id) => {
+    return CakeImageData.find(cake => cake.id === id) ||
+      Barbie_Cakes.find(cake => cake.id === id) ||
+      Animal_theme_cakes.find(cake => cake.id === id) ||
+      CakesForHer.find(cake => cake.id === id) ||
+      BikeCakes.find(cake => cake.id === id) ||
+      CricketCakes.find(cake => cake.id === id) ||
+      FrozenThemeCakes.find(cake => cake.id === id) ||
+      GymCakes.find(cake => cake.id === id) ||
+      PinataCakes.find(cake => cake.id === id) ||
+      WeddingCakes.find(cake => cake.id === id) ||
+      AnniversaryCakes.find(cake => cake.id === id) ||
+      BossBaby.find(cake => cake.id === id) ||
+      FootballCakes.find(cake => cake.id === id) ||
+      HalfYear.find(cake => cake.id === id) ||
+      Peppa_Pig_Cakes.find(cake => cake.id === id) ||
+      TravelCakes.find(cake => cake.id === id) ||
+      Baby_Shower_Cakes.find(cake => cake.id === id) ||
+      ButterFly_Cakes.find(cake => cake.id === id) ||
+      Bachelorette_cakes.find(cake => cake.id === id) ||
+      farewell_cakes.find(cake => cake.id === id) ||
+      make_up_cakes.find(cake => cake.id === id) ||
+      spider_man_cakes.find(cake => cake.id === id) ||
+      unicorn_cakes.find(cake => cake.id === id) ||
+      desserts.find(cake => cake.id === id) ||
+      cheesecakes.find(cake => cake.id === id) ||
+      Pastry.find(cake => cake.id === id) ||
+      celebration_cakes.find(cake => cake.id === id)||
+      donuts.find(cake => cake.id === id)||
+      brownie.find(cake => cake.id === id)||
+      cupcakes.find(cake => cake.id === id);
+  };
+
+  // Find cake
+  const cake = findCake(cakeId);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
-
-
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
@@ -144,18 +148,9 @@ function CakeDetails() {
         </div>
       </div>
 
-      <ShowReview  productId={id}/>
+      <ShowReview productId={id} />
     </div>
   );
 }
 
-
-
 export default CakeDetails;
-
-
-
-
-
-
-
