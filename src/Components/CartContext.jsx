@@ -5,26 +5,26 @@ import axios from "axios";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [totalItems, setTotalItems] = useState(0);
+  // const [totalItems, setTotalItems] = useState(0);
   const [cart, setCart] = useState([]);
 
-  const fetchTotalItems = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/cart/total", {
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-      });
-      setTotalItems(response.data.totalItems);
-    } catch (error) {
-      console.error("Error fetching total items:", error);
-    }
-  };
+  // const fetchTotalItems = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:5000/api/cart/total", {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "auth-token": localStorage.getItem("token"),
+  //       },
+  //     });
+  //     setTotalItems(response.data.totalItems);
+  //   } catch (error) {
+  //     console.error("Error fetching total items:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchTotalItems();
-  }, []);
+  // useEffect(() => {
+  //   fetchTotalItems();
+  // }, []);
 
   const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
     const response = await fetch(`http://localhost:5000/api/cart/add`, {
@@ -152,7 +152,7 @@ export const CartProvider = ({ children }) => {
 
 
   return (
-    <CartContext.Provider value={{cart, totalItems, fetchTotalItems,addCake,getCake,deleteCake,submitReview,fetchReviews,deleteReview  }}>
+    <CartContext.Provider value={{cart,setCart,addCake,getCake,deleteCake,submitReview,fetchReviews,deleteReview  }}>
       {children}
     </CartContext.Provider>
   );
