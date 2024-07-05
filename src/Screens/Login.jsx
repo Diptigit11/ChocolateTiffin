@@ -3,33 +3,37 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useCart } from '../Components/CartContext';
+
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [credentials, setCredentials] = useState({ email: "", password: "" });   //initially blank
   let navigate = useNavigate();
+  const { getCake } = useCart();         //taking out getcake function from db to update carticon badge when user logs in second time
 
+//function to submit data in db
   const handelSubmit = async (e) => {
-      e.preventDefault();
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-          method: "POST",
-          headers: {
+      e.preventDefault();                  //prevents page reloading
+      const response = await fetch("http://localhost:5000/api/auth/login", {   //route
+          method: "POST",                                                     //method type
+          headers: {                                                         //header 
               "Content-Type": "application/json"
           },
-          body: JSON.stringify({
+          body: JSON.stringify({                           //convert js object to string
               email: credentials.email,
               password: credentials.password
           })
       });
 
-      const json = await response.json();
-      console.log(json);
+      const json = await response.json();    
+    //   console.log(json);
   
       if (json.success) {
         //save the auth token and redirect
         localStorage.setItem('token', json.authtoken);
         toast.success("Logged in  Successfully! Enjoy the deliciousness of cake ");
+        await getCake(); // Fetch cart data immediately after login
         navigate("/");
-  
       }
       else {
         alert("Invalid credentials");

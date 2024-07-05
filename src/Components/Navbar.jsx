@@ -1,11 +1,13 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Link } from 'react-router-dom';
+// Navbar.js
+import React, { useState, useEffect,Fragment } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext'; // Import the CartContext
+import { toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
@@ -49,18 +51,20 @@ const dessertsDropdownItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const { totalItems, fetchTotalItems } = useCart(); // Use the CartContext
-
-  // useEffect(() => {
-  //   fetchTotalItems();
-  // }, []);
-
   let navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem('token');
+
+  const { cart, getCake,setCart } = useCart(); // Use the CartContext
+
+  useEffect(() => {          
+    getCake();
+  }, []);
+
+
+  const handleLogout = () => {       //logout function 
+    localStorage.removeItem('token');  //remove tokem from local storage and redirect to login page
+    setCart(cart.length)                //set values in cart to 0 at time of logout
     navigate('/login');
-  }
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -70,8 +74,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         <div style={{ width: '80px', height: 'auto' }}>
-          <img src={image} alt="Logo"
-            style={{ width: '80%', height: 'auto' }} />
+          <img src={image} alt="Logo" style={{ width: '80%', height: 'auto' }} />
         </div>
         <div className="hidden md:flex space-x-8 items-center">
           <DropdownMenu title="Theme Cakes" items={dropdownItems} />
@@ -94,9 +97,8 @@ const Navbar = () => {
               </Link>
             </form> :
             <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
-
           <div className="side flex relative">
-            <CartIcon totalItems={totalItems} />
+            <CartIcon totalItems={cart.length} />
           </div>
         </div>
         <div className="md:hidden flex items-center space-x-2">
@@ -133,7 +135,7 @@ const Navbar = () => {
               <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
 
             <div className="side flex relative">
-              <CartIcon totalItems={totalItems} />
+              <CartIcon totalItems={cart.length} />
             </div>
           </div>
         </motion.div>
@@ -237,13 +239,29 @@ const MenuIcon = ({ isOpen }) => (
   </motion.div>
 );
 
-const CartIcon = ({ totalItems }) => (
-  <a href="/cart" className="text-gray-700 hover:text-[#8c3939]">
-    <ShoppingCartIcon className="w-6 h-6" />
-    <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
-      {totalItems}
-    </div>
-  </a>
-);
+const CartIcon = ({ totalItems }) => {
+  const navigate = useNavigate();
+
+
+  const handleClick = () => {    //if not equal to token then navigate to login page 
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      toast.info("Login/signup to see items in cart");
+    } else {                     //if authenticated user then navigate to cart
+      navigate('/cart');
+    }
+  };
+
+  return (
+    <button onClick={handleClick} className="text-gray-700 hover:text-[#8c3939]">
+      <ShoppingCartIcon className="w-6 h-6" />
+      <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
+        {totalItems ?? 0} 
+        {/*If item is present in cart then show the number of items if item is not in cart then show 0 */}
+      </div>
+    </button>
+  );
+};
+
 
 export default Navbar;
