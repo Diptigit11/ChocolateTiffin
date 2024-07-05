@@ -1,13 +1,12 @@
-// Import statements
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
-  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, WeddingCakes,
+  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes,  WeddingCakes,
   AnniversaryCakes, BossBaby, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
-  desserts, cheesecakes, Pastry, celebration_cakes , donuts , brownie , cupcakes
+  desserts, cheesecakes, Pastry, celebration_cakes
 } from './CakeImagesData'; // Adjust import as needed
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
@@ -15,7 +14,7 @@ import { toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function CakeDetails() {
-  const { id } = useParams();
+  const { id } = useParams();          //taking out id from url
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
   const { addCake } = useCart();    //getting addcake function from context
@@ -53,6 +52,8 @@ function CakeDetails() {
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
+  const [averageRating, setAverageRating] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
@@ -66,9 +67,9 @@ function CakeDetails() {
   const handleAddToCart = async () => {
     if (!localStorage.getItem('token')) {     //if token is not present in localstorage then user will get redirected to loginpage
       navigate('/login');
+      toast.info("Login/Signup to add items in cart")
       return;
     }
-
     try {
       const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // sending data to addCake function
       navigate('/cart');
@@ -106,9 +107,8 @@ function CakeDetails() {
         <div className="w-full md:w-1/2 p-4">
           <h1 className="text-2xl font-bold mb-2">{cake.name}</h1>
           <div className="flex items-center mb-2">
-            <span className="text-yellow-500">{"★".repeat(cake.rating)}</span>
-            <span className="ml-2 text-gray-600">{cake.reviews} Review(s)</span>
-           
+            <span className="text-yellow-500">{"★".repeat(Math.round(averageRating))}</span>
+            <span className="ml-2 text-gray-600">{reviewCount} Review(s)</span>
           </div>
           {selectedWeight && selectedWeight.price && (
             <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
