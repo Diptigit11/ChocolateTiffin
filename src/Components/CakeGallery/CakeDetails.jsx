@@ -8,7 +8,6 @@ import {
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
   desserts, cheesecakes, Pastry, celebration_cakes
 } from './CakeImagesData'; // Adjust import as needed
-import ReviewFormModal from './../ReviewFormModal';
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
 
@@ -52,7 +51,6 @@ function CakeDetails() {
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
 
 
@@ -99,9 +97,7 @@ function CakeDetails() {
           <div className="flex items-center mb-2">
             <span className="text-yellow-500">{"★".repeat(cake.rating)}</span>
             <span className="ml-2 text-gray-600">{cake.reviews} Review(s)</span>
-            <button onClick={() => setIsReviewModalOpen(true)} className="ml-2 text-blue-600">
-              Write a review
-            </button>
+           
           </div>
           {selectedWeight && selectedWeight.price && (
             <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
@@ -147,13 +143,7 @@ function CakeDetails() {
           </div>
         </div>
       </div>
-      <ReviewFormModal
-        isOpen={isReviewModalOpen}
-        onClose={() => setIsReviewModalOpen(false)}
-        onSubmit={(reviewData) => console.log('Review submitted:', reviewData)}
-        productId={id}
 
-      />
       <ShowReview  productId={id}/>
     </div>
   );
