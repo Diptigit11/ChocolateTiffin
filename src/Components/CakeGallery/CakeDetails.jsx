@@ -1,24 +1,24 @@
-// Import statements
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
   CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, WeddingCakes,
-  AnniversaryCakes, BossBaby, CakesForHim,
+  AnniversaryCakes, BossBaby, DogLovers, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
   desserts, cheesecakes, Pastry, celebration_cakes , donuts , brownie , cupcakes
 } from './CakeImagesData'; // Adjust import as needed
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CakeDetails() {
-  const { id } = useParams();
+  const { id } = useParams();          //taking out id from url
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
   const { addCake, fetchTotalItems } = useCart();
 
-  // Helper function to find cake
   const findCake = (id) => {
     return CakeImageData.find(cake => cake.id === id) ||
       Barbie_Cakes.find(cake => cake.id === id) ||
@@ -32,6 +32,8 @@ function CakeDetails() {
       WeddingCakes.find(cake => cake.id === id) ||
       AnniversaryCakes.find(cake => cake.id === id) ||
       BossBaby.find(cake => cake.id === id) ||
+      DogLovers.find(cake => cake.id === id) ||
+      CakesForHim.find(cake => cake.id === id) ||
       FootballCakes.find(cake => cake.id === id) ||
       HalfYear.find(cake => cake.id === id) ||
       Peppa_Pig_Cakes.find(cake => cake.id === id) ||
@@ -46,17 +48,15 @@ function CakeDetails() {
       desserts.find(cake => cake.id === id) ||
       cheesecakes.find(cake => cake.id === id) ||
       Pastry.find(cake => cake.id === id) ||
-      celebration_cakes.find(cake => cake.id === id)||
-      donuts.find(cake => cake.id === id)||
-      brownie.find(cake => cake.id === id)||
-      cupcakes.find(cake => cake.id === id);
+      celebration_cakes.find(cake => cake.id === id);
   };
 
-  // Find cake
   const cake = findCake(cakeId);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
+  const [averageRating, setAverageRating] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
@@ -67,21 +67,29 @@ function CakeDetails() {
   };
 
   const handleAddToCart = async () => {
-    if (!localStorage.getItem('token')) {
+    if (!localStorage.getItem('token')) {     
       navigate('/login');
+      toast.info("Login/Signup to add items in cart")
       return;
     }
-
     try {
-      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // Include quantity
-      console.log('Added to cart:', newCake);
+      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); 
       navigate('/cart');
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
   };
 
-  // Check if cake is not found
+  const updateReviewData = (reviews) => {
+    setReviewCount(reviews.length);
+    if (reviews.length > 0) {
+      const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);    
+      setAverageRating((totalRating / reviews.length).toFixed(1));
+    } else {
+      setAverageRating(0);
+    }
+  };
+
   if (!cake) {
     return <div className="container mx-auto p-4 mt-20">Cake not found</div>;
   }
@@ -99,9 +107,8 @@ function CakeDetails() {
         <div className="w-full md:w-1/2 p-4">
           <h1 className="text-2xl font-bold mb-2">{cake.name}</h1>
           <div className="flex items-center mb-2">
-            <span className="text-yellow-500">{"★".repeat(cake.rating)}</span>
-            <span className="ml-2 text-gray-600">{cake.reviews} Review(s)</span>
-           
+            <span className="text-yellow-500">{"★".repeat(Math.round(averageRating))}</span>
+            <span className="ml-2 text-gray-600">{reviewCount} Review(s)</span>
           </div>
           {selectedWeight && selectedWeight.price && (
             <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
@@ -148,7 +155,7 @@ function CakeDetails() {
         </div>
       </div>
 
-      <ShowReview productId={id} />
+      <ShowReview productId={id} updateReviewData={updateReviewData} />    
     </div>
   );
 }
