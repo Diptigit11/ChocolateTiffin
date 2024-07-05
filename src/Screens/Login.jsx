@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useCart } from '../Components/CartContext';
+
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
+  const { getCake } = useCart();
 
 
   const handelSubmit = async (e) => {
@@ -29,6 +32,7 @@ const Login = () => {
         //save the auth token and redirect
         localStorage.setItem('token', json.authtoken);
         toast.success("Logged in  Successfully! Enjoy the deliciousness of cake ");
+        await getCake(); // Fetch cart data immediately after login
         navigate("/");
       }
       else {
