@@ -632,24 +632,25 @@ export const BikeCakes = [
 export const CricketCakes = [
   {
     id:45 ,
-    src: "https://imgcdn.floweraura.com/magical-barbie-cake-9775390ca-A_0.jpg",
-    caption: "Magical Barbie Cake",
-    name: "MagicalThis enchanting cake features a Barbie doll surrounded by sparkling decorations and magical accents, creating a fairy-tale atmosphere for any celebration.",
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt7prodlp/products/p-cricket-theme-cake-1-kg--192834-m.jpg",
+    caption: "Cricket Theme Cake",
+    name: "Cricket Theme Cake",
+    description:"A vibrant cake designed for cricket lovers, featuring cricket bats, balls, and wickets, capturing the essence of the sport.",
     weightOptions: [
-      { weight: "1 kg", price: 800 },
-      { weight: "1.5 kg", price: 1200 }
+      { weight: "1/2 kg", price: 600 },
+      { weight: "1 kg", price: 1000 }
     ],
     reviews: 16,
     rating: 5
   },
   {
     id: 46,
-    src: "https://imgcdn.floweraura.com/artistic-barbie-cake-9811210ca-A_0.jpg?tr=w-339,h-339,q-70",
-    caption: "Artistic Barbie Cake",
-    name: "Artistic Barbie Cake",
-    description: " A creatively designed cake with a Barbie doll wearing a unique and artistic ensemble, making it a standout centerpiece at any artistic-themed event.",
+    src: "https://bkmedia.bakingo.com/cricket-field-cream-n-fondant-cake-them3728flav-A.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Cricket Field Cream N Fondant Cake",
+    name: "Cricket Field Cream N Fondant Cake",
+    description: "A delicious cake with a detailed cricket field made of fondant and creamy layers, perfect for any cricket enthusiast's celebration.",
     weightOptions: [
-      { weight: "1 kg", price: 900 },
+      { weight: "1 kg", price: 1000 },
       { weight: "1.5 kg", price: 1400 }
     ],
     reviews: 12,
@@ -657,10 +658,10 @@ export const CricketCakes = [
   },
   {
     id: 47,
-    src: "https://imgcdn.floweraura.com/iconic-barbie-pink-cake-9780160ca-A_0.jpg?tr=w-339,h-339,q-70s",
-    caption: "Iconic Barbie Cake",
-    name: "Iconic Barbie Pink Cake",
-    description: " A classic cake in iconic Barbie pink, showcasing a beautifully dressed Barbie doll picture, perfect for celebrating the timeless elegance of Barbie.",
+    src: "https://bkmedia.bakingo.com/cricket-champion-photo-cake-phot3806flav-A.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Cricket Champion Photo Cake",
+    name: "Cricket Champion Photo Cake",
+    description: "A personalized cake featuring a photo of the cricket champion, making it a memorable treat for any cricket fan.",
     weightOptions: [
       { weight: "1 kg", price: 800 },
       { weight: "1.5 kg", price: 1200 }
@@ -670,30 +671,70 @@ export const CricketCakes = [
   },
   {
     id: 48,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
+    src: "https://bkmedia.bakingo.com/cricket-kit-n-pitch-fondant-cake-them3720flav-A.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Cricket Kit N Pitch Fondant Cake",
+    name: "Cricket Kit N Pitch Fondant Cake",
+    description: "An impressive cake showcasing a fondant cricket kit and pitch, ideal for cricket players and fans alike.",
     weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
     ],
     reviews: 16,
     rating: 5
   },
   {
     id: 49,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
+    src: "https://bkmedia.bakingo.com/cream-fondant-cricket-field-cake-them3713flav-A.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: " Cricket Field Cake",
+    name: "Cream Fondant Cricket Field Cake",
+    description: "A delightful cake combining creamy textures and fondant decorations, depicting a cricket field for a sporty celebration.",
     weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
+      { weight: "1/2 kg", price: 600 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+ 
+  {
+    id: 50,
+    src: " https://bkmedia.bakingo.com/sq-cricket-1-them0082flav-A_0.jpg",
+    caption: "Not Out Cake",
+    name: "Not Out Cake",
+    description: "A fun and creative cake celebrating the excitement of staying not out in cricket, perfect for cricket enthusiasts.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 450 },
+      { weight: "1 kg", price: 800 },
+      { weight: "1.5 kg", price: 1200 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 51,
+    src: "https://bkmedia.bakingo.com/cricket-kit-cream-n-fondant-cake-them3746flav-A.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Cricket Themed Cake",
+    name: "Cricket Themed Cake",
+    description: "A cake adorned with various cricket-themed decorations, capturing the spirit of the game for any cricket lover's special occasion.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 600 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 52,
+    src: "https://bkmedia.bakingo.com/crickmania-photo-cake-phot3803flav-B.jpg",
+    caption: "CrickMania Photo Cake",
+    name: "CrickMania Photo Cake",
+    description: "A unique cake with a custom cricket-themed photo, perfect for showing off your love for the sport and making any celebration extra special.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 500 },
+      { weight: "1 kg", price: 800 },
+      { weight: "1.5 kg", price: 1200 }
     ],
     reviews: 12,
     rating: 4
@@ -702,81 +743,834 @@ export const CricketCakes = [
 ];
 export const CakesForHer = [
   {
-    id: 1,
-    src: "https://www.fnp.com/images/pr/l/v200/black-forest-cake-half-kg_1.jpg",
-    caption: "Black Forest Cake",
-    name: "Black Forest Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
+    id:53 ,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt12prodlp/products/p-special-floral-cake-half-kg--281092-m.jpg",
+    caption: "Special Floral Cake",
+    name: "Special Floral Cake",
+    description:"A beautifully crafted cake adorned with an array of vibrant flowers, perfect for any special occasion.",
     weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
+      { weight: "1 kg", price: 900 },
+      { weight: "2 kg", price: 1800 }
     ],
     reviews: 16,
     rating: 5
   },
   {
-    id: 2,
-    src: image1,
-    caption: "Rose Falooda Cake",
-    name: "Rose Falooda Cake",
-    description: "Rose Falooda Cake combines the floral sweetness of rose with the rich textures of Falooda, making it a refreshing and unique dessert.",
+    id: 54,
+    src: "https://th.bing.com/th?id=OPAC.%2fE30mOqrjfdtcw474C474&w=592&h=550&o=5&dpr=1.3&pid=21.1",
+    caption: "Cake For Her",
+    name: "Cake For Her",
+    description: "Celebrate your Mom's Birthday or Anniversary with a delicious flavoured Photo Cake",
     weightOptions: [
-      { weight: "250g", price: 190 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 950 }
+      { weight: "1/2 kg", price: 500 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1400 }
     ],
-    reviews: 10,
+    reviews: 12,
     rating: 4
   },
   {
-    id: 3,
-    src: image2,
-    caption: "Mango Cake",
-    name: "Mango Cake",
-    description: "Experience the fresh, sweet taste of mango in every bite of our delicious mango cakes.",
+    id: 55,
+    src: "https://th.bing.com/th?id=OPAC.%2biG03dRrx%2b5oZw474C474&w=140&h=140&c=17&dpr=1.3&pid=21.1",
+    caption: "Floral Fantasy Delight",
+    name: "Floral Fantasy Delight",
+    description: " A dreamy cake featuring intricate floral designs, ideal for those who appreciate the beauty of flowers.",
     weightOptions: [
-      { weight: "1/2 kg", price: 400 },
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 56,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-blush-rose-mini-cake-223424-m.jpg",
+    caption: "Rose Decor Birthday Cake",
+    name: "Rose Decor Birthday Cake",
+    description: " A delightful birthday cake decorated with elegant rose patterns, adding a touch of sophistication to the celebration.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 57,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-classic-red-velvet-cake-half-kg--109230-m.jpg",
+    caption: " Classic Red Velvet Cake",
+    name: "Classic Red Velvet Cake",
+    description: "A timeless favorite with rich red velvet layers and creamy frosting, perfect for any classic cake lover.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+ 
+  {
+    id: 58,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-tiny-hearts-chocolate-cake-half-kg--135344-m.jpg",
+    caption: "Tiny Hearts Chocolate Cake",
+    name: "Tiny Hearts Chocolate Cake",
+    description: "A delightful chocolate cake adorned with tiny heart decorations, offering a perfect blend of rich, velvety chocolate and charming aesthetics. Ideal for expressing love and affection on special occasions.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 450 },
       { weight: "1 kg", price: 800 },
       { weight: "1.5 kg", price: 1200 }
     ],
-    reviews: 10,
+    reviews: 12,
     rating: 4
   },
   {
-    id: 4,
-    src: "https://www.fnp.com/images/pr/l/v20221214202702/chocolaty-truffle-cake-half-kg_1.jpg",
-    caption: "Chocolate Truffle",
-    name: "Chocolate Truffle",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
+    id: 59,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-pink-ombre-mini-cake-223427-m.jpg",
+    caption: "Pink Ombre Cake",
+    name: "Pink Ombre Cake",
+    description: " A stunning cake with gradient pink layers, creating a visually appealing ombre effect, perfect for adding elegance to any event.",
     weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
+      { weight: "1/2 kg", price: 600 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 60,
+    src: "https://bkmedia.bakingo.com/Rose%20N%20Butterfly%20Designer%20Cake-theme3892flav-A.jpg",
+    caption: "Rose N Butterfly Designer Cake",
+    name: "Rose N Butterfly Designer Cake",
+    description: "A whimsical cake decorated with delicate roses and butterflies, capturing a fairy-tale charm for any special celebration.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 60,
+    src: " https://cdn-efohi.nitrocdn.com/nzhjCTbLRQsVpZZpEWBzEjrDSwxMfKMK/assets/images/optimized/rev-50cfd96/yummycake.in/wp-content/uploads/2022/09/roses-paradise-chocolate-cake-376x376.webp",
+    caption: "Roses Paradise Chocolate Cake",
+    name: "Roses Paradise Chocolate Cake",
+    description: " A decadent chocolate cake adorned with beautiful rose decorations, creating a paradise for chocolate and floral lovers alike.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+];
+export const CakesForHim = [
+  {
+    id: 61,
+    src: "https://bkmedia.bakingo.com/dino-cream-n-sugar-sheet-cake-them3723flav-A.jpg",
+    caption: "Dino Cream N Sugar Sheet Cake",
+    name: "Dino Cream N Sugar Sheet Cake",
+    description: " A fun and whimsical cake featuring dinosaur decorations made of cream and sugar sheets, perfect for a dino-themed party.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 62,
+    src: "https://topdreamer.com/wp-content/uploads/2014/10/baby-first-birthday-cake-ideas-for-boys-2-718x717.jpg",
+    caption: "First Birthday Cake",
+    name: "First Birthday Cake",
+    description: "A charming cake designed to celebrate a baby's first birthday, with cute and colorful decorations to mark the milestone.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 63,
+    src: "https://topdreamer.com/wp-content/uploads/2014/10/3c3322359b6431d7b573ecd8c14981bf.jpg",
+    caption: "Car Themed Cake",
+    name: "Car Themed Cake",
+    description: "An exciting cake adorned with car decorations, ideal for car enthusiasts of all ages, making any celebration zoom-tastic.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 64,
+    src: "https://th.bing.com/th/id/R.cd9a766472c66598434100751a2958cb?rik=%2buRb1PWRTqmcoQ&riu=http%3a%2f%2fmariascakes.co.uk%2fwp-content%2fuploads%2f2017%2f05%2fmensbday12.jpg&ehk=doscfWwvm51U98Duvp5xZjI9Y56FZhiA853Q4AGYyaw%3d&risl=&pid=ImgRaw&r=0",
+    caption: "Birthday Cake",
+    name: "Birthday Cake",
+    description:"A sophisticated cake tailored for a man's birthday, featuring elegant designs and flavors suited to a more mature palate.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+ 
+  {
+    id: 65,
+    src: "https://i.pinimg.com/474x/1b/75/01/1b750172a90dbe8844c5e833351ce992.jpg",
+    caption: " Chocolate Cake",
+    name: " Chocolate Cake",
+    description: "A classic and rich chocolate cake, offering layers of moist chocolate goodness, perfect for any chocolate lover's celebration.",
+    weightOptions: [
+      { weight: "1.5 kg", price: 1400 },
+      { weight: "3kg", price: 2800 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 66,
+    src: "https://www.bing.com/th?id=OIP.SxJGlmT4bY-yxj4cohzXaQHaIq&w=146&h=171&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+    caption: " Cake For Baby Boy",
+    name: "Cake For Baby Boy",
+    description: " A delightful cake designed for a baby boy, featuring adorable and playful decorations in blue and pastel colors.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 67,
+    src: "https://assets.winni.in/product/primary/2021/9/53476.jpeg?dpr=1&w=400",
+    caption: "Micky Star Cake",
+    name: "Micky Star Vanilla Cake",
+    description: " A magical vanilla cake decorated with Mickey Mouse and star designs, perfect for a fun and enchanting birthday celebration.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 68,
+    src: "https://assets.winni.in/product/primary/2021/9/53460.jpeg?dpr=1&w=500",
+    caption: "Birthday Designer Cake",
+    name: "Birthday Designer Cake",
+    description: " A creatively designed cake tailored for birthdays, featuring unique and personalized decorations to make the celebration special.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  // Add more animal theme cakes here with unique IDs and detailed info
+];
+
+export const FrozenThemeCakes = [
+  {
+    id: 69,
+    src: "https://imgcdn.floweraura.com/frozen-fondant-cake-9820230ca-C_0.jpg?tr=w-264,dpr-1.5,q-70",
+    caption: "Frozen Cake",
+    name: "Frozen Cake",
+    description: "A magical cake inspired by the Frozen movie, featuring snowy decorations and icy blue hues, perfect for fans of the beloved film.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 70,
+    src: "https://imgcdn.floweraura.com/elsa-frozen-wonderland-cake-9820210ca-A_0.jpg?tr=w-264,dpr-1.5,q-70",
+    caption: "Elsa Frozen Wonderland Cake",
+    name: "Elsa Frozen Wonderland Cake",
+    description: " A stunning cake showcasing Elsa in a winter wonderland, adorned with sparkling snowflakes and icy elements, ideal for any Frozen-themed party.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 71,
+    src: "https://imgcdn.floweraura.com/princess-anna-9989530cp-AAAA.jpg?tr=w-264,dpr-1.5,q-70",
+    caption: "Princess Anna Photo Cake",
+    name: "Princess Anna Photo Cake",
+    description: "A delightful cake featuring a photo of Princess Anna, capturing the adventurous spirit of the character and making any celebration special.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 72,
+    src: "https://imgcdn.floweraura.com/dainty-frozen-cream-cake-9820220ca-A_0.jpg?tr=w-264,dpr-1.5,q-70",
+    caption: "Dainty Frozen Cream Cake",
+    name: "Dainty Frozen Cream Cake",
+    description:"A charming cake with delicate cream decorations inspired by Frozen, offering a touch of elegance and magic for any event..",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+ 
+  {
+    id: 73,
+    src: "https://pic.warmoven.in/catalog/product/cache/e4dbbe88580d6bb18ca174b8700f08f3/image/22119c0e/frozen-elsa-2-tier-custom-cake.jpg",
+    caption: "Frozen Elsa 2 Tier Cake",
+    name: "Frozen Elsa 2 Tier Cake",
+    description: "A breathtaking two-tier cake featuring Elsa and beautiful Frozen-themed decorations, perfect for making a grand statement at any celebration.",
+    weightOptions: [
+      { weight: "1.5 kg", price: 1400 },
+      { weight: "3kg", price: 2800 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 74,
+    src: "https://www.fnp.ae/images/pr/l/v20240206130037/princess-elsa-birthday-chocolate-cake-one-kg_1.jpg",
+    caption: "Princess Elsa Cake",
+    name: "Princess Elsa Birthday Cake",
+    description: "A delightful cake featuring a photo of Princess Anna, capturing the adventurous spirit of the character and making any celebration special.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 75,
+    src: "https://assets.winni.in/product/primary/2021/9/53476.jpeg?dpr=1&w=400",
+    caption: "Micky Star Cake",
+    name: "Micky Star Vanilla Cake",
+    description: " A magical vanilla cake decorated with Mickey Mouse and star designs, perfect for a fun and enchanting birthday celebration.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 76,
+    src: "https://assets.winni.in/product/primary/2021/9/53460.jpeg?dpr=1&w=500",
+    caption: "Birthday Designer Cake",
+    name: "Birthday Designer Cake",
+    description: " A creatively designed cake tailored for birthdays, featuring unique and personalized decorations to make the celebration special.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  // Add more animal theme cakes here with unique IDs and detailed info
+];
+
+
+
+export const GymCakes = [
+  {
+    id: 75,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-gym-lover-cake-1-kg--192840-m.jpg",
+    caption: "Gym Lover Cake",
+    name: "Gym Lover Cake",
+    description: "A dynamic cake designed for fitness enthusiasts, featuring gym-related decorations like dumbbells and weights, perfect for celebrating a love for working out.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 76,
+    src: "https://th.bing.com/th/id/OIP.GnwrV4QoolmPxmSxoHu5KQHaHp?w=193&h=200&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    caption: "Gym Themed Cake",
+    name: "Gym Themed Cake",
+    description: " A vibrant cake adorned with gym equipment and fitness motifs, ideal for anyone passionate about staying fit and active.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },{
+    id: 77,
+    src: "https://th.bing.com/th/id/OIP.EoqHMWUO0iCFBBI8aQODTQHaHa?w=201&h=200&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    caption: "Fitness Freak Cake",
+    name: "Fitness Freak  Cake",
+    description: "A fun and energetic cake celebrating the dedication of fitness enthusiasts, with decorations inspired by various workout gear and activities.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 78,
+    src: "https://th.bing.com/th/id/OIP.5ZtK7oYmfyD8RGXVCPBRBwHaHa?rs=1&pid=ImgDetMain",
+    caption: "Birthday Gym Cake",
+    name: "Birthday Gym Cake",
+    description: "This cake has dominant flavours of chocolate,that you can gift to your fitness freak brother or husband",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+];
+
+export const PinataCakes = [
+  {
+    id: 79,
+    src: "https://bkmedia.bakingo.com/sq-ferrero-rocher-pinata-cake-750gm-pina1810choc-B_1.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Chocolate Pinnata Cake",
+    name: "Chocolate Pinnata Cake",
+    description: " A delightful cake with a hard chocolate shell filled with surprises, offering a fun and interactive experience for chocolate lovers.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 80,
+    src: "https://bkmedia.bakingo.com/sq-birthday-chocolate-overload-pinata-cake-750gm-pina2163choc-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Chocolate Overload Pinata Cake",
+    name: "Chocolate Overload Pinata Cake",
+    description: "An indulgent pinata cake with a rich chocolate shell packed with an abundance of chocolate treats inside, perfect for chocoholics.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 81,
+    src: "https://bkmedia.bakingo.com/sq-heart-shaped-choco-pinata-cake-450-gm-pina2542choc-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Heart Shaped Pinata",
+    name: "Heart Shaped Choco Pinata",
+    description: "A charming heart-shaped pinata cake, ideal for expressing love and affection on special occasions.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 82,
+    src: "https://bkmedia.bakingo.com/sq-choco-panda-round-pinata-cake-700-gm-pina2548choc-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Choco Panda Pinnata Cake",
+    name: "Choco Panda Pinnata Cake",
+    description: "A cute and whimsical pinata cake with a panda design, filled with chocolate goodies, making it a delightful treat for all ages.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 83,
+    src: "https://bkmedia.bakingo.com/sq-unicorn-pineapple-pinata-cake-630gm-pina2064pine-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Unicorn Theme Cake",
+    name: "Unicorn Theme Cake",
+    description: "A magical pinata cake adorned with unicorn decorations and filled with surprises, perfect for unicorn-themed parties.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1400 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 84,
+    src: "https://bkmedia.bakingo.com/sq-chocolatey-spiderman-pinata-cake-750-gm-pina2302choc-A_0.jpg",
+    caption: "Spiderman Chocolate Pinata Cake",
+    name: "Spiderman Chocolate Pinata Cake",
+    description: " An exciting pinata cake featuring Spiderman designs, packed with chocolate surprises, ideal for superhero fans.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 85,
+    src: "https://bkmedia.bakingo.com/sq-heart-shaped-chocolate-pinata-cake-for-valentines-day-450-gm-pina2543choc-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Heart Shaped Chocolate Pinata",
+    name: "Heart Shaped Chocolate Pinata Cake For Valentines Day",
+    description: "A romantic heart-shaped pinata cake with a rich chocolate shell, perfect for celebrating love and special moments.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 86,
+    src: "https://bkmedia.bakingo.com/sq-heart-shaped-pineapple-pinata-cake-450gm-pina2155pine-A_0.jpg",
+    caption: "Fathers Day Pineapple Pinata Cake",
+    name: "Fathers Day Pineapple Pinata Cake",
+    description: "A unique pinata cake with a pineapple flavor, designed to celebrate Father's Day with a fun and fruity twist.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+];
+
+export const WeddingCakes = [
+  {
+    id: 87,
+    src: "https://bkmedia.bakingo.com/calming-blooms-cake-them2836flav-A.jpg",
+    caption: "2 Tier Cream Cake",
+    name: "Two Tier Edible Bloom Bunch Cream Cake",
+    description: "A stunning two-tier cake adorned with edible flowers and creamy layers, perfect for adding elegance to any wedding celebration.",
+    weightOptions: [
+      { weight: "3 kg", price: 3000 },
+      { weight: "4 kg", price: 4000 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 88,
+    src: "https://bkmedia.bakingo.com/romantic-couple-cake-cake2871flav-A.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Love Filled Cream Cake",
+    name: "Love Filled Cream Cake",
+    description: "A romantic cake filled with luscious cream and decorated with love-themed elements, ideal for celebrating the union of two hearts.",
+    weightOptions: [
+      { weight: "3 kg", price: 3000 },
+      { weight: "4 kg", price: 4000 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 89,
+    src: "https://bkmedia.bakingo.com/sq-dainty-pineapple-with-pink-roses-rosecake2558pine-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Zesty Pineapple Cake",
+    name: "Zesty Pineapple Cake",
+    description: "A refreshing pineapple-flavored cake with a zesty twist, offering a tropical delight for wedding guests.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "2 kg", price: 2000 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 90,
+    src: "https://bkmedia.bakingo.com/two-tier-white-floral-cake-them2835flav-B_0.jpg",
+    caption: "Pearly White Floral Tire Creame Cake",
+    name: "Pearly White Floral Tire Creame Cake",
+    description: "A beautiful multi-tiered cake featuring pearly white frosting and delicate floral decorations, perfect for a classic wedding.",
+    weightOptions: [
+      { weight: "4 kg", price: 4000 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 91,
+    src: "https://bkmedia.bakingo.com/sq-vanilla-strawberry-cake-with-red-carnation-on-top-rosecake2563stra-A_0.jpg?tr=w-320,h-320,dpr-2,q-70",
+    caption: "Flowers Topped Vanilla Strawberry Cake",
+    name: "Flowers Topped Vanilla Strawberry Cake",
+    description: "A delightful cake topped with fresh flowers and layered with vanilla and strawberry flavors, perfect for a sweet and romantic wedding treat.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 92,
+    src: "https://bkmedia.bakingo.com/peach-rose-fondant-cake-them2831flav-A.jpg",
+    caption: "Peach Rose Fondant Cake",
+    name: "Peach Rose Fondant Cake",
+    description: "An elegant cake covered in peach-colored fondant and adorned with rose decorations, adding a touch of sophistication to any wedding.",
+    weightOptions: [
+      { weight: "4 kg", price: 4000 },
+      { weight: "5 kg", price: 5000 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 93,
+    src: "https://bkmedia.bakingo.com/floral-fondant-tier-cake-them2830flav-B.jpg",
+    caption: "Floral Fondant Tier Cake",
+    name: "Floral Fondant Tier Cake",
+    description: "A multi-tiered cake covered in smooth fondant and decorated with intricate floral designs, ideal for a beautiful wedding centerpiece embracing Perfect For Wedding Day",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 94,
+    src: "https://bkmedia.bakingo.com/three-tier-fondant-cake-them2834flav-A.jpg",
+    caption: "Pearl-Rose Three Tier Fondant Cake",
+    name: "Pearl-Rose Three Tier Fondant Cake",
+    description: "A luxurious three-tier cake with pearl and rose decorations made of fondant, creating a stunning and elegant dessert for a wedding celebration.",
+    weightOptions: [
+      { weight: "5 kg", price: 5500 },
+      { weight: "6 kg", price: 6700 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+];
+export const AnniversaryCakes = [
+  {
+    id: 95,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-hearty-delight-mini-cake-223425-m.jpg",
+    caption: "Hearty Delight Cake",
+    name: "Hearty Delight Cake",
+    description: "A delightful cake crafted to celebrate love, featuring a heart-shaped design and rich flavors, perfect for anniversaries.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 96,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-floral-icing-cake-half-kg--281090-m.jpg",
+    caption: "Floral Icing Cake ",
+    name: "Floral Icing Cake ",
+    description: "A beautiful cake adorned with intricate floral icing, offering a touch of elegance and romance for an anniversary celebration",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 97,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-anniversary-special-butterscotch-cake-500-gm--276239-m.jpg",
+    caption: "Anniversary Special Cake",
+    name: "Anniversary Special Cake",
+    description: " A sophisticated cake designed specifically for anniversaries, featuring elegant decorations and flavors that symbolize enduring love.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 450 },
+      { weight: "1 kg", price: 900 },
+      { weight: "2 kg", price: 1300 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 98,
+    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-heart-shaped-red-velvet-cake-half-kg--190857-m.jpg",
+    caption: "Heart Shaped Red Velvet Cake ",
+    name: "Heart Shaped Red Velvet Cake ",
+    description: "A classic red velvet cake shaped like a heart, with creamy layers and a rich, velvety texture, ideal for marking a special anniversary.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 450 },
+      { weight: "1 kg", price: 900 },
+      { weight: "2 kg", price: 1350 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 99,
+    src: "https://www.fnp.com/images/pr/l/v200/personalised-anniversary-chocolate-photo-cake-half-kg_1.jpg",
+    caption: "Anniversary Photo Cake",
+    name: "Anniversary Photo Cake",
+    description: " A personalized cake featuring a cherished photo of the couple, surrounded by elegant decorations, making it a memorable centerpiece for celebrating their special milestone.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 500 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+
+];
+export const BossBaby = [
+  {
+    id: 100,
+    src: "https://bkmedia.bakingo.com/fondant-boss-baby-birthday-cake-them3140flav-A.jpg",
+    caption: "Fondant Boss Baby Birthday Cake",
+    name: "Fondant A delightful cake featuring intricate fondant decorations of the Boss Baby, perfect for celebrating a birthday with a playful theme.",
+    weightOptions: [
+       { weight: "1/2 kg", price: 500 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 },
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 101,
+    src: "https://bkmedia.bakingo.com/classic-boss-baby-cake-them3142flav-A_0.jpg",
+    caption: "Classic Boss Baby Cream Cake",
+    name: "Classic Boss Baby Cream Cake",
+    description: "A creamy cake adorned with Boss Baby designs, offering a delicious and fun treat for any birthday celebration.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1400 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 102,
+    src: "https://www.flavoursguru.com/image/cache/catalog/catimg/primary1/FGFDTCAKE537-260x260.jpg",
+    caption: "Grumpy Boss Baby",
+    name: "Grumpy Boss Baby",
+    description: " A whimsical cake showcasing the grumpy expression of the Boss Baby, making it a humorous and entertaining addition to any party.",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 103,
+    src: "https://cremecastle.in/cdn/shop/products/C1349PP.webp?v=1672898404&width=300",
+    caption: "BOSS BABY AND DOLLAR CAKE",
+    name: "BOSS BABY AND DOLLAR CAKE",
+    description: "A white color cake in boss baby theme with dollars and milk bottle both lying around",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 104,
+    src: "https://cakesandmemories.com/cdn/shop/products/boss-baby-cake-106-799101_900x1084.jpg?v=1659334396",
+    caption: "Boss Baby Cake",
+    name: "Boss Baby  Cake",
+    description: "A vibrant cake decorated with various Boss Baby elements, capturing the fun and mischief of the popular character, ideal for a themed celebration",
+    weightOptions: [
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  
+];
+export const FootballCakes = [
+  {
+    id: 105,
+    src: "https://bkmedia.bakingo.com/mini-football-cream-cake-them3236flav-AA.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: " Football Cream Cake",
+    name: " Football Cream Cake",
+    description: " A delightful cake decorated with football-themed cream designs, perfect for football fans.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 900 },
+      { weight: "1.5 kg", price: 1300 }
+    ],
+    reviews: 12,
+    rating: 4
+  },
+  {
+    id: 106,
+    src: "https://bkmedia.bakingo.com/soccer-theme-cake-theme3893flav-a.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Soccer Theme Cake",
+    name: "Soccer Theme Cake",
+    description: "A vibrant cake adorned with soccer motifs and decorations, capturing the excitement of the sport for any celebration.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1100 },
+      { weight: "1.5 kg", price: 1600 }
     ],
     reviews: 10,
     rating: 4
   },
   {
-    id: 5,
-    src: "https://assets.winni.in/product/primary/2024/3/94560.jpeg?dpr=1&w=500",
-    caption: "Butterscotch Cream Cake",
-    name: "Butterscotch Cream Cake",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
+    id: 107,
+    src: "https://bkmedia.bakingo.com/super-kick-football-cake-super%20kick%20football%20cake-b.jpg?tr=h-320,w-320",
+    caption: "Super Kick Football Cake",
+    name: "Super Kick Football Cake",
+    description: "A dynamic football-themed cake featuring a realistic design of a football in motion, ideal for any soccer enthusiast's special occasion.",
     weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
+      { weight: "1/2 kg", price: 550 },
+      { weight: "1 kg", price: 1100 },
+      { weight: "1.5 kg", price: 1600 }
     ],
     reviews: 10,
     rating: 4
   },
   {
-    id: 6,
+    id: 108,
+    src: "https://bkmedia.bakingo.com/playful-football-theme-cake-theme3900flav-a.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Playful Football Theme Cake",
+    name: "Playful Football Theme Cake",
+    description: "A fun and playful cake with football decorations, perfect for adding a sporty touch to any event.",
+    weightOptions: [
+      { weight: "1/2 kg", price: 500 },
+      { weight: "1 kg", price: 1000 },
+      { weight: "1.5 kg", price: 1500 }
+    ],
+    reviews: 10,
+    rating: 4
+  },
+  {
+    id: 109,
+    src: "https://bkmedia.bakingo.com/champion-football-cake-theme3898flav-a.jpg?tr=w-320,h-320,dpr-1.5,q-70",
+    caption: "Champion Football Cake",
+    name: "Champion Football Cake",
+    description: "A cake celebrating the spirit of champions, adorned with football-themed designs, making it perfect for a victorious celebration.",
+    weightOptions: [
+      { weight: "3 kg", price: 3000 },
+      { weight: "4 kg", price: 4000 }
+    ],
+    reviews: 10,
+    rating: 4
+  },
+  {
+    id: 110,
     src: "",
     caption: "Delicious Cake",
     name: "Delicious Cake",
@@ -791,7 +1585,7 @@ export const CakesForHer = [
     rating: 4
   },
   {
-    id: 7,
+    id:111,
     src: "https://legateaucakes.com/cdn/shop/files/fruit-of-forest-cake-41555060523287.jpg?v=1687465991&width=713",
     caption: "Delicious Cake",
     name: "Delicious Cake",
@@ -807,352 +1601,6 @@ export const CakesForHer = [
   }
   // Add more cakes here with unique IDs and detailed info
 ];
-export const e = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-
-
-export const FrozenThemeCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const GymCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const PinataCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const BossBaby = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const WeddingCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const AnniversaryCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const BabyBoy = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const BabyGirl = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-export const SuperheroCakes = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-
-
-
-
-
 
 
 export const DogLovers = [
@@ -1188,180 +1636,9 @@ export const DogLovers = [
   },
   // Add more animal theme cakes here with unique IDs and detailed info
 ];
-export const CarCakes = [
-  {
-    id: 30,
-    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-princess-barbie-cake-3-5-kg--112527-m.jpg",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 31,
-    src: "https://cdn.igp.com/f_auto,q_auto,t_pnopt6prodlp/products/p-icy-dress-barbie-cream-cake-2-kg--119533-m.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
-export const CakesForHim = [
-  {
-    id: 40,
-    src: "https://storage.googleapis.com/charmscakes/baby-shark/product_thumbs/IMG_6649_thumb.png",
-    caption: "Jungle Paradise Theme Cake",
-    name: "Jungle Paradise Theme Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 41,
-    src: "https://pic.warmoven.in/catalog/product/cache/0a642de3c47f06d58ee71056ac9b2d87/b/a/baby-shark-birthday-cake.jpg",
-    caption: "Zoo Animal Cake",
-    name: "Zoo Animal Cake",
-    description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",
-    weightOptions: [
-      { weight: "250g", price: 200 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 1050 }
-    ],
-    reviews: 12,
-    rating: 4
-  },
-  // Add more animal theme cakes here with unique IDs and detailed info
-];
 
-export const FootballCakes = [
-  {
-    id: 1,
-    src: "https://www.fnp.com/images/pr/l/v200/black-forest-cake-half-kg_1.jpg",
-    caption: "Black Forest Cake",
-    name: "Black Forest Cake",
-    description: "Black Forest Cake is loved for its combination of chocolate and cherries, making it a delightful treat for special occasions.",
-    weightOptions: [
-      { weight: "250g", price: 180 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 600 },
-      { weight: "1.5 kg", price: 900 }
-    ],
-    reviews: 16,
-    rating: 5
-  },
-  {
-    id: 2,
-    src: image1,
-    caption: "Rose Falooda Cake",
-    name: "Rose Falooda Cake",
-    description: "Rose Falooda Cake combines the floral sweetness of rose with the rich textures of Falooda, making it a refreshing and unique dessert.",
-    weightOptions: [
-      { weight: "250g", price: 190 },
-      { weight: "1/2 kg", price: 350 },
-      { weight: "1 kg", price: 700 },
-      { weight: "1.5 kg", price: 950 }
-    ],
-    reviews: 10,
-    rating: 4
-  },
-  {
-    id: 3,
-    src: image2,
-    caption: "Mango Cake",
-    name: "Mango Cake",
-    description: "Experience the fresh, sweet taste of mango in every bite of our delicious mango cakes.",
-    weightOptions: [
-      { weight: "1/2 kg", price: 400 },
-      { weight: "1 kg", price: 800 },
-      { weight: "1.5 kg", price: 1200 }
-    ],
-    reviews: 10,
-    rating: 4
-  },
-  {
-    id: 4,
-    src: "https://www.fnp.com/images/pr/l/v20221214202702/chocolaty-truffle-cake-half-kg_1.jpg",
-    caption: "Chocolate Truffle",
-    name: "Chocolate Truffle",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
-    weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
-    ],
-    reviews: 10,
-    rating: 4
-  },
-  {
-    id: 5,
-    src: "https://assets.winni.in/product/primary/2024/3/94560.jpeg?dpr=1&w=500",
-    caption: "Butterscotch Cream Cake",
-    name: "Butterscotch Cream Cake",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
-    weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
-    ],
-    reviews: 10,
-    rating: 4
-  },
-  {
-    id: 6,
-    src: "",
-    caption: "Delicious Cake",
-    name: "Delicious Cake",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
-    weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
-    ],
-    reviews: 10,
-    rating: 4
-  },
-  {
-    id: 7,
-    src: "https://legateaucakes.com/cdn/shop/files/fruit-of-forest-cake-41555060523287.jpg?v=1687465991&width=713",
-    caption: "Delicious Cake",
-    name: "Delicious Cake",
-    description: "A classic delicious cake with rich flavors and a delightful texture.",
-    weightOptions: [
-      { weight: "250g", price: 150 },
-      { weight: "1/2 kg", price: 300 },
-      { weight: "1 kg", price: 550 },
-      { weight: "1.5 kg", price: 800 }
-    ],
-    reviews: 100,
-    rating: 4
-  }
-  // Add more cakes here with unique IDs and detailed info
-];
+
+
 export const HalfYear = [
   {
     id: 40,
@@ -2260,7 +2537,7 @@ export const Pastry = [
   },
   {
     id: 1012,
-    src: "data:image/jpeg;base64,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",
+    src: "",
     caption: "Rose Falooda Pastry",
     name: "Rose Falooda Pastry",
     description: "A delightful zoo-themed cake perfect for children's parties, featuring various animal designs and flavors.",

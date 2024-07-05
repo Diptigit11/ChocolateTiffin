@@ -22,15 +22,11 @@ import {
   CricketCakes, 
   FrozenThemeCakes , 
   GymCakes ,
-  PinataCakes , 
-  SuperheroCakes ,
+  PinataCakes ,
   WeddingCakes ,
   AnniversaryCakes,
   BossBaby ,
-  BabyBoy,
-  BabyGirl,
   DogLovers,
-  CarCakes,
   CakesForHim ,
   FootballCakes,
   HalfYear,
@@ -60,22 +56,20 @@ const AppRoutes = () => {
       <Route path="/animal-theme-cakes" element={<CakeCategory cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} />
       <Route path="/barbie-cakes" element={<CakeCategory cakes={Barbie_Cakes} title="Barbie Theme Cakes" />} />
       <Route path="/cakes-for-her" element={<CakeCategory cakes={CakesForHer} title="Cakes For Her" />} />
+      <Route path="/cakes-for-him" element={<CakeCategory cakes={CakesForHim} title="Cakes For Him" />} />
       <Route path="/bike-cakes" element={<CakeCategory cakes={BikeCakes} title="Bike Themed Cake" />} />
       <Route path="/cricket-cakes" element={<CakeCategory cakes={CricketCakes} title="Cricket Theme Cakes" />} />
       <Route path="/frozen-theme-cakes" element={<CakeCategory cakes={FrozenThemeCakes} title="Frozen Theme Cakes" />} />
      <Route path="/pinata-cakes" element={<CakeCategory cakes={ PinataCakes} title="PinataCakes" />} />
       <Route path="/gym-cakes" element={<CakeCategory cakes={GymCakes} title="Gym Theme Cakes" />} />
-     <Route path="/superhero-cakes" element={<CakeCategory cakes={SuperheroCakes} title="Superhero Theme Cakes" />} />
      <Route path="/wedding-cakes" element={<CakeCategory cakes={WeddingCakes} title="Wedding Cakes" />} />
       <Route path="/anniversary-cakes" element={<CakeCategory cakes={AnniversaryCakes} title="Anniversary Cakes" />} />
       <Route path="/boss-baby" element={<CakeCategory cakes={BossBaby} title="Boss Baby Cakes" />} />
-      <Route path="/cakes-for-baby-boy" element={<CakeCategory cakes={BabyBoy} title="Cakes For Baby Boy" />} />
-      <Route path="/cakes-for-baby-girl" element={<CakeCategory cakes={BabyGirl} title="Cakes For Baby Girl" />} />
+     
 
 
 
       <Route path="/dog-lovers" element={<CakeCategory cakes={DogLovers} title="Cakes For Dog Lovers" />} />
-      <Route path="/car-cakes" element={<CakeCategory cakes={CarCakes} title="Car Theme Cakes" />} />
       <Route path="/cakes-for-him" element={<CakeCategory cakes={CakesForHim} title="Baby Shark Cakes" />} />
       <Route path="/football-cakes" element={<CakeCategory cakes={FootballCakes} title="Cakes For Her" />} />
       <Route path="/half-year" element={<CakeCategory cakes={HalfYear} title="Half Year Cake" />} />
