@@ -10,6 +10,8 @@ import {
 } from './CakeImagesData'; // Adjust import as needed
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
+import { toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CakeDetails() {
   const { id } = useParams();
@@ -65,9 +67,9 @@ function CakeDetails() {
   const handleAddToCart = async () => {
     if (!localStorage.getItem('token')) {
       navigate('/login');
+      toast.info("Login/Signup to add items in cart")
       return;
     }
-
     try {
       const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // Include quantity
       console.log('Added to cart:', newCake);
