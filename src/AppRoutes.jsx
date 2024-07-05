@@ -26,7 +26,6 @@ import {
   WeddingCakes ,
   AnniversaryCakes,
   BossBaby ,
-  DogLovers,
   CakesForHim ,
   FootballCakes,
   HalfYear,
@@ -41,8 +40,10 @@ import {
   unicorn_cakes , 
   Pastry,
   celebration_cakes,
-  desserts,
   cheesecakes,
+  donuts,
+  brownie,
+  cupcakes,
 
 
 } from './Components/CakeGallery/CakeImagesData';
@@ -66,10 +67,7 @@ const AppRoutes = () => {
       <Route path="/anniversary-cakes" element={<CakeCategory cakes={AnniversaryCakes} title="Anniversary Cakes" />} />
       <Route path="/boss-baby" element={<CakeCategory cakes={BossBaby} title="Boss Baby Cakes" />} />
      
-
-
-
-      <Route path="/dog-lovers" element={<CakeCategory cakes={DogLovers} title="Cakes For Dog Lovers" />} />
+     
       <Route path="/cakes-for-him" element={<CakeCategory cakes={CakesForHim} title="Baby Shark Cakes" />} />
       <Route path="/football-cakes" element={<CakeCategory cakes={FootballCakes} title="Cakes For Her" />} />
       <Route path="/half-year" element={<CakeCategory cakes={HalfYear} title="Half Year Cake" />} />
@@ -77,14 +75,16 @@ const AppRoutes = () => {
       <Route path="/travel-cakes" element={<CakeCategory cakes={TravelCakes} title="Travel Theme Cakes" />} />
      <Route path="/baby-shower-cakes" element={<CakeCategory cakes={Baby_Shower_Cakes} title="Baby Shower Cakes" />} />
       <Route path="/butterfly-cakes" element={<CakeCategory cakes={ButterFly_Cakes} title="Butterfly Cakes" />} />
-     <Route path="/ bachelorette-cakes" element={<CakeCategory cakes={Bachelorette_cakes} title="Bachelorette Theme Cakes" />} />
+     <Route path="/bachelorette-cakes" element={<CakeCategory cakes={Bachelorette_cakes} title="Bachelorette Theme Cakes" />} />
      <Route path="/farewell-cakes" element={<CakeCategory cakes={farewell_cakes} title="FareWell Cakes" />} />
       <Route path="/make-up-cakes" element={<CakeCategory cakes={make_up_cakes} title="Make Up Cakes" />} />
       <Route path="/spider-man-cakes" element={<CakeCategory cakes={spider_man_cakes} title="Spider Man Cakes" />} />
       <Route path="/unicorn-cakes" element={<CakeCategory cakes={unicorn_cakes} title="Unicorn Cakes" />} />
      
      {/* for navItems */}
-     <Route path="/desserts" element={<CakeCategory cakes={desserts} title="Desserts" />} />
+     <Route path="/cupcakes" element={<CakeCategory cakes={cupcakes} title="Cupcakes" />} />
+     <Route path="/donuts" element={<CakeCategory cakes={donuts} title="Donuts" />} />
+     <Route path="/brownie" element={<CakeCategory cakes={brownie} title="Brownie" />} />
      <Route path="/cheesecakes" element={<CakeCategory cakes={cheesecakes} title="CheeseCakes" />} />
      <Route path="/Pastry" element={<CakeCategory cakes={Pastry} title="Pastry" />} />
      <Route path="/celebration-cakes" element={<CakeCategory cakes={celebration_cakes} title="Celebration Cakes" />} />
