@@ -43,9 +43,9 @@ const dropdownItems = [
 ];
 
 const dessertsDropdownItems = [
-  { name: "Cupcakes", href: "/desserts/cupcakes" },
-  { name: "Donuts", href: "/desserts/donuts" },
-  { name: "Brownie", href: "/desserts/brownie" },
+  { name: "Cupcakes", href: "/cupcakes" },
+  { name: "Donuts", href: "/donuts" },
+  { name: "Brownie", href: "/brownie" },
 ];
 
 const Navbar = () => {
