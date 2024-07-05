@@ -40,7 +40,7 @@ function stringAvatar(name) {
   };
 }
 
-const ShowReview = ({ productId }) => {
+const ShowReview = ({ productId, updateReviewData }) => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -53,6 +53,7 @@ const ShowReview = ({ productId }) => {
       try {
         const data = await fetchReviews(productId);
         setReviews(data);
+        updateReviewData(data); // Update parent component with review data
       } catch (error) {
         setError(error.message);
       } finally {
@@ -60,12 +61,14 @@ const ShowReview = ({ productId }) => {
       }
     };
     fetchData();
-  }, [productId, fetchReviews]);
+  }, [productId, fetchReviews, updateReviewData]);
 
   const handleDelete = async (reviewId) => {
     try {
       await deleteReview(reviewId);
-      setReviews(reviews.filter(review => review._id !== reviewId));
+      const updatedReviews = reviews.filter(review => review._id !== reviewId);
+      setReviews(updatedReviews);
+      updateReviewData(updatedReviews); // Update parent component with updated review data
       toast.success("Review deleted successfully");
     } catch (error) {
       console.error('Failed to delete review:', error);
@@ -74,7 +77,15 @@ const ShowReview = ({ productId }) => {
   };
 
   const handleNewReview = (newReview) => {
-    setReviews([newReview, ...reviews]); // Add new review to the state
+    const updatedReviews = [newReview, ...reviews];
+    setReviews(updatedReviews); // Add new review to the state
+    updateReviewData(updatedReviews); // Update parent component with new review data
+  };
+
+  const calculateAverageRating = (reviews) => {
+    if (reviews.length === 0) return 0;
+    const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return (totalRating / reviews.length).toFixed(1); // Round to 1 decimal place
   };
 
   if (loading) {
@@ -87,10 +98,21 @@ const ShowReview = ({ productId }) => {
 
   return (
     <div className="max-w-3xl mx-auto font-sans">
-      <h1 className=''>Reviews</h1>
-      <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Write a Review</button>
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex items-center">
+          <h1 className="text-4xl text-[#682a2a] font-bold">Reviews</h1>
+         
+        </div>
+        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Write a Review</button>
+      </div>
+      <span className="ml-4 text-xl text-gray-700">Total review: {reviews.length}</span>
+          <div className="flex items-center ml-4 text-yellow-500">
+            {'★'.repeat(Math.round(calculateAverageRating(reviews)))}
+            {'☆'.repeat(5 - Math.round(calculateAverageRating(reviews)))}
+            <span className="ml-2 text-xl text-gray-700">{calculateAverageRating(reviews)}</span>
+          </div>
       {reviews.map((review) => (
-        <div className="flex items-start mb-8 pb-4 border-b border-gray-200" key={review._id}>
+        <div className="flex items-start mb-8 mt-10 pb-4 border-b border-gray-200" key={review._id}>
           <Avatar {...stringAvatar(review.name)} className="mr-4" />
           <div>
             <h3 className="text-xl font-semibold">{review.name}</h3>

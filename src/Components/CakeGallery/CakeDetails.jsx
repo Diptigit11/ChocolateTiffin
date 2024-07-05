@@ -11,12 +11,11 @@ import {
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
 
-
 function CakeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
-  const { addCake,fetchTotalItems } = useCart();
+  const { addCake, fetchTotalItems } = useCart();
 
   // Find cake in either CakeImageData or any other category
   const cake = CakeImageData.find(cake => cake.id === cakeId) ||
@@ -55,8 +54,8 @@ function CakeDetails() {
 
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
-
-
+  const [averageRating, setAverageRating] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
@@ -81,6 +80,16 @@ function CakeDetails() {
     }
   };
 
+  const updateReviewData = (reviews) => {
+    setReviewCount(reviews.length);
+    if (reviews.length > 0) {
+      const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
+      setAverageRating((totalRating / reviews.length).toFixed(1));
+    } else {
+      setAverageRating(0);
+    }
+  };
+
   // Check if cake is not found
   if (!cake) {
     return <div className="container mx-auto p-4 mt-20">Cake not found</div>;
@@ -99,9 +108,8 @@ function CakeDetails() {
         <div className="w-full md:w-1/2 p-4">
           <h1 className="text-2xl font-bold mb-2">{cake.name}</h1>
           <div className="flex items-center mb-2">
-            <span className="text-yellow-500">{"★".repeat(cake.rating)}</span>
-            <span className="ml-2 text-gray-600">{cake.reviews} Review(s)</span>
-           
+            <span className="text-yellow-500">{"★".repeat(Math.round(averageRating))}</span>
+            <span className="ml-2 text-gray-600">{reviewCount} Review(s)</span>
           </div>
           {selectedWeight && selectedWeight.price && (
             <p className="text-xl font-bold text-red-600 mb-4">MRP: ₹ {selectedWeight.price}</p>
@@ -148,18 +156,9 @@ function CakeDetails() {
         </div>
       </div>
 
-      <ShowReview  productId={id}/>
+      <ShowReview productId={id} updateReviewData={updateReviewData} />
     </div>
   );
 }
 
-
-
 export default CakeDetails;
-
-
-
-
-
-
-
