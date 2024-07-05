@@ -51,18 +51,18 @@ const dessertsDropdownItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  let navigate = useNavigate();
 
   const { cart, getCake,setCart } = useCart(); // Use the CartContext
 
-  useEffect(() => {
+  useEffect(() => {          
     getCake();
   }, []);
 
-  let navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setCart(cart.length)
+  const handleLogout = () => {       //logout function 
+    localStorage.removeItem('token');  //remove tokem from local storage and redirect to login page
+    setCart(cart.length)                //set values in cart to 0 at time of logout
     navigate('/login');
   };
 
@@ -97,7 +97,6 @@ const Navbar = () => {
               </Link>
             </form> :
             <button onClick={handleLogout} className="px-4 py-2 font-medium text-[#8c3939] border-2 border-[#8c3939] rounded-lg">Log out </button>}
-
           <div className="side flex relative">
             <CartIcon totalItems={cart.length} />
           </div>
@@ -243,11 +242,12 @@ const MenuIcon = ({ isOpen }) => (
 const CartIcon = ({ totalItems }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+
+  const handleClick = () => {    //if not equal to token then navigate to login page 
     if (!localStorage.getItem('token')) {
       navigate('/login');
       toast.info("Login/signup to see items in cart");
-    } else {
+    } else {                     //if authenticated user then navigate to cart
       navigate('/cart');
     }
   };
@@ -256,7 +256,8 @@ const CartIcon = ({ totalItems }) => {
     <button onClick={handleClick} className="text-gray-700 hover:text-[#8c3939]">
       <ShoppingCartIcon className="w-6 h-6" />
       <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
-        {totalItems ?? 0}
+        {totalItems ?? 0} 
+        {/*If item is present in cart then show the number of items if item is not in cart then show 0 */}
       </div>
     </button>
   );

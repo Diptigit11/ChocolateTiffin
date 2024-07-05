@@ -12,13 +12,13 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
   const [hover, setHover] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const { submitReview } = useCart();
+  const { submitReview } = useCart();       //taking out submitreview from context
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+    e.preventDefault();                //prevents reloading of page
+    setSubmitted(true);                //updateing the state
     try {
-      const result = await submitReview(name, rating, title, review, productId);
+      const result = await submitReview(name, rating, title, review, productId);    //paasing value to the function
       toast.success("Review submitted successfully");
       setTimeout(() => {
         setSubmitted(false);
@@ -49,7 +49,7 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
               <input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}     //takes the entered value in field
                 className="w-full px-3 py-2 border rounded"
                 placeholder="Enter your name"
                 required

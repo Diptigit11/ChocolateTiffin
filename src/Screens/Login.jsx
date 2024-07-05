@@ -7,26 +7,26 @@ import { useCart } from '../Components/CartContext';
 
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [credentials, setCredentials] = useState({ email: "", password: "" });   //initially blank
   let navigate = useNavigate();
-  const { getCake } = useCart();
+  const { getCake } = useCart();         //taking out getcake function from db to update carticon badge when user logs in second time
 
-
+//function to submit data in db
   const handelSubmit = async (e) => {
-      e.preventDefault();
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-          method: "POST",
-          headers: {
+      e.preventDefault();                  //prevents page reloading
+      const response = await fetch("http://localhost:5000/api/auth/login", {   //route
+          method: "POST",                                                     //method type
+          headers: {                                                         //header 
               "Content-Type": "application/json"
           },
-          body: JSON.stringify({
+          body: JSON.stringify({                           //convert js object to string
               email: credentials.email,
               password: credentials.password
           })
       });
 
-      const json = await response.json();
-      console.log(json);
+      const json = await response.json();    
+    //   console.log(json);
   
       if (json.success) {
         //save the auth token and redirect
