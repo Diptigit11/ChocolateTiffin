@@ -4,6 +4,7 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCart } from './CartContext';
+import ReviewFormModal from './ReviewFormModal'; // Import your modal
 
 function stringToColor(string) {
   let hash = 0;
@@ -43,6 +44,7 @@ const ShowReview = ({ productId }) => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal
 
   const { fetchReviews, deleteReview } = useCart();
 
@@ -71,6 +73,10 @@ const ShowReview = ({ productId }) => {
     }
   };
 
+  const handleNewReview = (newReview) => {
+    setReviews([newReview, ...reviews]); // Add new review to the state
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -82,6 +88,7 @@ const ShowReview = ({ productId }) => {
   return (
     <div className="max-w-3xl mx-auto font-sans">
       <h1 className=''>Reviews</h1>
+      <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Write a Review</button>
       {reviews.map((review) => (
         <div className="flex items-start mb-8 pb-4 border-b border-gray-200" key={review._id}>
           <Avatar {...stringAvatar(review.name)} className="mr-4" />
@@ -94,11 +101,17 @@ const ShowReview = ({ productId }) => {
             <p className="text-gray-700">{review.review}</p>
             <p className="text-gray-500 text-sm">{new Date(review.createdAt).toLocaleDateString()}</p>
           </div>
-          <button onClick={() => handleDelete(productId)} className="text-red-500">
+          <button onClick={() => handleDelete(review._id)} className="text-red-500">
             <TrashIcon className="w-6 h-6" />
           </button>
         </div>
       ))}
+      <ReviewFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSubmit={handleNewReview} 
+        productId={productId} 
+      />
     </div>
   );
 };
