@@ -1,31 +1,12 @@
 // CartContext.js
 import React, { createContext, useState, useContext, useEffect } from "react";
-import axios from "axios";
 
-const CartContext = createContext();
+const CartContext = createContext();   //making the context
 
 export const CartProvider = ({ children }) => {
-  // const [totalItems, setTotalItems] = useState(0);
   const [cart, setCart] = useState([]);
 
-  // const fetchTotalItems = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:5000/api/cart/total", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "auth-token": localStorage.getItem("token"),
-  //       },
-  //     });
-  //     setTotalItems(response.data.totalItems);
-  //   } catch (error) {
-  //     console.error("Error fetching total items:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchTotalItems();
-  // }, []);
-
+//function to add cake
   const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
     const response = await fetch(`http://localhost:5000/api/cart/add`, {
       method: "POST",
@@ -39,6 +20,7 @@ export const CartProvider = ({ children }) => {
     return cake;
   };
   
+  //function to fetch cake
   const getCake = async () => {
     try {
       const response = await fetch(`http://localhost:5000/api/cart/fetch`, {
@@ -49,11 +31,11 @@ export const CartProvider = ({ children }) => {
         },
       });
       const textResponse = await response.text(); // Fetch response as text
-      console.log('Raw response:', textResponse); // Log the raw response
+      // console.log('Raw response:', textResponse); // Log the raw response
 
       try {
         const json = JSON.parse(textResponse); // Attempt to parse the JSON
-        console.log('Fetched cart data:', json);
+        // console.log('Fetched cart data:', json);
         setCart(json);
       } catch (jsonParseError) {
         console.error('Failed to parse JSON response:', jsonParseError);
@@ -68,6 +50,7 @@ export const CartProvider = ({ children }) => {
   //   getCake();
   // }, []);
 
+  // function to delete cake item from cart
   const deleteCake = async (id) => {
     try {
       const response = await fetch(`http://localhost:5000/api/cart/delete/${id}`, {
@@ -78,7 +61,7 @@ export const CartProvider = ({ children }) => {
         }
       });
       const json = await response.json();
-      console.log('Deleted item response:', json);
+      // console.log('Deleted item response:', json);
 
       const newCart = cart.filter((item) => item._id !== id);
       setCart(newCart);
@@ -87,6 +70,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  //function to add the review 
   const submitReview = async (name, rating, title, review, productId) => {
     try {
       const response = await fetch(`http://localhost:5000/api/review/add/${productId}`, {
@@ -111,6 +95,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+//function to fetch review
   const fetchReviews = async (productId) => {
     try {
       const response = await fetch(`http://localhost:5000/api/review/fetchreview/${productId}`, {
@@ -130,6 +115,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  // function to delete review
   const deleteReview = async (reviewId) => {
     try {
       const response = await fetch(`http://localhost:5000/api/review/deletereview/${reviewId}`, {
@@ -152,6 +138,7 @@ export const CartProvider = ({ children }) => {
 
 
   return (
+    // passed all the states and functions to childrens through provider
     <CartContext.Provider value={{cart,setCart,addCake,getCake,deleteCake,submitReview,fetchReviews,deleteReview  }}>
       {children}
     </CartContext.Provider>
