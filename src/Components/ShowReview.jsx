@@ -82,6 +82,16 @@ const ShowReview = ({ productId, updateReviewData }) => {
     updateReviewData(updatedReviews); // Update parent component with new review data
   };
 
+
+  const handleWriteReview = () => {
+    if (!localStorage.getItem('token')) {
+      setIsModalOpen(false);
+      toast.info('Please log in to write a review.');
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
   const calculateAverageRating = (reviews) => {
     if (reviews.length === 0) return 0;
     const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
@@ -103,7 +113,7 @@ const ShowReview = ({ productId, updateReviewData }) => {
           <h1 className="text-4xl text-[#682a2a] font-bold">Reviews</h1>
          
         </div>
-        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Write a Review</button>
+        <button onClick={handleWriteReview} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Write a Review</button>
       </div>
       <span className="ml-4 text-xl text-gray-700">Total review: {reviews.length}</span>
           <div className="flex items-center ml-4 text-yellow-500">

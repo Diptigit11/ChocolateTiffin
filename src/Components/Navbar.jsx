@@ -6,6 +6,8 @@ import { Menu, Transition } from "@headlessui/react";
 import image from '/img/logo.png';
 import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useCart } from './CartContext'; // Import the CartContext
+import { toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const navItems = [
   { name: "Cheesecakes", href: "/cheesecakes" },
@@ -57,6 +59,7 @@ const Navbar = () => {
   }, []);
 
   let navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     setCart(cart.length)
@@ -237,13 +240,27 @@ const MenuIcon = ({ isOpen }) => (
   </motion.div>
 );
 
-const CartIcon = ({ totalItems }) => (
-  <a href="/cart" className="text-gray-700 hover:text-[#8c3939]">
-    <ShoppingCartIcon className="w-6 h-6" />
-    <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
-    {totalItems ?? 0}
-    </div>
-  </a>
-);
+const CartIcon = ({ totalItems }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      toast.info("Login/signup to see items in cart");
+    } else {
+      navigate('/cart');
+    }
+  };
+
+  return (
+    <button onClick={handleClick} className="text-gray-700 hover:text-[#8c3939]">
+      <ShoppingCartIcon className="w-6 h-6" />
+      <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white">
+        {totalItems ?? 0}
+      </div>
+    </button>
+  );
+};
+
 
 export default Navbar;
