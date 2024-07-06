@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from '/img/logo.png';
+
 //motion
 import { motion } from 'framer-motion';
 //variants
@@ -18,10 +20,10 @@ export default function Footer() {
                     <div className="mb-6 md:mb-0">
                         <a href="/" className="flex items-center">
                             <img
-                                src="https://www.monginis.net/wp-content/uploads/2022/06/cropped-NEW-LOGO-300x66.png"
+                                src={logo}
                                 className="mr-3 h-12 rounded-3xl"
                                 alt="Logo"
-                                style={{ width: '70px', height: '65px' }}
+                                style={{ width: '65', height: '70' }}
                             />
                         </a>
                     </div>
@@ -32,50 +34,52 @@ export default function Footer() {
                                 viewport={{ once: false, amount: 0.7 }}
                     className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-purple-800 hover:text-purple-500 uppercase">Resources</h2>
-                            <ul className="text-purple-800 hover:text-purple-500">
+                            <h2 className="mb-6 text-sm font-semibold text-[#682a2a] hover:text-[#c25151] uppercase">Resources</h2>
+                            <ul className="
+                            
+                            hover:text-[#c25151]">
                                 <li className="mb-4">
-                                    <a href="/" className="text-purple-800 hover:text-purple-500">
+                                    <a href="/" className="text-[#682a2a] font-semibold hover:text-[#c25151]">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className="text-purple-800 hover:text-purple-500">
+                                    <a href="/About" className="text-[#682a2a] font-semibold hover:text-[#c25151]">
                                         About
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-purple-800 hover:text-purple-500 uppercase">Follow us</h2>
+                            <h2 className="mb-6 text-sm font-semibold text-[#682a2a] hover:text-[#c25151] uppercase">Follow us</h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="#"
-                                        className="text-purple-800 hover:text-purple-500"
+                                        href="/MapEmbed"
+                                        className="text-[#682a2a] hover:text-[#c25151]"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Github
+                                        Contact Us
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className="text-purple-800 hover:text-purple-500">
-                                        Discord
+                                    <a href="/CakeImage" className="text-[#682a2a] hover:text-[#c25151]">
+                                        Products
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-purple-800 hover:text-purple-500 uppercase">Legal</h2>
-                            <ul className="text-purple-800 hover:text-purple-500 font-medium">
+                            <h2 className="mb-6 text-sm font-semibold text-[#682a2a] hover:text-[#c25151] uppercase">Legal</h2>
+                            <ul className="text-[#682a2a] hover:text-[#c25151] font-medium">
                                 <li className="mb-4">
-                                    <a href="#" className="text-purple-800 hover:text-purple-500">
+                                    <a href="#" className="text-[#682a2a] hover:text-[#c25151]">
                                         Privacy Policy
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" className="text-purple-800 hover:text-purple-500">
+                                    <a href="#" className="text-[#682a2a] hover:text-[#c25151]">
                                         Terms &amp; Conditions
                                     </a>
                                 </li>
@@ -85,13 +89,13 @@ export default function Footer() {
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-purple-800 hover:text-purple-500 sm:text-center">
-                        © 2024 Syntax Sensations. All Rights Reserved.
+                    <span className="text-sm text-[#682a2a] hover:text-[#c25151] sm:text-center">
+                        © 2024 Chocolate Tiffin-sweetness on the inside. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-                        <a href="#" className="text-purple-800 hover:text-purple-500">
+                        <a href="#" className="text-[#682a2a] hover:text-blue-400">
                             <svg
-                                className="w-4 h-4"
+                                className="w-5 h-5"
                                 aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor"
@@ -105,34 +109,32 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">Facebook page</span>
                         </a>
-                        <a href="#" className="text-purple-800 hover:text-purple-500">
-                            <svg
-                                className="w-4 h-4"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 21 16"
-                            >
-                                <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
-                            </svg>
-                            <span className="sr-only">Discord community</span>
-                        </a>
-                        <a href="#" className="text-purple-800 hover:text-purple-500">
-                            <svg
-                                className="w-4 h-4"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 17"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.29 16c7.547 0 11.675-6.19 11.675-11.557 0-.18 0-.356-.012-.532A8.18 8.18 0 0 0 20 1.892Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            <span className="sr-only">Twitter page</span>
-                        </a>
+                        <a href="https://wa.me/+918010126446" className="text-[#682a2a] hover:text-green-500">
+  <svg
+    className="w-5 h-5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 32 32"
+  >
+    <path d="M16.043 0c-8.785 0-15.917 7.132-15.917 15.917 0 2.807.738 5.541 2.144 7.931l-2.299 6.786 7.016-2.304c2.333 1.264 4.864 1.941 7.489 1.941 8.785 0 15.917-7.132 15.917-15.917s-7.132-15.917-15.917-15.917zm.006 28.937c-2.422 0-4.762-.633-6.837-1.832l-.488-.291-4.176 1.384 1.365-4.09-.319-.505c-1.344-2.129-2.055-4.591-2.055-7.106 0-7.473 6.079-13.552 13.552-13.552 7.473 0 13.552 6.079 13.552 13.552 0 7.472-6.08 13.551-13.552 13.551zm7.353-10.446c-.406-.203-2.406-1.188-2.78-1.324-.374-.138-.647-.203-.92.203-.276.406-1.057 1.324-1.295 1.594-.238.27-.481.304-.887.102-.406-.203-1.713-.629-3.262-2.007-1.205-1.074-2.016-2.402-2.244-2.804-.238-.406-.026-.624.178-.83.184-.184.406-.481.61-.722.203-.238.27-.406.406-.67.138-.276.069-.508-.034-.703-.102-.203-.92-2.22-1.26-3.044-.33-.799-.669-.688-.92-.703l-.775-.014c-.275 0-.723.102-1.101.47-.374.374-1.417 1.386-1.417 3.377 0 1.992 1.449 3.916 1.652 4.183.203.27 2.845 4.35 6.897 5.964.963.416 1.71.665 2.3.852.968.307 1.848.263 2.548.16.778-.116 2.406-.983 2.746-1.93.339-.945.339-1.757.237-1.93-.101-.169-.374-.27-.78-.475z"/>
+  </svg>
+  <span className="sr-only">WhatsApp community</span>
+</a>
+
+<a href="#" className="text-[#682a2a] hover:text-pink-500">
+  <svg
+    className="w-5 h-5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.283.058-2.418.334-3.387 1.304-.969.969-1.246 2.105-1.304 3.387-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.283.334 2.418 1.304 3.387.969.969 2.105 1.246 3.387 1.304 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.283-.058 2.418-.334 3.387-1.304.969-.969 1.246-2.105 1.304-3.387.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.283-.334-2.418-1.304-3.387-.969-.969-2.105-1.246-3.387-1.304-1.28-.058-1.688-.072-4.947-.072zM12 5.838c-3.404 0-6.162 2.757-6.162 6.162s2.758 6.162 6.162 6.162 6.162-2.757 6.162-6.162-2.758-6.162-6.162-6.162zm0 10.1c-2.168 0-3.938-1.769-3.938-3.938s1.769-3.938 3.938-3.938 3.938 1.769 3.938 3.938-1.769 3.938-3.938 3.938zm6.406-11.016c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/>
+  </svg>
+  <span className="sr-only">Instagram</span>
+</a>
+
                     </div>
                 </div>
             </div>

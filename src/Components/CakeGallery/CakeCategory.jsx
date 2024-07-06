@@ -1,13 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../variants';
 
 function CakeCategory({ cakes, title }) {
   return (
     <div className="p-5">
       <h1 className="text-4xl p-2 font-bold text-[#682a2a] mb-6 text-center">{title}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-        {cakes.map((cake) => (
-          <div key={cake.id} className="relative flex flex-col mt-6 text-[#682a2a] bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-80 lg:w-96 m-4">
+        {cakes.map((cake, index) => (
+          <motion.div
+            key={cake.id}
+            className="relative flex flex-col mt-6 text-[#682a2a] bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-80 lg:w-96 m-4"
+            variants={fadeIn('up', index * 0.1)}
+            initial="hidden"
+            animate="show"
+            whileHover={{ scale: 1.02 }} // Scale slightly on hover
+            whileTap={{ scale: 0.98 }} // Scale slightly on tap
+          >
             <div className="relative h-64 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
               <img
                 src={cake.src}
@@ -29,7 +39,7 @@ function CakeCategory({ cakes, title }) {
                 </button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

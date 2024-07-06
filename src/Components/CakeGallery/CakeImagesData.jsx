@@ -1820,6 +1820,31 @@ export const Baby_Shower_Cakes = [
 
 export const ButterFly_Cakes = [
   {
+    id: 602,
+    src: "https://th.bing.com/th/id/OIP.SI-5rac3uy8FjY5DcvARHQHaKg?w=208&h=296&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    caption: " Butterfly Theme Cake",
+    name: " Butterfly Theme Cake",
+    description: "A vibrant cake featuring bold, ruddy-colored butterfly designs, adding a touch of elegance and charm to any celebration.",
+    weightOptions: [
+      { weight: "1 kg", price: 900 },
+      { weight: "2 kg", price: 1800 }
+    ],
+    reviews: 16,
+    rating: 5
+  },
+  {
+    id: 603,
+    src: "https://th.bing.com/th/id/OIP.-EUbTUvwIqwt08Jeq8HK0QHaIi?w=208&h=240&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    caption: " Pink Theme Cake",
+    name: " Pink Theme Cake",
+    description: "A vibrant cake featuring bold, ruddy-colored butterfly designs, adding a touch of elegance and charm to any celebration.",
+    weightOptions: [
+      { weight: "3 kg", price: 3000 },
+      { weight: "4 kg", price: 4000 }
+    ],
+    reviews: 16,
+    rating: 5
+  },{
     id: 129,
     src: "https://www.chefbakers.com/uploads/userfiles/_80A49823.png",
     caption: "Butterfly Theme Cake",

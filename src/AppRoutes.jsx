@@ -14,6 +14,7 @@ import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
 import { AuroraHero } from './Components/AuroraHero';
 import CakeSummary from './Components/CakeGallery/CakeSummary';
+import CakeCategorys from './Components/CakeGallery/CakeCategorys';
 import { 
   Animal_theme_cakes, 
   Barbie_Cakes, 
@@ -47,12 +48,16 @@ import {
 
 
 } from './Components/CakeGallery/CakeImagesData';
+import Carousel from './Components/Carousel';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<><AuroraHero /> < CakeSummary /> <CakeImage /><About /><CardFlip /><MapEmbed /><Features /></>} />
+      <Route exact path="/" element={<><AuroraHero /> <Carousel /> < CakeSummary /> <CakeImage /> {<CakeCategorys cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} <CakeCategorys cakes={ PinataCakes} title="PinataCakes" /> <CakeCategorys cakes={unicorn_cakes} title="Unicorn Cakes" /> <CakeCategorys cakes={ButterFly_Cakes} title="Butterfly Cakes" /> <CakeCategorys cakes={WeddingCakes} title="Wedding Cakes" /><About /><CardFlip /><MapEmbed /><Features /></>} />
       <Route path="/cake-details/:id" element={<CakeDetails />} />
+      <Route exact path="/CakeImage" element={<CakeImage />} />
+      <Route exact path="/About" element={<About />} />
+      <Route exact path="/MapEmbed" element={<MapEmbed />} />
       
       <Route path="/animal-theme-cakes" element={<CakeCategory cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} />
       <Route path="/barbie-cakes" element={<CakeCategory cakes={Barbie_Cakes} title="Barbie Theme Cakes" />} />

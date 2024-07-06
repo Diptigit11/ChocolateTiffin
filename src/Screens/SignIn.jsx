@@ -53,18 +53,19 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-yellow">
-        <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-[#bb2d5a] hover:underline">
-          Sign in to your account
-        </h2>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-opacity-50 bg-[#ffaac5]  bg-blur-md border-2 border-stone-50 backdrop-filter backdrop-blur-md backdrop-saturate-150 rounded-lg p-6 shadow-2xl">
+      <div className="flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat p-4"
+        style={{ backgroundImage: `url(${"https://cdn.leonardo.ai/users/2ba60e8e-3fe6-436d-802a-e03816df2598/generations/d111cf9b-1bfc-4aab-b40f-01161019caec/Default_a_light_theme_celebration_cake_image_with_cake_image_2.jpg"})` }}
+      >
+        <div className="bg-white bg-opacity-60 p-8 rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm">
+          <h2 className="text-center text-3xl font-bold leading-9 tracking-tight text-[#8c3939] hover:underline mb-6">
+            Sign in to your account
+          </h2>
           <form className="space-y-6" onSubmit={handelSubmit}>
-            <div className="my -5">
-              <label htmlFor="name" className="block text-sm font-medium leading-6 text-[#5e152c]">
+            <div className="my-5">
+              <label htmlFor="name" className="block text-sm  font-bold leading-6 text-[#5e152c]">
                 Name
               </label>
-              <div className="mt-2 my-5">
+              <div className="mt-2">
                 <input
                   id="name"
                   name="name"
@@ -73,49 +74,47 @@ const SignIn = () => {
                   required
                   onChange={onchange}
                   placeholder="Your Sweet Name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#8c3939] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-[#5e152c]">
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="sweetname@gmail.com"
-                onChange={onchange}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
-              />
+            <div>
+              <label htmlFor="email" className="block text-sm font-bold leading-6 text-[#5e152c]">
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="sweetname@gmail.com"
+                  onChange={onchange}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#8c3939] sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
-
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-[#5e152c]">
+            <div>
+              <label htmlFor="password" className="block text-sm font-bold leading-6 text-[#5e152c]">
                 Password
               </label>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                onChange={onchange}
-                placeholder="This is a secret"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
-              />
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  onChange={onchange}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#8c3939] sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
             <div className="my-4">
-              <div className="flex items-center justify-between">
-                <label htmlFor="cpassword" className="block text-sm font-medium leading-6 text-[#5e152c]">
-                  Confirm Password
-                </label>
-              </div>
+              <label htmlFor="cpassword" className="block text-sm font-bold leading-6 text-[#5e152c]">
+                Confirm Password
+              </label>
               <div className="mt-2">
                 <input
                   id="cpassword"
@@ -124,21 +123,21 @@ const SignIn = () => {
                   autoComplete="current-password"
                   required
                   onChange={onchange}
-                  placeholder="...."
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#bb2d5a] sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#8c3939] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div>
-              <button type="submit" className="flex w-full justify-center rounded-md bg-[#bb2d5a] hover:shadow-lg  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ff578d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus:ring-[#bb2d5a]">
+              <button type="submit" className="flex w-full justify-center rounded-md bg-[#8c3939] hover:shadow-lg  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#9a3e3e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus:ring-[#bb2d5a]">
                 Sign in
               </button>
             </div>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
-  )
+  );
 }
 
 export default SignIn;

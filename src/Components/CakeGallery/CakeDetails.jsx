@@ -1,59 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
+import {
   CakeImageData, Animal_theme_cakes, Barbie_Cakes, CakesForHer, BikeCakes,
-  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes,  WeddingCakes,
+  CricketCakes, FrozenThemeCakes, GymCakes, PinataCakes, WeddingCakes,
   AnniversaryCakes, BossBaby, CakesForHim,
   FootballCakes, HalfYear, Peppa_Pig_Cakes, TravelCakes, Baby_Shower_Cakes, ButterFly_Cakes,
   Bachelorette_cakes, farewell_cakes, make_up_cakes, spider_man_cakes, unicorn_cakes,
-  desserts, cheesecakes, Pastry, celebration_cakes
-} from './CakeImagesData'; // Adjust import as needed
+  desserts, cheesecakes, Pastry, celebration_cakes, brownie, cupcakes, donuts
+} from './CakeImagesData';
 import { useCart } from '../CartContext';
 import ShowReview from '../ShowReview';
-import { toast,  } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../variants';
 import 'react-toastify/dist/ReactToastify.css';
 
 function CakeDetails() {
-  const { id } = useParams();          //taking out id from url
+  const { id } = useParams();
   const navigate = useNavigate();
   const cakeId = parseInt(id, 10);
-  const { addCake } = useCart();    //getting addcake function from context
+  const { addCake } = useCart();
 
-  // Find cake in either CakeImageData or any other category
-  const cake = CakeImageData.find(cake => cake.id === cakeId) ||
-    Barbie_Cakes.find(cake => cake.id === cakeId) ||
-    Animal_theme_cakes.find(cake => cake.id === cakeId) ||
-    CakesForHer.find(cake => cake.id === cakeId) ||
-    BikeCakes.find(cake => cake.id === cakeId) ||
-    CricketCakes.find(cake => cake.id === cakeId) ||
-    FrozenThemeCakes.find(cake => cake.id === cakeId) ||
-    GymCakes.find(cake => cake.id === cakeId) ||
-    PinataCakes.find(cake => cake.id === cakeId) ||
-    WeddingCakes.find(cake => cake.id === cakeId) ||
-    AnniversaryCakes.find(cake => cake.id === cakeId) ||
-    BossBaby.find(cake => cake.id === cakeId) ||
+  const allCakes = [
+    ...CakeImageData, ...Animal_theme_cakes, ...Barbie_Cakes, ...CakesForHer, ...BikeCakes,
+    ...CricketCakes, ...FrozenThemeCakes, ...GymCakes, ...PinataCakes, ...WeddingCakes,
+    ...AnniversaryCakes, ...BossBaby, ...CakesForHim, ...FootballCakes, ...HalfYear,
+    ...Peppa_Pig_Cakes, ...TravelCakes, ...Baby_Shower_Cakes, ...ButterFly_Cakes,
+    ...Bachelorette_cakes, ...farewell_cakes, ...make_up_cakes, ...spider_man_cakes,
+    ...unicorn_cakes, ...desserts, ...cheesecakes, ...Pastry, ...celebration_cakes,
+    ...brownie, ...cupcakes, ...donuts
+  ];
 
-    CakesForHim.find(cake => cake.id === cakeId) ||
-    FootballCakes.find(cake => cake.id === cakeId) ||
-    HalfYear.find(cake => cake.id === cakeId) ||
-    Peppa_Pig_Cakes.find(cake => cake.id === cakeId) ||
-    TravelCakes.find(cake => cake.id === cakeId) ||
-    Baby_Shower_Cakes.find(cake => cake.id === cakeId) ||
-    ButterFly_Cakes.find(cake => cake.id === cakeId) ||
-    Bachelorette_cakes.find(cake => cake.id === cakeId) ||
-    farewell_cakes.find(cake => cake.id === cakeId) ||
-    make_up_cakes.find(cake => cake.id === cakeId) ||
-    spider_man_cakes.find(cake => cake.id === cakeId) ||
-    unicorn_cakes.find(cake => cake.id === cakeId) ||
-    desserts.find(cake => cake.id === cakeId) ||
-    cheesecakes.find(cake => cake.id === cakeId) ||
-    Pastry.find(cake => cake.id === cakeId) ||
-    celebration_cakes.find(cake => cake.id === cakeId);
-
+  const cake = allCakes.find(cake => cake.id === cakeId);
+  
   const [quantity, setQuantity] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(cake?.weightOptions?.[0] || {});
   const [averageRating, setAverageRating] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (cake && cake.weightOptions) {
+      setSelectedWeight(cake.weightOptions[0]);
+    }
+  }, [cake]);
 
   const handleQuantityChange = (amount) => {
     setQuantity(prevQuantity => Math.max(prevQuantity + amount, 1));
@@ -63,22 +54,30 @@ function CakeDetails() {
     setSelectedWeight(weightOption);
   };
 
-  //add to cart function to add items in cart
   const handleAddToCart = async () => {
-    if (!localStorage.getItem('token')) {     //if token is not present in localstorage then user will get redirected to loginpage
+    if (!localStorage.getItem('token')) {
       navigate('/login');
-      toast.info("Login/Signup to add items in cart")
+      toast.info("Login/Signup to add items in cart");
       return;
     }
     try {
-      const newCake = await addCake(cake.name, cake.src, cake.description, cake.rating, selectedWeight, cake.category, quantity); // sending data to addCake function
+      await addCake(
+        cake.name,
+        cake.src,
+        cake.description || "No description available",
+        cake.rating,
+        selectedWeight,
+        cake.category,
+        quantity
+      );
       navigate('/cart');
     } catch (error) {
       console.error('Error adding to cart:', error);
+      setError('Failed to add cake to cart. Please ensure all details are correct.');
+      toast.error('Failed to add cake to cart.');
     }
   };
 
-  //updating the review data to take out reviewcount 
   const updateReviewData = (reviews) => {
     setReviewCount(reviews.length);
     if (reviews.length > 0) {
@@ -89,13 +88,18 @@ function CakeDetails() {
     }
   };
 
-  // Check if cake is not found
   if (!cake) {
     return <div className="container mx-auto p-4 mt-20">Cake not found</div>;
   }
 
   return (
-    <div className="container mx-auto p-4 mt-20">
+    <motion.div 
+      className="container mx-auto p-4 mt-20"
+      variants={fadeIn("up", 0.2)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.7 }}
+    >
       <div className="flex flex-wrap">
         <div className="w-full md:w-1/2 p-4">
           <img
@@ -122,7 +126,7 @@ function CakeDetails() {
                   <button
                     key={option.weight}
                     onClick={() => handleWeightSelect(option)}
-                    className={`px-4 py-2 border rounded ${option.weight === selectedWeight.weight ? 'border-orange-600 text-orange-600' : 'border-gray-300'}`}
+                    className={`px-4 py-2 border rounded ${option.weight === selectedWeight.weight ? 'border-[#8c3939] text-[#8c3939]' : 'border-gray-300'}`}
                   >
                     {option.weight}
                   </button>
@@ -131,7 +135,9 @@ function CakeDetails() {
             </div>
           )}
           <div className="mb-4">
-            <button className="bg-green-500 text-white px-4 py-2 rounded">Instant Delivery Available</button>
+            <Link to="https://wa.me/+918010126446">
+              <button className="bg-green-500 text-white px-4 py-2 rounded">Order via WhatsApp</button>
+            </Link>
           </div>
           <div className="mb-4">
             <label htmlFor="quantity" className="block font-semibold mb-2">Quantity:</label>
@@ -147,17 +153,18 @@ function CakeDetails() {
               <button onClick={() => handleQuantityChange(1)} className="px-3 py-2 border rounded">+</button>
             </div>
           </div>
-          <button onClick={handleAddToCart} className="bg-orange-600 text-white px-6 py-3 rounded">ADD TO CART</button>
+          <button onClick={handleAddToCart} className="bg-[#8c3939] text-white px-6 py-3 rounded">ADD TO CART</button>
+
+          {error && <p className="text-red-500 mt-4">{error}</p>}
 
           <div className="mt-6">
-            <p className="font-bold text-black">{cake.description}</p>
+            <p className="font-bold text-black">{cake.description || "No description available"}</p>
           </div>
         </div>
       </div>
 
-      <ShowReview productId={id} updateReviewData={updateReviewData} />    
-      {/* //called the showreview page here */}
-    </div>
+      <ShowReview productId={id} updateReviewData={updateReviewData} />
+    </motion.div>
   );
 }
 
