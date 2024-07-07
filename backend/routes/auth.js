@@ -6,7 +6,7 @@ import fetchuser from '../middleware/authMiddleware.js';
 import User from '../models/User.js'; // Assuming User.js exports the User model correctly
 
 const router = express.Router();
-const JWT_SECRET = 'diptisingh' || process.env.JWT_SECRET;
+const JWT_SECRET = 'diptisingh';
 
 // ROUTE 1: Create a user using : Post "/api/auth/createuser" . no login required
 router.post('/signup', [
