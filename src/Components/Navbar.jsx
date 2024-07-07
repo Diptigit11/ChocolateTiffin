@@ -1,19 +1,20 @@
-// Navbar.js
-import React, { useState, useEffect, Fragment } from "react";
+// src/Components/Navbar.jsx
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from "framer-motion";
-import { Menu, Transition } from "@headlessui/react";
-import image from '/img/logo.png';
-import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { motion } from 'framer-motion';
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import { useCart } from './CartContext'; // Import the CartContext
-import { toast } from 'react-toastify';
+import { useSearch } from './SearchBars/SearchContext'; // Corrected import path for useSearch
 import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import image from '/img/logo.png';
 
 const navItems = [
-  { name: "Cheesecakes", href: "/cheesecakes" },
-  { name: "Pastry", href: "/pastry" },
-  { name: "Celebration Cakes", href: "/celebration-cakes" },
-  { name: "Desserts", href: "#", dropdown: true }, // Added dropdown property here
+  { name: 'Cheesecakes', href: '/cheesecakes' },
+  { name: 'Pastry', href: '/pastry' },
+  { name: 'Celebration Cakes', href: '/celebration-cakes' },
+  { name: 'Desserts', href: '#', dropdown: true },
 ];
 
 const dropdownItems = [
@@ -42,17 +43,17 @@ const dropdownItems = [
   { name: "Unicorn Cakes", href: "/unicorn-cakes" },
 ];
 
+
 const dessertsDropdownItems = [
-  { name: "Cupcakes", href: "/cupcakes" },
-  { name: "Donuts", href: "/donuts" },
+  { name: 'Cupcakes', href: '/cupcakes' },
+  { name: 'Donuts', href: '/donuts' },
   { name: "Brownie", href: "/brownie" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery, setSearchQuery } = useSearch();
   const navigate = useNavigate();
-
   const { cart, getCake, setCart } = useCart(); // Use the CartContext
 
   useEffect(() => {
@@ -60,9 +61,13 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');  // Remove token from local storage
-    setCart([]);  // Clear the cart
+    localStorage.removeItem('token'); // Remove token from local storage
+    setCart([]); // Clear the cart
     navigate('/login');
+  };
+
+  const handleSearch = () => {
+    navigate('/search'); // Navigate to SearchPage
   };
 
   const toggleMenu = () => {
@@ -79,16 +84,16 @@ const Navbar = () => {
         </Link>
         <div className="hidden md:flex space-x-8 items-center">
           <DropdownMenu title="Theme Cakes" items={dropdownItems} />
-          {navItems.map((item, index) => (
+          {navItems.map((item, index) =>
             item.dropdown ? (
               <DropdownMenu key={index} title={item.name} items={dessertsDropdownItems} />
             ) : (
               <NavItem item={item} key={index} />
             )
-          ))}
+          )}
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} />
           {!localStorage.getItem('token') ? (
             <div className="flex space-x-4"> {/* Added margin between buttons */}
               <Link to="/login">
@@ -106,7 +111,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="md:hidden flex items-center space-x-2">
-          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} isMobile />
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} isMobile />
           <div className="relative flex items-center">
             <CartIcon totalItems={cart.length} />
           </div>
@@ -118,19 +123,19 @@ const Navbar = () => {
       {isOpen && (
         <motion.div
           initial={{ height: 0 }}
-          animate={{ height: "auto" }}
+          animate={{ height: 'auto' }}
           transition={{ duration: 0.3 }}
           className="md:hidden bg-white shadow-md"
         >
           <div className="flex flex-col p-4 space-y-2">
             <DropdownMenu title="Theme Cakes" items={dropdownItems} />
-            {navItems.map((item, index) => (
+            {navItems.map((item, index) =>
               item.dropdown ? (
                 <DropdownMenu key={index} title={item.name} items={dessertsDropdownItems} />
               ) : (
                 <NavItem item={item} key={index} />
               )
-            ))}
+            )}
             {!localStorage.getItem('token') ? (
               <div className="flex flex-col space-y-2"> {/* Adjusted for better spacing */}
                 <Link to="/login">
@@ -174,7 +179,7 @@ const DropdownMenu = ({ title, items }) => (
               {({ active }) => (
                 <a
                   href={item.href}
-                  className={`${active ? "bg-gray-100" : ""} block px-4 py-2 text-sm text-gray-700`}
+                  className={`${active ? 'bg-gray-100' : ''} block px-4 py-2 text-sm text-gray-700`}
                 >
                   {item.name}
                 </a>
@@ -195,76 +200,74 @@ const NavItem = ({ item }) => (
     className="relative text-lg font-bold text-gray-700 hover:text-[#8c3939]"
   >
     {item.name}
-    <motion.span
-      layoutId="underline"
-      className="absolute left-0 -bottom-1 block h-0.5 w-full bg-[#8c3939]"
-      initial={{ opacity: 0 }}
-      whileHover={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    />
   </motion.a>
 );
 
-const SearchBar = ({ searchQuery, setSearchQuery, isMobile }) => (
-  <div className={`relative flex items-center ${isMobile ? 'w-50' : ''}`}>
-    <input
-      type="text"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      className="px-3 py-2 border-2 border-[#8c3939] rounded-l-lg focus:outline-none w-full"
-      placeholder="Search..."
-    />
-    <button
-      className="flex items-center justify-center px-3 py-3 text-white bg-[#8c3939] rounded-r-lg"
-    >
-      <MagnifyingGlassIcon className="w-5 h-5" />
-    </button>
-  </div>
-);
-
-const MenuIcon = ({ isOpen }) => (
-  <motion.div
-    initial={{ rotate: 0 }}
-    animate={{ rotate: isOpen ? 90 : 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    <svg
-      className="h-6 w-6 text-[#8c3939]"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
-      />
-    </svg>
-  </motion.div>
-);
-
-const CartIcon = ({ totalItems }) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (!localStorage.getItem('token')) {
-      navigate('/login');
-      toast.info("Login/signup to see items in cart");
-    } else {
-      navigate('/cart');
+const SearchBar = ({ searchQuery, setSearchQuery, handleSearch, isMobile }) => {
+  // Handle enter key press
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
   };
 
   return (
-    <button onClick={handleClick} className="relative text-gray-700 hover:text-[#8c3939]">
-      <ShoppingCartIcon className="w-6 h-6 text-[#8c3939]" />
-      <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white text-xs">
-        {totalItems ?? 0} {/* Display total items or 0 */}
-      </div>
-    </button>
+    <div className={`relative flex items-center ${isMobile ? 'w-50' : ''} bg-[#f5f5f5] p-2 rounded-lg`}>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown} // Added event handler for Enter key
+        className="px-3 py-2 border-2 border-[#8c3939] rounded-l-lg focus:outline-none w-full"
+        placeholder="Find Your Treat..."
+      />
+      <button 
+        onClick={handleSearch}
+        className="flex items-center justify-center px-3 py-3 text-white bg-[#8c3939] rounded-r-lg"
+      >
+        <MagnifyingGlassIcon className="w-5 h-5" />
+      </button>
+    </div>
   );
 };
+
+
+const CartIcon = ({ totalItems }) => (
+  <div className="relative">
+    <Link to="/cart">
+      <ShoppingCartIcon className="w-6 h-6 text-[#8c3939]" />
+    </Link>
+      <div className="circle bg-red-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-white text-xs">
+        {totalItems ?? 0}
+      </div>
+   
+  </div>
+);
+
+const MenuIcon = ({ isOpen }) => (
+  <svg
+    className="w-8 h-8 text-[#8c3939]"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {isOpen ? (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12"
+      />
+    ) : (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 6h16M4 12h16m-7 6h7"
+      />
+    )}
+  </svg>
+);
 
 export default Navbar;

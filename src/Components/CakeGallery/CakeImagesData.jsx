@@ -1258,7 +1258,7 @@ export const WeddingCakes = [
     id: 89,
     src: "https://bkmedia.bakingo.com/calming-blooms-cake-them2836flav-A.jpg",
     caption: "2 Tier Cream Cake",
-    name: "Two Tier Edible Bloom Bunch Cream Cake",
+    name: "Two Tier Edible Bloom Bunch Wedding Cream Cake",
     description: "A stunning two-tier cake adorned with edible flowers and creamy layers, perfect for adding elegance to any wedding celebration.",
     weightOptions: [
       { weight: "3 kg", price: 3000 },

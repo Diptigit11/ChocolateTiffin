@@ -36,7 +36,7 @@ const SignIn = () => {
       if (json.success) {
         localStorage.setItem('token', json.authtoken);
         navigate("/");
-        toast.success("Signed in Successfully!");
+        toast.success("Signed in Successfully! Enjoy the deliciousness of cake ");
       } else {
         toast.error(json.error || "Error in signing in!");
       }

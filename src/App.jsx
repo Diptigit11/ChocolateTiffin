@@ -8,6 +8,8 @@ import Footer from './Components/Footer';
 import Wp from './Components/Wp';
 import AppRoutes from './AppRoutes';
 import { CartProvider } from './Components/CartContext';
+import { SearchProvider } from './Components/SearchBars/SearchContext'
+import ScrollToTop from './Components/ScrollToTop'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,16 +27,19 @@ function App() {
 
   return (
     <div className="min-h-screen mt-20">
+      <SearchProvider>
       <CartProvider>
       <Router>
         <div className="min-h-screen">
           <Wp />
           <Navbar />
+        <  ScrollToTop />
           <AppRoutes />
           <Footer />
         </div>
       </Router>
       </CartProvider>
+      </SearchProvider>
     </div>
   );
 }

@@ -4,6 +4,7 @@ const CircleAnimation = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(true);
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const updateMousePosition = (e) => {
@@ -26,16 +27,26 @@ const CircleAnimation = () => {
             setIsHovering(false);
         };
 
+        const updateIsMobile = () => {
+            setIsMobile(window.innerWidth <= 768); // You can adjust the breakpoint as needed
+        };
+
+        updateIsMobile();
+        window.addEventListener('resize', updateIsMobile);
+
         document.addEventListener('mousemove', updateMousePosition);
         document.addEventListener('mouseenter', handleMouseEnter);
         document.addEventListener('mouseleave', handleMouseLeave);
 
         return () => {
+            window.removeEventListener('resize', updateIsMobile);
             document.removeEventListener('mousemove', updateMousePosition);
             document.removeEventListener('mouseenter', handleMouseEnter);
             document.removeEventListener('mouseleave', handleMouseLeave);
         };
     }, []);
+
+    if (isMobile) return null;
 
     return (
         <div

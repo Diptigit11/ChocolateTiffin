@@ -10,8 +10,24 @@ import image7 from '/img/car7.png';
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Cards array
+  const cards = [
+    { url: image1, id: 1 },
+    { url: image2, id: 2 },
+    { url: image3, id: 3 },
+    { url: image4, id: 4 },
+    { url: image5, id: 5 },
+    { url: image6, id: 6 },
+    { url: image7, id: 7 },
+  ];
+
+  const totalCards = cards.length;
+  const loopedCards = [...cards, ...cards, ...cards];
 
   useEffect(() => {
+    // Function to update items per view based on screen size
     const updateItemsPerView = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerView(4);
@@ -22,38 +38,55 @@ const Carousel = () => {
       }
     };
 
+    // Call update on mount and on window resize
     updateItemsPerView();
     window.addEventListener("resize", updateItemsPerView);
+
+    // Cleanup event listener on unmount
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
-    );
+  useEffect(() => {
+    // Function to move to the next image
+    const interval = setInterval(() => {
+      moveToNextSlide();
+    }, 2000); // Change image every 3 seconds
+
+    // Cleanup interval on unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  const moveToNextSlide = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalCards);
   };
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === cards.length - 1 ? 0 : prevIndex + 1
-    );
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
   };
 
   return (
     <>
+     <div id="carousel" className="relative overflow-hidden p-4"> {/* Add id here */}
       <h2 className="text-3xl font-bold text-[#682a2a] text-center m-6">
         What we offer!!
       </h2>
       <div className="relative overflow-hidden p-4">
-        <button
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-2 rounded-full"
-          onClick={handlePrev}
+        <div
+          className={`flex transition-transform duration-500 ease-in-out ${
+            isTransitioning ? '' : 'transition-none'
+          }`}
+          style={{
+            transform: `translateX(-${(currentIndex + totalCards) * (100 / itemsPerView)}%)`,
+          }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          &lt;
-        </button>
-        <div className="flex overflow-hidden transition-transform duration-300 ease-in-out">
-          {cards.slice(currentIndex, currentIndex + itemsPerView).map((card, index) => (
-            <div key={card.id} className="flex-none w-full md:w-1/3 lg:w-1/4 p-2">
+          {loopedCards.map((card, index) => (
+            <div
+              key={index}
+              className="flex-none w-full md:w-1/3 lg:w-1/4 p-2"
+              style={{ minWidth: `${100 / itemsPerView}%` }}
+            >
               <div
                 style={{
                   backgroundImage: `url(${card.url})`,
@@ -63,41 +96,13 @@ const Carousel = () => {
                 className="w-full h-64 md:h-80 lg:h-96 bg-gray-300 transition-transform duration-300 hover:scale-105 hover:shadow-lg"
               ></div>
             </div>
+           
           ))}
-          {currentIndex + itemsPerView > cards.length && 
-            cards.slice(0, (currentIndex + itemsPerView) % cards.length).map((card, index) => (
-              <div key={card.id} className="flex-none w-full md:w-1/3 lg:w-1/4 p-2">
-                <div
-                  style={{
-                    backgroundImage: `url(${card.url})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                  className="w-full h-64 md:h-80 lg:h-96 bg-gray-300 transition-transform duration-300 hover:scale-105 hover:shadow-lg"
-                ></div>
-              </div>
-            ))
-          }
         </div>
-        <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-2 rounded-full"
-          onClick={handleNext}
-        >
-          &gt;
-        </button>
+      </div>
       </div>
     </>
   );
 };
 
 export default Carousel;
-
-const cards = [
-  { url: image1, id: 1 },
-  { url: image2, id: 2 },
-  { url: image3, id: 3 },
-  { url: image4, id: 4 },
-  { url: image5, id: 5 },
-  { url: image6, id: 6 },
-  { url: image7, id: 7 },
-];

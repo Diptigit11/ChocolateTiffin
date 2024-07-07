@@ -96,6 +96,12 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <p className="mt-6 text-center text-sm text-[#5e152c]">
+            Don't have an account?{' '}
+            <Link to="/signin" className="font-semibold leading-6 text-[#9a3e3e] hover:underline">
+              Please sign up
+            </Link>
+          </p>
         </div>
       </div>
     </>
