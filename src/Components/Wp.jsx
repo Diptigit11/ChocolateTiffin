@@ -17,9 +17,6 @@ function Wp() {
           alt="WhatsApp"
           className="w-full h-full"
         />
-        <span className="absolute bottom-16 right-0 mb-3 mx-6 px-4 py-1 text-white bg-green-500 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-          Start to chat
-        </span>
       </a>
     </div>
   );

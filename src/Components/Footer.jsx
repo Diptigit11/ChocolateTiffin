@@ -122,7 +122,7 @@ export default function Footer() {
   <span className="sr-only">WhatsApp community</span>
 </a>
 
-<a href="#" className="text-[#682a2a] hover:text-pink-500">
+<a href="https://www.instagram.com/chocolatetiffin?igsh=MTNtMHdibHVmNXAyaA==" className="text-[#682a2a] hover:text-pink-500">
   <svg
     className="w-5 h-5"
     aria-hidden="true"
@@ -134,7 +134,6 @@ export default function Footer() {
   </svg>
   <span className="sr-only">Instagram</span>
 </a>
-
                     </div>
                 </div>
             </div>

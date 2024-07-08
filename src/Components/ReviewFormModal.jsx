@@ -12,17 +12,17 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
   const [hover, setHover] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const { submitReview } = useCart();       //taking out submitreview from context
+  const { submitReview } = useCart();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();                //prevents reloading of page
-    setSubmitted(true);                //updateing the state
+    e.preventDefault();
+    setSubmitted(true);
     try {
-      const result = await submitReview(name, rating, title, review, productId);    //paasing value to the function
+      const result = await submitReview(name, rating, title, review, productId);
       toast.success("Review submitted successfully");
       setTimeout(() => {
         setSubmitted(false);
-        onSubmit(result); // Call the onSubmit callback with the new review
+        onSubmit(result);
         onClose();
       }, 2000);
     } catch (error) {
@@ -35,8 +35,8 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-auto md:mx-0">
         {submitted ? (
           <div className="text-center">
             <p className="text-lg font-semibold">Thank you for your review!</p>
@@ -49,7 +49,7 @@ const ReviewFormModal = ({ isOpen, onClose, onSubmit, productId }) => {
               <input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}     //takes the entered value in field
+                onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 border rounded"
                 placeholder="Enter your name"
                 required

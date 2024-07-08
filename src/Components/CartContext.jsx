@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
 //function to add cake
   const addCake = async (name, src, description, rating, weightOptions, category, quantity) => {
-    const response = await fetch(`http://localhost:5000/api/cart/add`, {
+    const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/cart/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
   //function to fetch cake
   const getCake = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/cart/fetch`, {
+      const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/cart/fetch`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const CartProvider = ({ children }) => {
   // function to delete cake item from cart
   const deleteCake = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/cart/delete/${id}`, {
+      const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/cart/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const CartProvider = ({ children }) => {
   //function to add the review 
   const submitReview = async (name, rating, title, review, productId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/review/add/${productId}`, {
+      const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/review/add/${productId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export const CartProvider = ({ children }) => {
 //function to fetch review
   const fetchReviews = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/review/fetchreview/${productId}`, {
+      const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/review/fetchreview/${productId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ export const CartProvider = ({ children }) => {
   // function to delete review
   const deleteReview = async (reviewId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/review/deletereview/${reviewId}`, {
+      const response = await fetch(`https://chocolate-tiffin-backend1.onrender.com/api/review/deletereview/${reviewId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
