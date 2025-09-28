@@ -43,7 +43,7 @@ export const CakeImageData = [
   },
   {
     id: 6,
-    src: "https://th.bing.com/th?id=OPAC.8AphQTaQlORGKg474C474&w=592&h=550&o=5&dpr=1.3&pid=21.1",
+    src: "https://www.simplyrecipes.com/thmb/dXlOkRQ_JobZtSRTY4hF1A9OPPA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Strawberry-Cake-LEAD-9-02d65bfdfd564146804192f8f6ceebb8.jpg",
     caption: "Strawberry Cake",
     name: "Strawberry Bliss Cake",
     description: "A delightful cake with layers of strawberry-flavored sponge and creamy strawberry frosting. It's topped with chocolate garnish and a light strawberry glaze.",

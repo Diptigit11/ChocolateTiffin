@@ -13,7 +13,7 @@ import Features from './Components/Features';
 import Login from './Screens/Login';
 import SignIn from './Screens/SignIn';
 import { AuroraHero } from './Components/AuroraHero';
-import CakeSummary from './Components/CakeGallery/CakeSummary';
+// import CakeSummary from './Components/CakeGallery/CakeSummary';
 import CakeCategorys from './Components/CakeGallery/CakeCategorys';
 import SearchPage from './Components/SearchBars/SearchPage';
 import CircleAnimation from './Components/CircleAnimation'
@@ -55,7 +55,7 @@ import Carousel from './Components/Carousel';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<> <CircleAnimation /> <AuroraHero />  <Carousel /> < CakeSummary /> <CakeImage /> {<CakeCategorys cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} <CakeCategorys cakes={ PinataCakes} title="Pinata Cakes" /> <CakeCategorys cakes={unicorn_cakes} title="Unicorn Cakes" /> <CakeCategorys cakes={ButterFly_Cakes} title="Butterfly Cakes" /> <CakeCategorys cakes={WeddingCakes} title="Wedding Cakes" /><About /><CardFlip /><MapEmbed /><Features /></>} />
+      <Route exact path="/" element={<> <CircleAnimation /> <AuroraHero />  <Carousel />  <CakeImage /> {<CakeCategorys cakes={Animal_theme_cakes} title="Animal Theme Cakes" />} <CakeCategorys cakes={ PinataCakes} title="Pinata Cakes" /> <CakeCategorys cakes={unicorn_cakes} title="Unicorn Cakes" /> <CakeCategorys cakes={ButterFly_Cakes} title="Butterfly Cakes" /> <CakeCategorys cakes={WeddingCakes} title="Wedding Cakes" /><About /><CardFlip /><MapEmbed /><Features /></>} />
       <Route path="/carousel" element={<Carousel />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/cake-details/:id" element={<CakeDetails />} />
